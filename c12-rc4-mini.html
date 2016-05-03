@@ -1,0 +1,435 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Rivest Cipher 4 (mini) </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="RC4 Rivest cipher 4 Cryptography tools Cryptolab Cryptogame">
+	<meta name="description" content="RC4 is a modern stream cipher that works on bits to encrypt and decrypt. This mini version uses a 16 byte implementation for demo purposes. The real implementation works upon 256 bytes.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/jquery.shuffleLetters.js"></script><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>RC4 (mini)</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				RC4 or Rivest Cipher 4, also known as ARC4 or ARCFOUR, is a stream cipher designed by <em>Ron Rivest</em> in 1987. (RC is also understood as 'Ron's Code').<br><br>
+
+				It is remarkable for its simplicity (algorithm is also few lines of code only) and speed. Although, multiple vulnerabilities have also been discovered in its improper use (An infamous example of Problematic use of RC4 is the protocol WEP used in Wireless Networks).<br><br>
+
+				It works upon the stream of bits and encrypt each bit one by one, using an 'almost-random' 'keystream' (which is generated after each bit using some algorithm).<br><br>
+
+
+				The RC4 cipher consists of two parts: 1. The Key Scheduling Algorithm (KSA), and 2. The Pseudo Random (Byte) Generation Algorithm (PRGA).<br><br>
+
+				The KSA takes a neatly arranged array (say, 'S'-array) of 256 elements (bytes containing values 0, 1, 2, ..., 255 in this order), and then uses a variable length secret 'key' to turn the array into a pseudo-random order. Once the KSA has finished, the array is supposed to "look" randomly arranged.<br><br>
+
+				After the KSA, the PRGA part starts and this part outputs one byte at a time. Each PRGA step further perturbs the array a little while outputting one byte.<br><br>
+
+				To decrypt the bits back, the same process is repeated again.<br><br>
+
+				Remember, the 'vulnerabilities' we were talking about in the beginning of this post. This is it - "The crucial theme underlying most of the weaknesses of RC4 is that the initial few output bytes of RC4 are highly correlated to the secret key." and thus, can give the hacker an idea of the secret key just after finding out patterns in the ciphertext (especially the 'initial few output bytes'). Terrible, isn't it.<br>
+				The solution to above problem is to discard the beginning of output keystream.<br><br>
+
+				<em>note:</em> Some of the explanation above is from Somitra Sanadhya's answer on "What is an intuitive explanation of the RC4..." on <em>Quora.com</em>.<br>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Note</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				The 'Tool' given in the other tab can be used to encrypt any string using the minified version of RC4 which uses 16 bytes (instead of 256 bytes). Intermediate Steps involved in the algorithm are also shown in the 'Tool', and may improve your 'practical' understanding.<br>
+
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				Next, we implement the full version of RC4, i.e. the one which works on 256 byte 'keystream'; and also explain the algorithm.<br>			
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-16 Ended.
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- input & key Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="inputString" class="materialize-textarea"></textarea>
+        <label for="inputString">Input String</label>
+      </div> 
+      <div class="input-field col s8 offset-s2">
+        <input id="keyString" type="text" length=16></input>
+        <label for="keyString">Key String (upto 16 characters)</label>
+      </div>
+    </div>
+
+
+	<!-- Switch -->
+	  <div class="switch">
+	    <label>
+	      Encrypt
+	      <input id="mode" type="checkbox">
+	      <span class="lever"></span>
+	      Decrypt
+	    </label>
+	  </div>
+
+	  <br><br>
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Compute"><i class="material-icons">done</i></a>
+
+
+   
+
+	<!-- output Area -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="outputString" class="materialize-textarea" placeholder="Output Will Be Displayed Here..." readonly="readonly" style="color:black"></textarea>
+        <label for="outputString" style="color:#9e9e9e">Output String</label>
+      </div>
+    </div>
+
+     <br>
+    <!-- Intermediate Steps -->
+    <div class="row">
+    	<div class="col s8 offset-s2">
+    		<h5>Intermediate Steps</h5>
+    		<p id="intermediate">
+    			No result to show.
+    		</p>
+    	</div>
+    </div>
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+	//empty!
+});
+
+
+
+//whenever switch clicked! changed
+$("#mode").click(function(){
+	var mode = $("#mode").prop("checked"); 	//mode: true => decrypt; false => encrypt
+	if(mode==true){	//decryption. => input will be in base64.
+		$("#inputString").next().text("Input String (in base64)");
+	}
+	else{ //encryption.
+		$("#inputString").next().text("Input String");
+	}
+});
+
+
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#inputString").val());
+	var keyString = $.trim($("#keyString").val());
+
+	var oString = "";
+	$("#outputString").text(oString);	//clear the oString box first.
+
+	//step - 1: is input string or key string empty?
+	if(iString == "" || keyString == ""){
+		oString = "Please enter all the Input Fields first.";
+		Materialize.toast(oString, 4000);
+	}else{
+
+		var mode = $("#mode").prop("checked"); 	//mode: true => decrypt; false => encrypt
+		
+		oString = rc4_mini(iString, keyString, mode);
+		
+		//Display the output String.
+		if(oString.length > 100){
+			$("#outputString").text(oString);
+			
+		}else{	//'with-style!'
+			$("#outputString").shuffleLetters({
+					"text": oString
+				});
+		}
+		$('#outputString').trigger('autoresize');
+	}	
+});
+
+
+
+
+//text-to-binary & binary-to-text function
+function toBinary(str, spaceSeparatedOctets) {
+		    return str.replace(/[\s\S]/g, function(str) {
+		      str = zeroPad(str.charCodeAt().toString(2));
+		      return !1 == spaceSeparatedOctets ? str : str + " "
+		    });
+		}
+		function zeroPad(num) {
+		    return "00000000".slice(String(num).length) + num;
+		}
+function toAscii(bin){
+			    return bin.replace(/\s*[01]{8}\s*/g, function(bin) {
+			      return String.fromCharCode(parseInt(bin, 2));
+		    	});
+			}
+
+
+
+
+/*
+Original: for 256 byte.
+
+function rc4(key, str) {
+	var s = [], j = 0, x, res = '';
+	for (var i = 0; i < 256; i++) {
+		s[i] = i;
+	}
+	for (i = 0; i < 256; i++) {
+		j = (j + s[i] + key.charCodeAt(i % key.length)) % 256;
+		x = s[i];
+		s[i] = s[j];
+		s[j] = x;
+	}
+	i = 0;
+	j = 0;
+	for (var y = 0; y < str.length; y++) {
+		i = (i + 1) % 256;
+		j = (j + s[i]) % 256;
+		x = s[i];
+		s[i] = s[j];
+		s[j] = x;
+		res += String.fromCharCode(str.charCodeAt(y) ^ s[(s[i] + s[j]) % 256]);
+	}
+	return res;
+}
+
+*/
+//RC4 algorithm; //actual rc4: replace 256 with 16
+function rc4(key, str) {
+	var s = [], j = 0, x, res = '';
+	for (var i = 0; i < 16; i++) {	
+		s[i] = i;
+	}
+	
+	//show-0: given
+	var output = "";
+	output += "<em>Given:</em><br> <strong>Input String</strong> (in binary) = " + "<span class='teal lighten-4'>" +toBinary(str) + "</span><br>";
+	key = key.substr(0, 16);
+	output += "<strong>Key String</strong> (in binary) = " + toBinary(key) + "<br>";
+	output += "Key String (plaintext) = " + key + "<br><br>";
+
+	//show-0.2: objective
+	output += "<em>Objective:</em><br> To convert the original 'input-bytes' to 'cipher-bytes', <br> one-byte-at-a-time (because it's a stream cipher), <br> in such a smart-secure way that it can't be 'cracked' easily. <br><br>"
+
+	//show-0.5: note
+	output += "<em>Note:</em><br> This technique is based on <em>'byte'</em>-oriented operations.<br><br>";
+	
+	//show-0.6: color coding
+	output += "<em>Color Codes:</em><br> Byte Streams - <span class='teal lighten-4'>Input</span> <span class='blue lighten-4'>Key</span> <span class='deep-purple lighten-4'>Output</span><br><br>";
+
+
+	//show-0: Initial procedure
+	output += "<em>Procedure:</em><br>";
+	output += "<strong>Part-I:<br> INITIALIZATION OF 'S'-Array</strong><br>";
+	output += "<strong>Step 0</strong>: Let Initial 'S'-Array (length:16) = " + s.toString() + "<br>";
+	output += "Each element equals one-byte/eight-bits! <br><br>";
+
+
+	//show-1: After re-arranging / permutating.
+	output += "<strong>Step 1: Re-ordering / Permutating the above array, using our 'Key'</strong>:<br><br>";
+
+	output += "Our Key String: "+key+"<br>";
+	output += "Our Key Array: ";
+	var k = [];
+	for (var i=0; i < key.length; i++){
+		k[i] = key.charCodeAt(i);
+	}
+	output += k.toString() + "<br>";
+
+
+	output += "Our Key Array (length:16) =  ";
+	for (var i=0; i < 16; i++){
+		k[i] = k[ i % key.length];
+	}
+	output += k.toString() + "<br><br>";
+
+	output += "Now, Go through the whole 'S'-Array, one element at a time;<br> and for each element, swap it with 'some other' element of 'S'-Array, based on the corresponding element of Key Array.<br><br>";
+
+	output += "Round 0: "+ s.toString() + "<br>";
+
+	for (i = 0; i < 16; i++) {
+		output += "Round "+ (i + 1) +": ";
+
+		j = (j + s[i] + k[i]) % 16; 
+		x = s[i];
+		s[i] = s[j];
+		s[j] = x;
+		output +=  s.toString() + "<br>";
+	}
+
+	output += "<br>Now, at this point we have made our array 'almost-randomly' ordered :<br>" + s.toString() + "<br><br><br>";
+	
+
+	//show-2 part2
+	output += "<strong>Part-II:<br> ENCRYPT ONE INPUT BYTE AT A TIME,<br>USING SOME RANDOM ELEMENT FROM 'S'-Array;<br> ALSO, RE-ORDER 'S'-Array EACH TIME.</strong><br><br>";
+	output += "For each byte in the 'Input String', do the following:<br><br>";
+
+	i = 0;
+	j = 0;
+	for (var y = 0; y < str.length; y++) {
+		output += "<strong>For Input Byte " + (y+1) + ": " + "<span class='teal lighten-4'>" + toBinary(str[y]) + "</span> or " + str.charCodeAt(y) + "</strong><br>";
+
+		i = (i + 1) % 16;
+		j = (j + s[i]) % 16;
+		x = s[i];
+		s[i] = s[j];
+		s[j] = x;
+
+		output += "Re-order the 'S'-array. New 'S'-Array = " + s.toString() + "<br>";
+
+		res += String.fromCharCode(str.charCodeAt(y) ^ s[(s[i] + s[j]) % 16]);
+
+		random_chosen =  s[(s[i] + s[j]) % 16];
+		output += "XOR input-byte with 'some' randomly chosen-byte from above (let, " + random_chosen + " or " + "<span class='blue lighten-4'>" + random_chosen.toString(2) +"</span>).<br>";
+		output += "Output Byte "+ (y+1) + ": ("+ "<span class='teal lighten-4'>" + toBinary(str[y]) + "</span> XOR " + "<span class='blue lighten-4'>" + random_chosen.toString(2) + "</span>) = "+ "<span class='deep-purple lighten-4'>" + (str.charCodeAt(y) ^ random_chosen).toString(2) + "</span><br><br>";
+	}
+
+	//show-final-binary
+	output += "<br><br><em>Final Output:</em><br>";
+	output += "<em>from:</em><br>";
+	output += "<strong>Input String</strong>: "+ "<span class='teal lighten-4'>" + toBinary(str) + "</span><br>";
+	output += "<em>to:</em><br>";
+	output += "<strong>Output String</strong>: "+ "<span class='deep-purple lighten-4'>" + toBinary(res) + "</span><br><br>";
+
+	//show-final:
+	$("#intermediate").html(output);
+
+	return res;
+}
+
+//Our main JS function for this Cipher technique
+function rc4_mini(iString, keyString, mode){
+	var oString = "";
+
+	//the computation goes here.
+	//oString = iString;
+	
+	if(mode == true){	//decryption checked!
+		iString = atob(iString);	//from base64 to plaintext
+		oString = rc4(keyString, iString);
+
+		/* 
+			also change the label to "Output String (normal)"
+		*/
+		$("#outputString").next().text("Output String");
+
+	}else{		//encryption checked!
+		oString = rc4(keyString, iString);
+		oString = btoa(oString);	//from plaintext to base64
+
+		/* 
+			also change the label to "Output String (in Base64)"
+		*/
+		$("#outputString").next().text("Output String (in Base64)");
+	}
+
+	return oString;
+}
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

@@ -1,0 +1,305 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Caesar Cipher </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Cryptography Caesar Cipher tools Cryptolab Cryptogame">
+	<meta name="description" content="The simplest and the most popular-earliest substitution cipher shifts letters by some value">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/jquery.shuffleLetters.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>Caesar Cipher</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				Hello, Welcome again.<br><br>
+			
+				In this post, we'll look at one of the earliest and simplest technique of encryption
+				called 'Caesar Cipher'.<br><br>
+				'Caesar' refers to the 'Julius Caesar', the famous Roman general, statesman and author around 100 BC;
+				and 'Cipher' just means the 'technique'. It's believed that he used this technique for secret communication among
+				his trusted social circle. Now what is this technique? Let's see.<br><br>
+
+				For any message that you have, all the english letters are 'shifted' by a certain number 
+				to make the ciphertext from the plaintext message. Example:<br><br>
+
+				Suppose the message/plaintext is: "AMAZON".<br>
+				Then, for each letter in this text, we 'shift' it by certain number.<br><br>
+				Let that 'shift-number' (or 'key' in this case) be 2.<br>
+				Then, 'A' becomes: 'C', 'M' becomes 'O', <br>
+				and 'Z' becomes 'B'.<br>
+				(we wrap around after 'Z', such that 'Z' + 1 = 'A' and 'Z' + 2 = 'B')<br><br>
+
+				The 'encrypted' message becomes "COCBQP" from "AMAZON".<br><br>
+
+				To 'decrypt' this ciphertext, we just 'shift-back' each letter by '2'(which was
+				the 'key' in this case), and get the original plaintext message back.<br><br>
+
+				Note that Numbers, spaces and special characters are left unchanged.<br>
+				And also each letter can only be shifted to 25 at maximum, because for any english alphabet,
+				there are only 25 other alphabets left. (Just try that: 'A' shifted to 25 becomes 'Z'
+				, but 'A' shifted to 26 becomes 'A' again, so that's of no use)<br>
+				That's why, in this technique, the Key can only be a number between 1 to 25.<br><br>
+
+				So, this is it. This is Caesar Cipher.<br>
+			</p>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				This technique was very popular for centuries, but when, with passage of time, the
+				seriousness in maintaing secrecy of message increased; and this technique's limitations started
+				to scream of its incapability to be much 'secure'; new techniques were invented.<br>
+				Also, many attacks were invented.<br><br>
+				One of the easiest attack with which someone can 'crack' a ciphertext message encrypted
+				using Ceaser Cipher, is 'Brute Force Attack'.<br>
+				And that's what we will see next.<br>
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-2 Ended.
+
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- input Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="inputString" class="materialize-textarea"></textarea>
+        <label for="inputString">Input String</label>
+      </div>
+    </div>
+
+    <!-- Settings Area -->
+    <div class="row"> 
+    	<div class="col s1 offset-s2">      	
+	    	<strong>Settings:</strong> 
+	    </div><br>
+	    <div class="col s4 offset-s2">     	  	
+		      <p class="range-field">
+		      	<input id="key" type="range" min="1" max="25" />
+		      	<label for="key">Key = <span id="key-show">1</span></label>
+		      </p>
+		</div>
+		<div class="col s3 offset-s1">			
+          <!-- Switch -->
+		  <div class="switch">
+		    <label>
+		      Encrypt
+		      <input id="mode" type="checkbox">
+		      <span class="lever"></span>
+		      Decrypt
+		    </label>
+		  </div>
+		</div>
+    </div>
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Compute"><i class="material-icons">done</i></a>
+
+	<!-- output Area -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="outputString" class="materialize-textarea" placeholder="Output Will Be Displayed Here..." readonly="readonly" style="color:black"></textarea>
+        <label for="outputString" style="color:#9e9e9e">Output String</label>
+      </div>
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+
+	//display dynamically the key = "some_value" based on the range slider's position.
+	$("#key-show").text($("#key").val());
+
+});
+
+//whenever mouse is slided over the range slider.
+$("#key").mousemove(function(){
+	$("#key-show").text($("#key").val());
+});
+
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#inputString").val());
+	var oString = "";
+	$("#outputString").text(oString);	//clear the oString box first.
+
+	//step - 1: is input string empty?
+	if(iString == ""){
+		oString = "Please enter some Input String first.";
+		Materialize.toast(oString, 4000);
+	}else{
+		var key = $("#key").val();
+		var mode = $("#mode").prop("checked"); 	//mode: true => decrypt; false => encrypt
+		
+		oString = caesar(iString, key, mode);
+		
+		if(oString.length > 100){
+			$("#outputString").text(oString);
+			
+		}else{	//'with-style!'
+			$("#outputString").shuffleLetters({
+					"text": oString
+				});
+		}
+		$('#outputString').trigger('autoresize');
+	}
+});
+
+
+//Our main JS function for this Cipher technique
+//Parameters:- iString: string, key: num between 1-25; mode: false[encrypt]/true[decrypt]
+function caesar(iString, key, mode){
+	var oString = "";
+
+	//the computation goes here.
+	//oString = iString;
+	
+	var iString = iString.toUpperCase();
+	
+	//var letterArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    var letterArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";		//it's actually string as an array!
+    
+    //for each character in string:
+    for(var i=0; i<iString.length; i++){
+    	var character = iString.charAt(i);
+    	var digit = 0;
+    	
+    	//check if it's a letter
+    	if(letterArray.indexOf(character)>-1){	//meaning, it IS a letter, in the "letterArray".
+    		digit = letterArray.indexOf(character);
+    		
+    		//now we have 'index' of that character; eg: A=0, B=1, ... Z=25.
+    		
+    		if(mode==false){	//ENCRYPTION checked
+    			//code for encryption
+    			//Step 1: add the key
+    			digit += eval(key);
+    			
+    			//Step 2: Check
+    			if(digit>25){	//for: overflow more than 25!
+    				digit = digit % 26;
+    				oString += letterArray.charAt(digit);
+    			}else{	//meaning, no overflow. normal.
+    				oString += letterArray.charAt(digit);
+    			}
+    			
+    		}else{	//DECRYPTION checked
+    			//code for decryption
+    			//Step 1: shift back / subtract the key
+    			digit -= eval(key);
+    			//Step 2: Check
+    			if(digit<0){	//for: underflow less than 0, eg: -1, -2, etc.
+    				digit = digit + 26;
+    				oString += letterArray.charAt(digit);
+    			}else{	//meaning, no underflow. normal.
+    				oString += letterArray.charAt(digit);
+    			}
+    		}
+    		
+    	}else{	//it's not in "letterArray"
+    		oString += character;
+    	}
+    		
+    }
+	return oString;
+}
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

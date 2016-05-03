@@ -1,0 +1,303 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Data Encryption Standard (Modes) </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Cryptography Data Encryption Standard des ecb electronic code book mode cipher block chaining tools Cryptolab Cryptogame">
+	<meta name="description" content="DES or Data encryption standard is a modern symmetric block cipher that uses different modes to encrypt 64-bit blocks of data. Different modes are Electronic Code book mode (ECB), Cipher block chaining (CBC) mode, etc.. Also see the inner working of DES in practical demo.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/jquery.shuffleLetters.js"></script><script src="lib/my/main.js"></script><script src="lib/my/block-modes.js"></script><script src="lib/my/des.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>DES (Modes)</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				<span id="greet"></span> Time for DES.<br><br> 
+
+				Data Encryption Standard or DES - it is one of the key player in the history of modern cryptography, as it was a major agent-of-change that brought a revolution in the world of symmetric cryptography after its publication in 1977. The story behind it is very interesting and you may read it in the detailed article (link will be given shortly). About the details of how this works, that also will be explained excellently (in the article below). But before going deep into its working on one block, we will see how the overall 'block cipher' is operated in different modes. We will discuss mainly two modes here: ECB (Electronic CodeBook Mode) and the CBC (Cipher Block Chaining) mode.<br><br>
+
+				It should be very clear before we proceed, that what we already have and what we try to achieve. We have already a long binary string or data which is to be encrypted, and we try to encrypt the entire data. Our obvious step in block cipher is to 'decompose' / divide entire data into different blocks (each block having 64 bits as in DES). If the entire data is exactly divisible into blocks, then it's ok; otherwise, we 'pad' the data using various schemes.<br>
+				Once the above is done, now is the time to choose our 'mode' of operation that will decide how each plaintext block will be converted to ciphertext block. Let's see the two modes in detail below:<br><br>
+
+
+				<strong>ECB or Electronic Codebook Mode</strong><br>
+				This is very simple mode. All we do is firstly break down entire data into blocks and then use our key separately with all the blocks to get the ciphertext.<br> This is slightly insecure because using same key to encrypt all the blocks might leave some pattern trace in the cipher blocks. The diagrams are given below:<br><br>
+				ECB-Encryption<br>
+				<img class="responsive-img" alt="ECB Encryption" title="ECB Encryption" src="images/c/ECB_enc.gif"><br><br>
+
+				ECB-Decryption	<br>
+
+				<img class="responsive-img" alt="ECB Decryption" title="ECB Decryption" src="images/c/ECB_dec.gif"><br>
+				<br><br><br>
+
+
+				<strong>CBC or Cipher Block Chaining Mode</strong><br>
+				This is a 'stronger' mode of operation. To understand it, firstly refer to the diagrams below.<br>
+				Explanation: To Encrypt each block: The first block is XORed with an Initialization vector (which is a random bit string of length same as the plaintext block), the result is then encrypted using the Key and the DES algorithm, giving the ciphertext block.<br>
+				From the second time to the end, the plaintext blocks are firstly XORed with the 'previous' ciphertext block; and then encrypted using the Key and the DES algorithm, to give corresponding ciphertext block.<br>
+				The process continues till all the blocks are encrypted. This 'chaining' of ciphertext strengthens the overall ciphertext as there is no pattern trace of the key as there was in the case of ECB mode.<br>
+				The decryption process follows a similar but reverse approach as shown in the diagrams below.
+				<br><br>
+				CBC-Encryption<br>
+				<img class="responsive-img" alt="CBC Encryption" title="CBC Encryption" src="images/c/CBC_enc.gif"><br>	<br>
+				CBC-Decryption<br>				
+				<img class="responsive-img" alt="CBC Decryption" title="CBC Decryption" src="images/c/CBC_dec.gif"><br>
+				<br><br>
+
+				The 'Tool' given alongside can also be used very effectively to understand how the plaintext message is divided into blocks-of-bits, how these modes work, and even see the actual bytes being manipulated and encrypted in the intermediate steps.<br><br>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				In the next post we will see how the actual DES algorithm works upon one 'block' (64-bit long) of bits i.e. what processes and intermediate steps are done to encrypt the 64-bit plaintext block to 64-bit ciphertext block, using a 64-bit key.(strictly speaking, only 56 bits of the key are used. We will see the details...)
+				<br>				
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-19 Ended.
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" class="col s12 card center-align">
+			
+
+	<!-- input & key Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="inputString" class="materialize-textarea"></textarea>
+        <label for="inputString">Input String</label>
+      </div> 
+      <div class="input-field col s4 offset-s2">
+        <input id="keyString" type="text" length=8></input>
+        <label for="keyString">Key String (8 characters)</label>
+      </div>
+      <div class="input-field col s4">
+        <input id="ivString" type="text" length=8></input>
+        <label for="ivString">Initialization String (8 characters)</label>
+      </div>
+    </div>
+
+    <!-- Settings Area -->
+    <div class="row"> 
+	    <div class="input-field col s4 offset-s2"> 
+		     <select id="block-cipher-mode">
+		      <option value="1" selected>Electronic Code Book (ECB)</option>
+		      <option value="2">Cipher Block Chaining (CBC)</option>
+		    </select>
+    		<label>Block Cipher Mode:</label>
+		</div><br>
+		<div class="col s3 offset-s1">			
+          <!-- Switch -->
+		  <div class="switch">
+		    <label>
+		      Encrypt
+		      <input id="mode" type="checkbox">
+		      <span class="lever"></span>
+		      Decrypt
+		    </label>
+		  </div>
+		</div>
+    </div>
+
+	  <br><br>
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Compute"><i class="material-icons">done</i></a>
+
+
+   
+
+	<!-- output Area -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="outputString" class="materialize-textarea" placeholder="Output Will Be Displayed Here..." readonly="readonly" style="color:black"></textarea>
+        <label for="outputString" style="color:#9e9e9e">Output String</label>
+      </div>
+    </div>
+
+     <br>
+    <!-- Intermediate Steps -->
+    <div class="row">
+    	<div class="col s8 offset-s2">
+    		<h5>Intermediate Steps</h5>
+    		<p id="intermediate_begin">
+    			No result to show.
+    		</p>
+    		<p id="intermediate_mode"></p>
+    	</div>
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+	//to render 'select' of materialize.
+    $('select').material_select();
+
+    //by default, hide initialization vector string.
+    $("#ivString").parent().hide();
+});
+
+
+
+//whenever switch clicked! changed
+$("#mode").click(function(){
+	var mode = $("#mode").prop("checked"); 	//mode: true => decrypt; false => encrypt
+	if(mode==true){	//decryption. => input will be in base64.
+		$("#inputString").next().text("Input String (in base64)");
+	}
+	else{ //encryption.
+		$("#inputString").next().text("Input String");
+	}
+});
+
+//show or hide IV
+$("#block-cipher-mode").change(function(){
+	var block_cipher_mode = $("#block-cipher-mode option:selected").val();
+	if(block_cipher_mode == 1){	//ecb
+		$("#ivString").parent().hide();
+	}else if(block_cipher_mode == 2){
+		$("#ivString").parent().show();
+	}
+});
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#inputString").val());
+	var keyString = $.trim($("#keyString").val());
+	var ivString = $.trim($("#ivString").val());
+
+	var block_cipher_mode = $("#block-cipher-mode option:selected").val();
+
+	var oString = "";
+	$("#outputString").text(oString);	//clear the oString box first.
+
+	//validations: is input string or key string empty? is iv string empty (when selected)? etc.
+	if(iString == "" || keyString == ""){
+		oString = "Please enter all the Input Fields first.";
+		Materialize.toast(oString, 4000);
+	}
+	else if(keyString.length != 8){
+		oString = "Please enter exactly 8 characters.";
+		Materialize.toast(oString, 4000);
+	}else if(block_cipher_mode == 2 && ivString.length == 0){
+			oString = "Please enter all the fields.";
+		Materialize.toast(oString, 4000);
+	}else if(block_cipher_mode == 2 && ivString.length != 8){
+		oString = "Please enter exactly 8 characters.";
+		Materialize.toast(oString, 4000);
+	}else{
+
+		var mode = $("#mode").prop("checked"); 	//mode: true => decrypt; false => encrypt
+		
+		oString = des_call(iString, keyString, mode, block_cipher_mode, ivString);
+		
+		//Display the output String.
+		if(oString.length > 100){
+			$("#outputString").text(oString);
+			
+		}else{	//'with-style!'
+			$("#outputString").shuffleLetters({
+					"text": oString
+				});
+		}
+		$('#outputString').trigger('autoresize');
+	}	
+});
+
+
+
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Vigenere Cipher </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Cryptography Vignere cipher tools Cryptolab Cryptogame">
+	<meta name="description" content="Vigenere cipher uses a keyword to encrypt a plaintext message by different caesar shifts based on the letters of the keyword.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/jquery.shuffleLetters.js"></script><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>Vigenere Cipher</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				Welcome back.<br><br>
+
+				While in Caesar cipher, each letter of the plaintext is shifted by same number; in vigenere cipher, each letter is shifted differently, based on letters of the key.<br><br>
+
+				Example:<br>
+				Suppose this is your plaintext: Attack at dawn<br>
+				and a 'key' word is: apple.<br>
+				Then, the letters in the plaintext can be encrypted by shifting each of them with a corresponding letter in the 'key'; like the following:<br>
+				Plaintext: A,t,t,a,c,k &nbsp; a,t &nbsp; d,a,w,n<br>
+				Keyword: a,p,p,l,e,a &nbsp; p,p &nbsp; l,e,a,p<br>
+				Shift by:&nbsp;&nbsp; 0,15,15,11,4,0 &nbsp; 15,15 &nbsp; 11,4,0,15  <br>
+				Cipher: &nbsp;&nbsp;&nbsp; A i i l g k &nbsp; p i &nbsp; o e w c (this is the ciphertext).<br><br>
+
+				That is it.<br><br>
+
+				Since, each letter is being shifted differently, this cipher is a simple form of <em>Polyalphabetic</em> substitution.<br><br>
+
+				About the name 'Vigenere', it's quite strange and a historical 'mistake', as Mr. Vigenere has nothing to do with this cipher technique. The technique has been invented and reinvented many times in the past.<br>
+				According to the Wikipedia,  " The method was originally described by <em>Giovan Battista Bellaso</em> in his 1553 book <em>La cifra del. Sig. Giovan Battista Bellaso</em>; however, the scheme was later (in 19th century) misattributed to <em>Blaise de Vigenère</em> in the 19th century, and is now widely known as the "Vigenère cipher". In reality, <em>Blaise de Vigenere</em> presented a similar but stronger cipher before the court of <em>Henry III of France</em>, in 1586. But noone remembers him for that! History is mystery. sometimes. Anyway.<br><br>
+
+				A curious comment on this technique might interest you.<br>
+				In 19th Century, the vigenere cipher gained a reputation for being exceptionally strong. It was even called 'unbreakable' by the noted author and mathematician <em>Charles Lutwidge Dodgson</em> in his 1868 piece "The Alphabet Cipher" in a children's magazine. Who was he? You may know him by the name <em>Lewis Carroll</em>, the author of the famous "Alice's Adventures in Wonderland"!<br><br>
+
+
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				In this technique (vigenere cipher), we were using a keyword's letters to 'shift' each of the plaintext's letter.<br>
+				If we try to see the big picture, this and the previous techniques like caesar cipher and the one time pad, all use a process of <strong>'substitution'</strong>, to take a plaintext and a key, and give us a 'ciphertext', which looks gibberish at first sight; but can be decrypted if the 'key' is known.<br><br>
+
+				One other way to achieve this 'encryption' effect, is to literally 'scramble' or 'change-the-positions-of' the letters in the plaintext. Such a scheme will be called a 'transposition' cipher, and will be discussed soon.<br><br>
+
+				But, before that, we will look at some of the other classical techniques of encryption - one of which has, even gave us one of the most popular unsolved and unbroken code of all time. See you soon, with a story and a technique called - Book Cipher.<br>
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-7 Ended.
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- input & key Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="inputString" class="materialize-textarea"></textarea>
+        <label for="inputString">Input String</label>
+      </div> 
+      <div class="input-field col s8 offset-s2">
+        <input id="keyString" type="text"></input>
+        <label for="keyString">Key String (alphabets only)</label>
+      </div>
+    </div>
+
+
+	<!-- Switch -->
+	  <div class="switch">
+	    <label>
+	      Encrypt
+	      <input id="mode" type="checkbox">
+	      <span class="lever"></span>
+	      Decrypt
+	    </label>
+	  </div>
+
+	  <br><br>
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Compute"><i class="material-icons">done</i></a>
+
+	<!-- output Area -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="outputString" class="materialize-textarea" placeholder="Output Will Be Displayed Here..." readonly="readonly" style="color:black"></textarea>
+        <label for="outputString" style="color:#9e9e9e">Output String</label>
+      </div>
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+	//empty!
+});
+
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#inputString").val());
+	var keyString = $.trim($("#keyString").val());
+
+	keyString = keyString.replace(/[^a-zA-Z]/g, "");	//remove non-alphabets from key
+	$("#keyString").val(keyString);	
+
+	var oString = "";
+	$("#outputString").text(oString);	//clear the oString box first.
+
+	//step - 1: is input string or key string empty?
+	if(iString == "" || keyString == ""){
+		oString = "Please enter all the Input Fields first.";
+		Materialize.toast(oString, 4000);
+	}else{
+		keyString = keyPrep(iString, keyString);
+		$("#keyString").val(keyString);
+		var mode = $("#mode").prop("checked"); 	//mode: true => decrypt; false => encrypt
+		
+		oString = onetimepad(iString, keyString, mode);
+		
+		//Display the output String.
+		if(oString.length > 100){
+			$("#outputString").text(oString);
+			
+		}else{	//'with-style!'
+			$("#outputString").shuffleLetters({
+					"text": oString
+				});
+		}
+		$('#outputString').trigger('autoresize');
+	}	
+});
+
+
+//Our main JS function for this Cipher technique
+//Parameters:- iString: string , key: string with only alphabets; mode: false[encrypt]/true[decrypt]
+function keyPrep(iString, keyString){
+	var iString = iString.toUpperCase();
+	var letterArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";	
+	var keyStringFormatted = "";
+	for(var i=0, j=0; i<iString.length; i++){
+		var character = iString.charAt(i);
+		if(letterArray.indexOf(character)>-1){	//if an alphabet
+			keyStringFormatted += keyString.charAt(j);
+			j = (j + 1) % keyString.length;
+		}else{
+			keyStringFormatted += " ";
+		}	
+	}
+	return keyStringFormatted;
+}
+
+function onetimepad(iString, keyString, mode){
+	var oString = "";
+
+	//the computation goes here.
+	//oString = iString;
+	
+	var iString = iString.toUpperCase();
+	var keyString = keyString.toUpperCase();
+
+	var letterArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";		//it's actually string as an array!
+    
+    //for each character in string:
+    for(var i=0; i<iString.length; i++){
+    	var character = iString.charAt(i);
+    	var digit = 0;
+
+		var key = 0;
+
+    	if(letterArray.indexOf(keyString.charAt(i)) > -1){	//it's a LETTER (and not a space).
+    		key = letterArray.indexOf(keyString.charAt(i));
+    	}
+
+    	//check if it's a letter
+    	if(letterArray.indexOf(character)>-1){	//meaning, it IS a letter, in the "letterArray".
+    		digit = letterArray.indexOf(character);
+    		
+    		//now we have 'index' of that character; eg: A=0, B=1, ... Z=25.
+    		
+    		if(mode==false){	//ENCRYPTION checked
+    			//code for encryption
+    			//Step 1: add the key
+    			digit += eval(key);
+    			
+    			//Step 2: Check
+    			if(digit>25){	//for: overflow more than 25!
+    				digit = digit % 26;
+    				oString += letterArray.charAt(digit);
+    			}else{	//meaning, no overflow. normal.
+    				oString += letterArray.charAt(digit);
+    			}
+    			
+    		}else{	//DECRYPTION checked
+    			//code for decryption
+    			//Step 1: shift back / subtract the key
+    			digit -= eval(key);
+    			//Step 2: Check
+    			if(digit<0){	//for: underflow less than 0, eg: -1, -2, etc.
+    				digit = digit + 26;
+    				oString += letterArray.charAt(digit);
+    			}else{	//meaning, no underflow. normal.
+    				oString += letterArray.charAt(digit);
+    			}
+    		}
+    		
+    	}else{ //not in "letterArray" => it must be 'space' (as other special_chars have been trimmed already.)
+    		oString += character;
+    	}
+    		
+    }
+	return oString;
+}
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

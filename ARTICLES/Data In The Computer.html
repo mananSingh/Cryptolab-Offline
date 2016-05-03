@@ -1,0 +1,730 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0059)http://homepage.cs.uri.edu/book/binary_data/binary_data.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><!-- saved from url=(0068)http://homepage.cs.uri.edu/faculty/wolfe/book/Readings/Reading02.htm --><title>Data In The Computer</title>
+
+<meta content="MSHTML 6.00.2800.1498" name="GENERATOR"></head>
+
+<body background="./Data In The Computer_files/background 1.gif"><font size="3">
+</font><hr size="4">
+
+<center>
+<h2><font size="3">Data In The Computer</font></h2></center>
+<hr size="4">
+<font size="3">&nbsp; 
+</font><p><font size="3">&nbsp;</font></p>
+<h3><font size="3">Representing Data</font></h3><font size="3">We have all seen computers do seemingly miraculous 
+things with all kinds of sounds, pictures, graphics, numbers, and text. It seems 
+that we can build a replica of parts of our world inside the computer. You might 
+think that this amazing machine is also amazingly complicated - it really is 
+not. In fact, all of the wonderful multi-media that we see on modern computers 
+is all constructed from simple ON/OFF switches - millions of them - but really 
+nothing much more complicated than a switch. The trick is to take all of the 
+real-world sound, picture, number etc data that we want in the computer and 
+convert it into the kind of data that can be represented in switches, as shown 
+in Figure 1. 
+</font><center>
+<table border="3">
+  <tbody>
+  <tr>
+    <td><img src="./Data In The Computer_files/binary5.jpg" height="223" width="489"></td></tr>
+  <tr>
+    <td align="center"><b>Figure 1: Representing Real-World Data In The 
+      Computer</b></td></tr></tbody></table></center><font size="3"><br>
+</font><p><font size="3"><b>Computers Are Electronic Machines. </b>The computer uses electricity, not 
+<i>mechanical</i> parts, for its data processing and storage. Electricity is 
+plentiful, moves very fast through wires, and electrical parts fail  much 
+less frequently than mechanical parts. The computer does have some mechanical 
+parts, like its disk drive (which are often the sources for computer failures), 
+but the internal data processing and storage is electronic, which is fast and 
+reliable (as long as the computer is plugged in). 
+</font></p><p><font size="3">Electricity can flow through switches: if the switch is closed, the 
+electricity flows; if the switch is open, the electricity does not flow. To 
+process real-world data in the computer, we need a way to represent the data in 
+switches. Computers do this representation using a <i>binary coding system</i>. 
+</font></p><p><font size="3"><br><br><b>Binary and Switches.</b> Binary is a mathematical number system: a 
+way of counting. We have all learned to count using ten digits: 0-9. One 
+probable reason is that we have ten fingers to represent numbers. The computer 
+has switches to represent data and switches have only two states: ON and OFF. 
+Binary has two digits to do the counting: 0 and 1 - a natural fit to the two 
+states of a switch (0 = OFF, 1 = ON). 
+</font></p><p><font size="3">As you can read about in the part of this course on <a href="http://homepage.cs.uri.edu/faculty/wolfe/book/Readings/Reading03.htm"> 
+the history of computers</a>, the evolution of how 
+switches were built made computers faster, cheaper, and smaller. Originally, a 
+switch was a vacuum tube, about the size of a human thumb. In the 1950's the 
+transistor was invented (and won its inventors a Noble Prize). It allowed a 
+switch to be the size of a human fingernail. The development of integrated 
+circuits in the 1960s allowed millions of transistors to be fabricated on a 
+silicon chip - which allowed millions of switches on something the size of a 
+fingernail.
+</font></p><p><font size="3"><br><br><b>Bits and Bytes.</b> One binary digit (0 or 1) is referred to as a 
+<i>bit</i>, which is short for <i><b>bi</b>nary digi<b>t</b></i>. Thus, one bit 
+can be implemented by one switch, as shown in Figure 2. 
+<table align="right" border="3">
+  <tbody>
+  <tr>
+    <td><img src="./Data In The Computer_files/bit2.jpg" height="165" width="178"></td></tr>
+  <tr>
+    <td align="center"><b>Figure 2</b></td></tr></tbody></table>.
+</font></p><p><font size="3">In the following table, we see that bits can be grouped together into larger 
+chunks to represent data.
+</font></p><p><!-- Table of various bits 1 bit, 2 bit, 3 bit, 4 bit-->
+<table bgcolor="#ffffcc" border="2" cellpadding="5" cellspacing="0" width="248">
+  <tbody>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">0</font></b></center></td>
+    <td valign="top" width="43%">
+      <center><b><font face="Arial,Helvetica">1 bit</font></b></center></td></tr>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">1</font></b></center></td>
+    <td valign="top" width="43%">
+      <center><b><font face="Arial,Helvetica">1 bit</font></b></center></td></tr>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">0110</font></b></center></td>
+    <td valign="top" width="43%">
+      <center><b><font face="Arial,Helvetica">4 bits</font></b></center></td></tr>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">01101011</font></b></center></td>
+    <td valign="top" width="43%">
+      <center><b><font face="Arial,Helvetica">8 
+  bits</font></b></center></td></tr></tbody></table><font size="3">For several reasons that we 
+do not go into here, computer designers use eight bit chunks called <i>bytes</i> 
+as the basic unit of data. A byte is implemented with eight switches as shown in 
+Figure 3.
+</font></p><p>
+<table align="left" border="3">
+  <tbody>
+  <tr>
+    <td><img src="./Data In The Computer_files/byte3.jpg" height="375" width="339"></td></tr>
+  <tr>
+    <td align="center"><b>Figure 3: Implementing a Byte </b></td></tr></tbody></table>
+</p><p><font size="3">Computer manufacturers express the capacity of memory and storage in terms of 
+the number of bytes it can hold. The number of bytes can be expressed as 
+kilobytes. Kilo represents 2 to the tenth power, or 1024. Kilobyte is 
+abbreviated KB, or simply K. (Sometimes K is used casually to mean 1000, as in 
+"I earned $30K last year.") A kilobyte is 1024 bytes. Thus, the memory of a 640K 
+computer can store 640x1024, or 655,360 bytes. Memory capacity may also be 
+expressed in terms of megabytes (1024x1024 bytes). One megabyte, abbreviated MB, 
+means roughly one million bytes. With storage devices, manufacturers sometimes 
+express memory amounts in terms of gigabytes (abbreviated GB); a gigabyte is 
+roughly a billion bytes. Computer memory, or RAM, in modern computers might hold 256 MB, or roughly
+256 million bytes. Modern computer hard disks hold gigabytes (e.g. 80 GB).
+</font></p><h3><font size="3">Representing Data In Bytes</font></h3><font size="3">Here is an important thing to keep in mind: 
+</font><ul><font size="3"><i>A single byte can represent many different kinds of data. What data it 
+  actually represents depends on how the computer uses the byte. </i></font></ul><font size="3">For 
+instance, the byte:
+<table bgcolor="#ffffcc" border="2" cellpadding="5" cellspacing="0">
+  <tbody>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">01000011</font></b></center></td></tr></tbody></table> can represent 
+the integer 67, the character 'C', the 67th decibel level for a part 
+of a sound, the 67th level of darkness for a dot in a picture, an instruction to 
+the computer like "move to memory", and other kinds of data too. 
+</font><p><font size="3"><br><b>Integers. </b>Integer numbers are represented by counting in binary. 
+</font></p><p><font size="3">Think for a minute how we count in decimal. We start with 0 and every new 
+thing we count, we go to the next decimal digit. When we reach the end of the 
+decimal digits (9), we use two digits to count by putting a digit in the "tens 
+place" and then starting over again using our 10 digits. Thus, the decimal 
+number 10 is a 1 in the "tens place" and a zero in the "ones place". Eleven is a 
+1 in the "tens place" and a 1 in the "ones place". And so on. If we need three 
+digits, like 158, we use a third digit in the "hundred's place". 
+</font></p><p><font size="3">We do a similar thing to count in binary - except now we only have two 
+digits: 0 and 1. So we start with 0, then 1, then we run out of digits, so we 
+need to use two digits to keep counting. We do this by putting a 1 in the "two's 
+place" and then using our two digits. Thus two is 10 binary: a 1 in the "two's 
+place" and a 0 is the "one's place". Three is 11: a 1 in the "two's place" and a 
+1 in the "one's place". We ran out of digits again! Thus, four is 100: a one in 
+the "four's place" a 0 in the "two's place" a 0 in the "one's place".
+</font></p><p><font size="3">What "places" we use depends on the counting system. In our decimal system, 
+which we call <i>Base 10</i>, we use powers of 10. Ten to the zero power is 1, 
+so the counting starts in the "one's place". Ten to the one power is 10, so the 
+counting continues in the "ten's place". Ten to the second power (10 squared) is 
+100, so we continue in the "hundred's place". And so on. Binary is <i>Base 
+2</i>. Thus, the "places" are two to the zero power ("one's place"), two to the 
+one power ("two's place"), two to the second power ("four's place"), two to the 
+third power ("eight's place"), and so on. 
+</font></p><p><font size="3">When you look at a byte, the rightmost bit is the "one's place". The next bit 
+is the "two's place", then the "four's place", then the "eight's place", 
+and so on. So, when we said that the byte: 
+<table bgcolor="#ffffcc" border="2" cellpadding="5" cellspacing="0">
+  <tbody>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">01000011</font></b></center></td></tr></tbody></table>represents 
+the decimal integer 67, we got that by adding up a 1 in the "ones place" and 1 
+in the "two's place" and a 1 in the "64's place" (two to the 6 power is 64). Add 
+them up 1+2+64= 67. The largest integer that can be represented in one byte is: 
+<table bgcolor="#ffffcc" border="2" cellpadding="5" cellspacing="0">
+  <tbody>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">11111111</font></b></center></td></tr></tbody></table>which 
+is 128+64+32+16+8+4+2+1 = 255. Thus, the largest decimal integer you can store 
+in one byte is 255. Computers use several bytes together to store larger 
+integers.
+</font></p><p><font size="3">The following table shows some binary counting:
+</font></p><p><!-- Table Binary to decimal-->
+<table bgcolor="#ffffcc" border="2" bordercolor="#000000" cellpadding="5" width="400">
+  <tbody>
+  <tr>
+    <td height="69" valign="top" width="53%">
+      <center><b><font face="Arial,Helvetica">Numbers, as known in the 
+      decimal-system</font></b></center></td>
+    <td height="69" valign="top" width="47%">
+      <center><b><font face="Arial,Helvetica">Same numbers in binary 
+      system</font></b></center></td></tr>
+  <tr>
+    <td height="23" valign="top" width="53%">
+      <center><b><font face="Arial,Helvetica">0</font></b></center></td>
+    <td height="23" valign="top" width="47%">
+      <center><b><font face="Arial,Helvetica">0</font></b></center></td></tr>
+  <tr>
+    <td height="36" valign="top" width="53%">
+      <center><b><font face="Arial,Helvetica">1</font></b></center></td>
+    <td height="36" valign="top" width="47%">
+      <center><b><font face="Arial,Helvetica">1</font></b></center></td></tr>
+  <tr>
+    <td height="28" valign="top" width="53%">
+      <center><b><font face="Arial,Helvetica">2</font></b></center></td>
+    <td height="28" valign="top" width="47%">
+      <center><b><font face="Arial,Helvetica">10</font></b></center></td></tr>
+  <tr>
+    <td height="27" valign="top" width="53%">
+      <center><b><font face="Arial,Helvetica">3</font></b></center></td>
+    <td height="27" valign="top" width="47%">
+      <center><b><font face="Arial,Helvetica">11</font></b></center></td></tr>
+  <tr>
+    <td height="40" valign="top" width="53%">
+      <center><b><font face="Arial,Helvetica">4</font></b></center></td>
+    <td height="40" valign="top" width="47%">
+      <center><b><font face="Arial,Helvetica">100</font></b></center></td></tr>
+  <tr>
+    <td height="45" valign="top" width="53%">
+      <center><b><font face="Arial,Helvetica">5</font></b></center></td>
+    <td height="45" valign="top" width="47%">
+      <center><b><font face="Arial,Helvetica">101</font></b></center></td></tr>
+  <tr>
+    <td height="45" valign="top" width="53%">
+      <center><b><font face="Arial,Helvetica">6</font></b></center></td>
+    <td height="45" valign="top" width="47%">
+      <center><b><font face="Arial,Helvetica">110</font></b></center></td></tr>
+  <tr>
+    <td height="45" valign="top" width="53%">
+      <center><b><font face="Arial,Helvetica">7</font></b></center></td>
+    <td height="45" valign="top" width="47%">
+      <center><b><font face="Arial,Helvetica">111</font></b></center></td></tr>
+  <tr>
+    <td height="45" valign="top" width="53%">
+      <center><b><font face="Arial,Helvetica">8</font></b></center></td>
+    <td height="45" valign="top" width="47%">
+      <center><b><font face="Arial,Helvetica">1000</font></b></center></td></tr></tbody></table>
+</p><p><font size="3">For some <b><i>optional</i></b> exercises and more detail on binary numbers, 
+try the exercises at <a href="http://www.learnbinary.com/">http://www.learnbinary.com/</a> (follow the 
+tab links along the top of the banner.).
+</font></p><p>
+</p><p><font size="3"><br><b>Characters. </b>The computer also uses a single byte to represent a 
+single character. But just what particular set of bits is equivalent to which 
+character? In theory we could each make up our own definitions, declaring 
+certain bit patterns to represent certain characters. Needless to say, this 
+would be about as practical as each person speaking his or her own special 
+language. Since we need to communicate with the computer and with each other, it 
+is appropriate that we use a common scheme for data representation. That is, 
+there must be agreement on which groups of bits represent which characters. 
+</font></p><p><font size="3">The code called ASCII (pronounced "AS-key"), which stands for American 
+Standard Code for Information Interchange, uses 7 bits for each character. Since 
+there are exactly 128 unique combinations of 7 bits, this 7-bit code can 
+represent only characters. A more common version is ASCII-8, also called 
+extended ASCII, which uses 8 bits per character and can represent 256 different 
+characters. For example, the letter A is represented by 01000001. The ASCII 
+representation has been adopted as a standard by the U.S. government and is 
+found in a variety of computers, particularly minicomputers and microcomputers. 
+The following table shows part of the ASCII-8 code. Note that the byte: 
+<table bgcolor="#ffffcc" border="2" cellpadding="5" cellspacing="0">
+  <tbody>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">01000011</font></b></center></td></tr></tbody></table>does 
+represent the character 'C'. 
+</font></p><p><!--Table of ASCII Chars-->
+<table bgcolor="#ffffcc" border="2" bordercolor="#000000" cellpadding="5" width="600">
+  <tbody>
+  <tr>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">Character</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">Bit pattern</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">Byte</font></b></center>
+      <center><b><font face="Arial,Helvetica">number</font></b></center></td>
+    <td valign="top" width="4%">
+      <center><font face="Arial,Helvetica"></font>&nbsp;</center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">Character</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">Bit pattern</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">Byte</font></b></center>
+      <center><b><font face="Arial,Helvetica">number</font></b></center></td></tr>
+  <tr>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">A</font></b></center></td>
+    <td valign="top" width="21%">
+      <center><b><font face="Arial,Helvetica">01000001</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">65</font></b></center></td>
+    <td valign="top" width="5%"><font face="Arial,Helvetica">&nbsp;</font></td>
+    <td valign="top" width="11%">
+      <center><b><font face="Arial,Helvetica">¼</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><font face="Arial,Helvetica"><b>10111100</b>&nbsp;</font></center></td>
+    <td valign="top" width="19%">
+      <center><font face="Arial,Helvetica">&nbsp;<b>188</b></font></center></td></tr>
+  <tr>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">B</font></b></center></td>
+    <td valign="top" width="21%">
+      <center><b><font face="Arial,Helvetica">01000010</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">66</font></b></center></td>
+    <td valign="top" width="5%"><font face="Arial,Helvetica">&nbsp;</font></td>
+    <td valign="top" width="11%">
+      <center><b><font face="Arial,Helvetica">.</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><font face="Arial,Helvetica"><b>00101110</b>&nbsp;</font></center></td>
+    <td valign="top" width="19%">
+      <center><font face="Arial,Helvetica">&nbsp;<b>46</b></font></center></td></tr>
+  <tr>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">C</font></b></center></td>
+    <td valign="top" width="21%">
+      <center><b><font face="Arial,Helvetica">01000011</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">67</font></b></center></td>
+    <td valign="top" width="5%"><font face="Arial,Helvetica">&nbsp;</font></td>
+    <td valign="top" width="11%">
+      <center><font face="Arial,Helvetica">:</font></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">00111010</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">&nbsp;58</font></b></center></td></tr>
+  <tr>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">a</font></b></center></td>
+    <td valign="top" width="21%">
+      <center><b><font face="Arial,Helvetica">01100001</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">97</font></b></center></td>
+    <td valign="top" width="5%"><b><font face="Arial,Helvetica">&nbsp;</font></b></td>
+    <td valign="top" width="11%">
+      <center><b><font face="Arial,Helvetica">$</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">00100100&nbsp;</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">&nbsp;36</font></b></center></td></tr>
+  <tr>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">b</font></b></center></td>
+    <td valign="top" width="21%">
+      <center><b><font face="Arial,Helvetica">01100010</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">98</font></b></center></td>
+    <td valign="top" width="5%"><b><font face="Arial,Helvetica">&nbsp;</font></b></td>
+    <td valign="top" width="11%">
+      <center><b><font face="Arial,Helvetica">\</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">01011100</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">&nbsp;92</font></b></center></td></tr>
+  <tr>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">o</font></b></center></td>
+    <td valign="top" width="21%">
+      <center><b><font face="Arial,Helvetica">01101111</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">111</font></b></center></td>
+    <td valign="top" width="5%"><b><font face="Arial,Helvetica">&nbsp;</font></b></td>
+    <td valign="top" width="11%">
+      <center><b><font face="Arial,Helvetica">~</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">01111110</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><font face="Arial,Helvetica">&nbsp;<b>126</b></font></center></td></tr>
+  <tr>
+    <td valign="top" width="19%">
+      <center><font face="Arial,Helvetica">p</font></center></td>
+    <td valign="top" width="21%">
+      <center><b><font face="Arial,Helvetica">&nbsp;01110000</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">112</font></b></center></td>
+    <td valign="top" width="5%"><b><font face="Arial,Helvetica">&nbsp;</font></b></td>
+    <td valign="top" width="11%">
+      <center><b><font face="Arial,Helvetica">1</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">00110001</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">49</font></b></center></td></tr>
+  <tr>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">q</font></b></center></td>
+    <td valign="top" width="21%">
+      <center><b><font face="Arial,Helvetica">&nbsp;01110001</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">&nbsp;113</font></b></center></td>
+    <td valign="top" width="5%"><b><font face="Arial,Helvetica">&nbsp;</font></b></td>
+    <td valign="top" width="11%">
+      <center><b><font face="Arial,Helvetica">2</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">00110010</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">50</font></b></center></td></tr>
+  <tr>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">r</font></b></center></td>
+    <td valign="top" width="21%">
+      <center><b><font face="Arial,Helvetica">&nbsp;01110010</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">&nbsp;114</font></b></center></td>
+    <td valign="top" width="5%"><b><font face="Arial,Helvetica">&nbsp;</font></b></td>
+    <td valign="top" width="11%">
+      <center><b><font face="Arial,Helvetica">9</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">00111001</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">57</font></b></center></td></tr>
+  <tr>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">x</font></b></center></td>
+    <td valign="top" width="21%">
+      <center><b><font face="Arial,Helvetica">&nbsp;01111000</font></b></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">120</font></b></center></td>
+    <td valign="top" width="5%"><font face="Arial,Helvetica">&nbsp;</font></td>
+    <td valign="top" width="11%">
+      <center><b><font face="Arial,Helvetica">©</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">&nbsp;10101001</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><font face="Arial,Helvetica">&nbsp;<b>169</b></font></center></td></tr>
+  <tr>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">y</font></b></center></td>
+    <td valign="top" width="21%">
+      <center><font face="Arial,Helvetica">&nbsp;<b>01111001</b></font></center></td>
+    <td valign="top" width="16%">
+      <center><b><font face="Arial,Helvetica">&nbsp;121</font></b></center></td>
+    <td valign="top" width="5%"><font face="Arial,Helvetica">&nbsp;</font></td>
+    <td valign="top" width="11%">
+      <center><b><font face="Arial,Helvetica">&gt;</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">00111110</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><font face="Arial,Helvetica">&nbsp;<b>62</b></font></center></td></tr>
+  <tr>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">z</font></b></center></td>
+    <td valign="top" width="21%">
+      <center><font face="Arial,Helvetica">&nbsp;<b>01111010</b></font></center></td>
+    <td valign="top" width="16%">
+      <center><font face="Arial,Helvetica">&nbsp;<b>122</b></font></center></td>
+    <td valign="top" width="5%"><font face="Arial,Helvetica">&nbsp;</font></td>
+    <td valign="top" width="11%">
+      <center><b><font face="Arial,Helvetica">&nbsp;‰</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><b><font face="Arial,Helvetica">&nbsp;10001001</font></b></center></td>
+    <td valign="top" width="19%">
+      <center><font face="Arial,Helvetica">&nbsp;<b>137</b></font></center></td></tr></tbody></table><font size="3"><br>If 
+you are really interested, the entire ASCII-8 table is <a href="http://homepage.cs.uri.edu/faculty/wolfe/book/Readings/R02%20Ascii/completeASCII.htm">here</a>. 
+
+</font></p><p><font size="3">Thus, when you type a 'C' on the keyboard, circuitry on the keyboard and in 
+the computer converts the 'C' to the byte: 
+<table bgcolor="#ffffcc" border="2" cellpadding="5" cellspacing="0">
+  <tbody>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">01000011</font></b></center></td></tr></tbody></table>and 
+stores the letter in the computer's memory as well as instructing the monitor to 
+display it. Figure 4 shows converting to ASCII and Figure 5 shows the byte going 
+through the computer's processor to memory. 
+</font></p><p>
+
+
+<table border="3">
+  <tbody>
+  <tr>
+    <td><img src="./Data In The Computer_files/ascii.gif"></td>
+    <td><img src="./Data In The Computer_files/mem3.jpg"></td></tr>
+  <tr>
+    <td align="center"><b>Figure 4: Character As a Byte</b></td>
+    <td align="center"><b>Figure 5: Character Byte Stored In Memory</b></td></tr>
+  </tbody></table>
+<font size="3"><br>
+
+If the person typed the word "CAB", it would be represented by the following three bytes in the computer's memory 
+(think of it as three rows of eight switches in memory being ON or OFF): 
+<table bgcolor="#ffffcc" border="2" cellpadding="5" cellspacing="0">
+  <tbody>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">01000011</font></b></center></td>
+    <td><b>C</b></td></tr>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">01000001</font></b></center></td>
+    <td><b>A</b></td></tr>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">01000010</font></b></center></td>
+    <td><b>B</b></td></tr></tbody></table>
+</font></p><p><font size="3"><br><b>Picture and Graphic Data. </b>You have probably seen photographs that 
+have been greatly enlarged, or shown close up. If so, you know that a photograph is a 
+big grid of colored dots. A grid of <i>pixels</i> represents computer graphic data like pictures, 
+frames of a movie, drawings, or frames of an animation. "Pixel" is short for <b>pic</b>ture <b>el</b>ement. In simple 
+graphics (those without many colors), a byte can represent a single pixel. In a 
+graphic representation called <i>grayscale</i> each pixel is a shade of grey 
+from black at one extreme to white at the other. Since eight bytes can hold 256 
+different integers (0-255 as described a few paragraphs ago), a pixel in one 
+byte can be one of 256 shades of grey (usually with 0 being white and 255 being 
+black). Modern video games and colorful graphics use several bytes for each 
+pixel (Nintendo 64 uses eight bytes = 64 bits for each pixel to get a huge array 
+of possible colors). A scanned photograph or a computer drawing is thus stored 
+as thousands of bytes - each byte, or collection of bytes, representing a pixel. 
+This is shown in Figure 6. 
+
+</font></p><center>
+<table border="3">
+  <tbody>
+  <tr>
+    <td><img src="./Data In The Computer_files/pixel.gif" height="316" width="432"></td></tr>
+  <tr>
+    <td align="center"><b>Figure 6: Graphics as a Collection of Pixel 
+    Bytes</b></td></tr></tbody></table></center>
+
+
+<p><font size="3">We saw that computer manufacturers got together and agreed how characters 
+will be represented (the ASCII code). For graphics, there are several similar 
+standards or <i>formats</i>. One of the original formats still in use is called a 
+<i> bitmap</i> (.bmp). Bitmaps store every pixel of the image and thus results in
+files with large amounts of bytes. A simple bitmap drawing can easily exceed several megabytes.
+Two other common graphics formats used on the Internet are 
+JPEG and GIF. JPEG and GIF are also <i> compressed </i> formats. This means that instead of
+storing every pixel, a file of this format stores the <i> patterns of pixels.</i> By storing
+just the patterns and not every pixel, JPEG and GIF file formats are often many times less 
+bytes than a corresponding bitmap format of the graphic would be. This makes JPEG and GIF much better
+suited to storing on the small flash cards of digital cameras or for downloading over the relatively
+slow Internet.
+
+</font></p><p><font size="3">The size of each image becomes especially important when designing a Web page, sending digital photographs 
+through email, downloading pictures over the Internet, and storing photographs on small flash cards of digital 
+cameras or any other secondary storage device. The primary goal of using these compressed formats such as JPEG 
+and GIF is to shrink the file size to as few bytes as possible without negatively altering the image quality.
+
+</font></p><p><font size="3">When considering Web page graphics, the <i>compression ratio</i> is commonly adjusted to make the file size 
+of a graphic smaller. The following images will provide you with an example of the effect that different 
+compression ratios can have on the quality of an image. Each of the images are equal in pixels, 400x336. 
+The original image is in the bitmap format; as previously discussed, this format stores every pixel of the image 
+and results in the largest file size. 
+
+</font></p><center>
+<table>
+  <tbody>
+    <tr>
+      <td><img src="./Data In The Computer_files/20percent.bmp">
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><b>Bitmap format, 400x336 pixels, uncompressed, 620 kilobytes</b>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</center>
+
+<font size="3"><br>
+
+The following JPEG images are significantly smaller than the bitmap image and are displayed beginning with 20% 
+compression and decreasing in file size up to 95% compression.
+<!-- following compression pictures taken from http://www.howstuffworks.com/question289.htm -->
+</font><center>
+<table>
+  <tbody>
+    <tr>
+      <td><img src="./Data In The Computer_files/20percent.jpg">
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><b>JPEG format, 400x336 pixels, 20% compression, 37 kilobytes</b>
+      </td>
+    </tr>
+		<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+    <tr>
+	<td><img src="./Data In The Computer_files/40percent.jpg">
+	</td>
+    </tr>
+    <tr>
+	<td align="center"><b>JPEG format, 400x336 pixels, 40% compression, 25 kilobytes</b>
+	</td>
+    </tr>
+		<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+    <tr>
+      <td><img src="./Data In The Computer_files/60percent.jpg">
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><b>JPEG format, 400x336 pixels, 60% compression, 19 kilobytes</b>
+      </td>
+    </tr>
+		<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+    <tr>
+	<td><img src="./Data In The Computer_files/80percent.jpg">
+	</td>
+    </tr>
+    <tr>
+	<td align="center"><b>JPEG format, 400x336 pixels, 80% compression, 12 kilobytes</b>
+	</td>
+    </tr>
+		<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+    <tr>
+      <td><img src="./Data In The Computer_files/90percent.jpg">
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><b>JPEG format, 400x336 pixels, 90% compression, 7 kilobytes</b>
+      </td>
+    </tr>
+		<tr><td></td></tr><tr><td></td></tr><tr><td></td></tr>
+    <tr>
+	<td><img src="./Data In The Computer_files/95percent.jpg">
+	</td>
+    </tr>
+    <tr>
+	<td align="center"><b>JPEG format, 400x336 pixels, 95% compression, 4 kilobytes</b>
+	</td>
+    </tr>
+  </tbody>
+</table>
+</center>
+
+<p><font size="3">As you can see, minor degradation is becoming apparent when the image is about 60% compressed; 
+the quality of the image gradually worsens up to 90% compression. At 95% compression the image is 
+poorly pixelated. A preferable value for this image would be about 40-50% compression with an image 
+size of 20-25 kilobytes. 
+
+</font></p><p><font size="3">Decreasing the image size in pixels can also reduce the size of a file. The example below 
+exhibits the same image in a 200x168 format.
+
+</font></p><center>
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><img src="./Data In The Computer_files/small40percent.jpg">
+      </td>
+		<td></td><td></td>
+	<td align="center"><img src="./Data In The Computer_files/small60percent.jpg">
+      </td>
+    </tr>
+    <tr>
+      <td align="center"><b>JPEG format, 200x168 pixels, 40% compression, 12 kilobytes</b>
+      </td>
+		<td></td><td></td>
+	<td align="center"><b>JPEG format, 200x168 pixels, 60% compression, 9 kilobytes</b>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</center>
+
+<p><font size="3">Once again the image is greatly reduced in file size. The original bitmap image is 155 
+times larger than it's 95% compressed comparison! Programs such as Paint Shop Pro and Adobe 
+Photoshop allow you to significantly shrink the size of a file. Simply open the image in such a 
+program and re-save the image at a different compression ratio and save as either JPEG or GIF. 
+
+</font></p><p><font size="3"><br><b>Sound Data As Bytes. </b>Sound occurs naturally as an <i>analog</i> 
+wave, as shown in Figure 7. 
+</font></p><center>
+<table border="3">
+  <tbody>
+  <tr>
+    <td><img src="./Data In The Computer_files/AtoD.gif" height="334" width="509"></td></tr>
+  <tr>
+    <td align="center"><b>Figure 7: Sound Data In 
+Bytes</b></td></tr></tbody></table></center><font size="3">Most current electronic speakers, 
+the means that we use to electronically reproduce sound, also produce analog 
+waves. However, as we have seen, all data in the computer is digital and must be 
+processed in bytes. The process of taking analog data, such as sound, and making 
+it digital is called <i>analog to digital conversion</i>. Many music CD's from 
+old original analog recordings on tapes were converted to digital to be placed 
+on a CD (a CD is digital; it is just a collection of bits with a small hole 
+burned in the CD representing a 1 and no hole representing a 0). Current music 
+CD's have the analog to digital conversion done in the recording equipment 
+itself, which produces better conversion.
+</font><p><font size="3">To convert an analog wave into digital, converters use a process called 
+<i>sampling</i>. They sample the height of the sound wave at regular intervals 
+of time, often small fractions of a second. If one byte is used to hold a single 
+sample of an analog wave, then the wave can be one of 256 different heights (0 
+being the lowest height and 255 being the highest). These heights represent the 
+<i>decibel</i> level of the sound. Thus a spoken word might occupy several 
+hundred bytes - each being a sample of the sound wave of the voice at a small 
+fraction of a second. If these 100 bytes were sent to a computer's speaker, the 
+spoken word would be reproduced. 
+</font></p><p><font size="3">Like ASCII for characters and GIF and JPEG for pictures, sound has several 
+agreed-upon formats for representing samples in bytes. WAV is a common format in which
+every sample is stored, similar to the way that bitmap stores every pixel of an image.
+A more common sound format is <i> MP3</i>. MP3 is a compressed format, like JPEG and GIF are
+compressed format for images. MP3 does not store every sample, instead it stores only samples
+that the human ear can hear and then condenses these samples to patterns.
+It is these patterns that are stored so that another computer, or MP3 player, can read them
+and reproduce the sound.
+
+</font></p><p><font size="3"><br><b>Program Data as Bytes. </b>When you buy a piece of software on a CD or 
+diskette, you are getting a collection of instructions that someone wrote to 
+tell the computer to perform the task that the software is meant to do. Each 
+instruction is a byte, or a small collection of bytes. If a computer used one 
+byte for an instruction, it could have up to 256 instructions. Later we will 
+look at what these instructions are, but for now, you should realize that a byte 
+could also be a computer's instruction. The conversion of instructions to bytes 
+is shown in Figure 8. The programming process allows humans to write 
+instructions in an English-like way. A software program called a <i>compiler</i> 
+then transforms the English-like text into the bytes for instructions that the 
+computer understands. This is shown in Figure 9. 
+</font></p><p><font size="3">Like all other kinds of data, there are agreed-upon formats for computer 
+instructions too. One reason that Macintosh computer programs do not run 
+natively on PC-compatible (Intel-based) computers is that Macintoshes and Intel 
+PCs use different formats for coding instructions in bytes. 
+</font></p><center>
+<table border="3">
+  <tbody>
+  <tr>
+    <td><img src="./Data In The Computer_files/instruction6.jpg" height="374" width="466"></td></tr>
+  <tr>
+    <td align="center"><b>Figure 8: Instruction Data as a 
+Byte</b></td></tr></tbody></table><font size="3"><br><br>
+<table border="3">
+  <tbody>
+  <tr>
+    <td><img src="./Data In The Computer_files/prog_instruction3.jpg" height="329" width="464"></td></tr>
+  <tr>
+    <td align="center"><b>Figure 9</b></td></tr></tbody></table></font></center>
+<p><font size="3"><br>
+</font></p><h3><font size="3">How Does The Computer Know What a Byte Represents?</font></h3><font size="3">We have seen that the 
+byte: 
+<table bgcolor="#ffffcc" border="2" cellpadding="5" cellspacing="0">
+  <tbody>
+  <tr>
+    <td valign="top" width="57%">
+      <center><b><font face="Arial,Helvetica">01000011</font></b></center></td></tr></tbody></table>can 
+represent the integer 67, the character 'C', a pixel with darkness level 67, a 
+sample of a sound with decibel level 67, or an instruction. There are other 
+types of data that a byte can represent too. If that same byte can be all of 
+those different types of data, how does the computer know what type it is? The 
+answer is the <i>context</i> in which the computer uses the byte. If it sends 
+the byte to a speaker, the 67th level of sound is produced. If it sends the byte 
+to a monitor or printer, a pixel with the 67th level of darkness is produced, 
+etc. More accurately, if the byte were coded with a standard coding technique, 
+like ASCII for characters, GIF for pictures, and WAV for sounds, then when the 
+computer sends the byte to a device, the data corresponding to that coding is 
+produced by the device. 
+<!-- Finish Types of data--><!-- Files store data--></font></body></html>

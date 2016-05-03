@@ -1,0 +1,298 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Data Encryption Standard </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Cryptography Data Encryption Standard des tools Cryptolab Cryptogame">
+	<meta name="description" content="DES or Data encryption standard is a modern symmetric block cipher that uses different modes to encrypt 64-bit blocks of data.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/my/main.js"></script><script src="lib/my/des.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>DES (How Works?)</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+					<span id="greet"></span> Welcome back.<br><br>
+
+					This post will go on explaining the DES in greater detail; but be warned, it might seem mind boggling at first, while in truth it is not (on giving enough time and efforts you will realize that it is very intuitive. But yes, only after giving enough time and effort).<br><br>
+
+					DES (Data Encryption Standard) is a block cipher which takes 64 bit long block of plaintext and encrypt it using 64 bit long key (actually on 56 bits of the key are used), to produce a 64 bit long ciphertext. The block diagram for the process is given below.<br><br>
+
+					<img class="responsive-img" alt="DES Overall Process" title="DES General Process" src="images/c/des-1.GIF"><br><br>
+
+					It can be understood shortly as this:<br>
+					1- an initial permutation of 64 bits of plaintext<br>
+					2- dividing the block of 64 bits into two halves<br>
+					3- right half becomes new left half, and <br>
+					4- left half XORed with a 'function' (of right half and a '48 bit key'?)<br>
+					5- 16 such rounds.<br>
+					That's it.<br>
+					In the end, you've got the ciphertext bits.<br><br>
+
+					Now, few things need to be elaborated further.<br>
+					Firstly, what is the 'function' in each round;<br>
+					Secondly, what is the 48 bit 'key' in each round.<br><br>
+
+					<strong>The Function</strong><br>
+					The function in each round goes like the diagram below:<br><br>
+
+					<img class="responsive-img" alt="Function f" title="Function f" src="images/c/des-f.GIF"><br><br>
+
+					It can be understood as follows:<br>
+					1- the 32 bit right half, using the E table (Expansion/Permutation Table), gives 48 bits.<br>
+					2- 48 bits of 'key'(?) are also available.<br>
+					3- These two are XORed.<br>
+					4- The resultant 48 bits passed through Substitution Box (S-Box), to produce 32 bits.<br>
+					5- These 32 bits passed through another P (Permutation).<br>
+					That's it.<br>
+					In the end, the result obtained is the output of the 'function'. (and is XORed with the left half in each round)<br><br>
+
+					That was about the 'function', f, in each round.<br><br>
+
+
+					<strong>The 48-bit Keys</strong><br>
+					Now, let's see how the 48-bit keys used in all the rounds are prepared (diagram below).<br><br>
+
+					<img class="responsive-img" alt="Sub Key Generation" title="Sub Key Generation" src="images/c/des-sk.GIF"><br><br>
+
+					Remember that the original key is 64 bits long. But not all of it is used.<br> The last bit of each byte are left (i.e. every eigth bit is ignored), and only the 64-8 = 56 bits are used.<br> What happens on these 56 bits that yields sixteen 48-bit keys?<br> Let's see now.<br><br>
+
+					1- 56 bits are permuted.<br>
+					2- This permutation divided into two equal halves, say C and D.<br>
+					3- Both halves are separately 'left-shifted'. (circular shifts by 1 or 2 bits)<br>
+					4-  These two halves are passed to the 'Permuted Choice Table 2' to produce a 48-bit 'key'; and also...<br>
+					5- ...These two halves serve as input to the next round.<br>
+					The process from steps 2 to 5 are repeated 16 times, and in the end, 16 'keys' (48-bit Keys) are prepared.<br><br>
+
+					This is how the sixteen 48-bit keys are prepared. (and then used in each round).<br><br>
+
+					So, this is how DES works. The repeated permutation and substitution and complicated rounds of function - this all is a type of structure called 'Feistel Cipher'; named after its designer <em>Horst Feistel</em>, who was also in the original team at IBM who developed DES during 1970s. (actually, they came up with a first-of-its-kind block cipher called LUCIFER, which was later made into DES, after some 'suspicious' improvements of National Security Agency, USA; DES was adopted for the encryption of commercial and sensitive yet unclassified government computer data; ... actually the story is very interesting, so do read it out from somewhere.)<br><br>
+
+					So, this was the block cipher DES or Data Encryption Standard.<br><br>
+
+					An Excellent (also classic) article detailing DES can be read below:
+					
+					<a href="ARTICLES/The DES Algorithm Illustrated.html" target="_blank" style="color:#00838f">Excellent Article: "The DES Algorithm Illustrated" by <em>J. Orlin Grabbe</em>, 1992.</a><br><br>
+				
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>				
+				All the cipher techniques upto now depend on only one 'key' - one secret 'key' to both encrypt and decrypt.<br>
+				One 'key' is the most crucial and confidential asset. But what if that key goes in the wrong hands! Every secret will be gone?! Yes. Terrible, isn't it!<br>
+				Also, in such case, when we have one private 'key' i.e. one secret 'key'; and if we have to communicate among 100s of friends, then do we just keep sharing this 'secret' key to all of them (with large 'fear' of the 'key' being stolen!)
+				It's really Dangerous!!<br><br>
+
+				Is there any way, that we can share secret messages to friends, without ever needing to share the 'private'/'secret' key?!<br>
+				This notion leads to Asymmetric key Cryptography!<br>
+				Public key cryptography!<br>
+				You have two keys - public and private. The public key is served to public, and anyone can use it to 'encrypt' a message that he/she wants to share with you. Once encrypted, that message can ONLY be decrypted by the 'private' key - the key that noone possesses except you. That is Public Key Cryptography.<br> 
+				And to be able to successfully implement it, we turn to math, to numbers, to number theory.<br>The next post will describe one of the most popular public key cryptography algorithm called RSA.<br>
+				<br>				
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-20 Ended.
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" class="col s12 card center-align">
+			
+
+	<!-- input & key Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <input id="inputString" type="text"></input>
+        <label for="inputString">Input String (64bits)</label>
+      </div> 
+      <div class="input-field col s8 offset-s2">
+        <input id="keyString" type="text"></input>
+        <label for="keyString">Key String (64bits)</label>
+      </div>
+      <div class="col s6 offset-s3">
+      	<!-- Switch --><br>
+		  <div class="switch">
+		    <label>
+		      Encrypt
+		      <input id="mode" type="checkbox">
+		      <span class="lever"></span>
+		      Decrypt
+		    </label>
+		  </div>
+      </div>
+    </div>
+
+
+	  <br>
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Compute"><i class="material-icons">done</i></a>
+
+
+   <br>
+
+	<!-- output Area -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="outputString" class="materialize-textarea" placeholder="Output Will Be Displayed Here..." readonly="readonly" style="color:black"></textarea>
+        <label for="outputString" style="color:#9e9e9e">Output String (64bits)</label>
+      </div>
+    </div>
+
+     <br>
+    <!-- Intermediate Steps -->
+    <div class="row">
+    	<div class="col s8 offset-s2">
+    		<h5>Intermediate Steps</h5>
+    		<p id="intermediate-one-block">
+    			No result to show.
+    		</p>
+    	</div>
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+	//empty!
+
+});
+
+
+
+
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#inputString").val());
+	var keyString = $.trim($("#keyString").val());
+
+
+	var oString = "";
+	$("#outputString").text(oString);	//clear the oString box first.
+
+
+	iString = iString.replace(/[ ]/g, "");
+	keyString = keyString.replace(/[ ]/g, "");	//remove spaces.
+
+	//validations.
+	if(iString == "" || keyString == ""){
+		oString = "Please enter all the Input Fields first.";
+		Materialize.toast(oString, 4000);
+	}
+	if(iString.match('[^10 ]') || keyString.match('[^10 ]')){ //meaning, not a valid 'binary'
+		oString = "Make sure you have entered Valid Binary!";
+		Materialize.toast(oString, 4000);
+		return "";
+	}else if(iString.length != 64 || keyString.length != 64){		
+		oString = "Please enter exactly 64 bits.";
+		Materialize.toast(oString, 4000);
+	}else{
+
+		var mode = $("#mode").prop("checked"); 	//mode: true => decrypt; false => encrypt
+		
+		oString = des_call_one_block(iString, keyString, mode);
+		
+
+		//Display the output String.
+		$("#outputString").text(oString.replace(/(.{8})/g,"$1 "));
+			
+		$('#outputString').trigger('autoresize');
+	}
+
+});
+
+
+
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

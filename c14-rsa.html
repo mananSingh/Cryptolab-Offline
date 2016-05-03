@@ -1,0 +1,704 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> RSA </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="RSA public key cryptography tools Cryptolab Cryptogame">
+	<meta name="description" content="RSA is one of the first practical public-key cryptosystems and is still widely used. It relies on the hard math problem of prime factorization and modular arithmetic.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/jquery.shuffleLetters.js"></script><script src="lib/my/main.js"></script><script src="lib/BigInt.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>RSA</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+
+				Welcome back.<br><br>
+
+				It's time to discuss the revolutionary encryption technique RSA - one of the first practical public key cryptography algorithm rooted in Math (and number theory), which is still used widely in encrypted symmetric key exchanges in SSL/TLS sessions, digital signatures and other hybrid encryption schemes.<br><br>
+
+
+				Let's see the algorithm in detail.<br>
+				<em>Note:</em> The following is a very-easy-to-understand article from Serge Matovic's webpage (2003) titled: "The RSA Algorithm Explained Using Simple Pencil and Paper Method".<br><br>
+
+				OK, here is what we want to do: We have a "piece of data" that we want to somehow "scramble" so nobody can learn what this data is, and we want to send this data over unsecure lines to the recipient. Upon receipt of this scrambled data, the recipient must be able to "unscramble" this data to its original shape. The important thing here is that we want to do this "scrambling/unscrambling" process without requiring usage of any secret keys that both the sender and the recipient must posses in order to scramble and descramble the data. This is why the method we are going to discuss here is called "Public Key Cryptography". There are several Public Key Cryptography algorithms in use today. The most popular is called RSA algorithm, and is named after the initials of its inventors: R for Rivest, S for Shamir, and A for Adelman. By the way, they were students when they invented this algorithm in 1977. This is their <a href="ARTICLES/Len-Adi-Ron.jpg" target="_blank" style="color: #00838f">picture</a> at the time. <br><br>
+
+So here is the summary of operations. Please continue reading below for the detailed explanation of how this is achieved. Let's say that your WEB Browser has a piece of data, say number 14 (we'll call it a Plain message and label it as P=14). and it wants to encrypt this Plain message first and then send it to the Server. Upon receipt of this encrypted message, the Server wants to decrypt it to its original value. Here is the summary of what transpires. Before any communication happens, the Server had calculated, in advance, its public (n =33 and k=7) and private (j=3) keys. Now, to initiate the transaction, the Browser sends this message to the server: Hey Server, please send me your public key. The Server obliges: Here it comes, it's n=33, k=7. After receiving the Server's public key, the Browser converts the Plain message P=14 into the Encrypted message E=20 and sends it to the Server. The Server receives this encrypted message E=20 and using its secret key j=3 (and publicly known key n=33) decrypts the E=20 message into its original Plain message P=14.<br><br>
+
+Now, let's look a bit more into the math behind all this.<br><br>
+
+<strong>Section1. Generating Public and Private Keys</strong><br>
+First, as we mentioned above, before any transmission happens, the Server had calculated its public and secret keys.  Here is how. <br><br>
+
+1.1) pick two prime numbers, we'll pick p = 3 and q = 11<br>
+1.2) calculate n = p * q = 3 * 11 = 33<br>
+1.3) calculate z = ( p - 1 ) * ( q - 1 ) = ( 3 - 1 ) * ( 11 - 1 ) = 20<br>
+1.4) choose a prime number k, such that k is co-prime to z, i.e, z is not divisible by k. We have several choices for k: 7, 11, 13, 17, 19 (we cannot use 5, because 20 is divisible by 5). Let's pick k=7 (smaller k, "less math").<br>
+1.5) So, the numbers n = 33 and k = 7 become the Server's public key.<br>
+1.6) Now, still done in advance of any transmission, the Server has to calculate it's secret key. Here is how.<br>
+1.7) k * j = 1 ( mod z )<br>
+1.8) 7 * j = 1 ( mod 20 )<br>
+1.9) ( 7 * j ) / 20 = ? with the remainder of 1 (the "?" here means: "something, but don't wory about it"; we are only interested in the remainder). Since we selected (on purpose) to work with small numbers, we can easily conclude that 21 / 20 gives "something" with the remainder of 1. So, 7 * j = 21, and j = 3. This is our secret key. We MUST NOT give this key away.<br><br>
+
+Now, after the Server has done the above preparatory calculations in advance, we can begin our message transmission from our Browser to the Server. First, the Browser requests from the Server, the Server's public key, which the Server obliges, i.e., it sends n=33 and k=7 back to the Browser.  Now, we said that the Browser has a Plain message P=14, and it wants to encrypt it, before sending it to the Server. Here is how the encryption happens on the Browser.<br><br>
+
+<strong>Section 2. Encrypting the message</strong><br>
+Here is the encryption math that Browser executes.<br><br>
+
+2.1) P ^ k = E ( mod n ) <br>
+"^" means "to the power of"<br>
+P is the Plain message we want to encrypt<br>
+n and k are Server's public key (see Section 1)<br>
+E is our Encrypted message we want to generate<br><br>
+
+After plugging in the values, this equation is solved as follows:<br>
+2.2) 14 ^ 7 = E ( mod 33 )<br>
+This equation in English says: raise 14 to the power of 7, divide this by 33, giving the remainder of E.<br>
+2.3) 105413504 / 33 = 3194348.606 (well, I lied when I said that this is "Pencil and Paper" method only. You might want to use a calculator here).<br>
+2.4) 3194348 * 33 = 10541348<br>
+2.5) E = 105413504 - 10541348 = 20<br><br>
+
+So, our Encrypted message is E=20.  This is now the value that the Browser is going to send to the Server. When the Server receives this message, it then proceeds to Decrypt it, as follows.<br><br>
+
+<strong>Section 3. Decrypting the Message</strong><br>
+Here is the decryption math the Server executes to recover the original Plain text message which the Browser started with.<br><br>
+
+3.1) E ^ j = P ( mod n)<br>
+E is the Encrypted message just received<br>
+j is the Server's secret key<br>
+P is the Plain message we are trying to recover<br>
+n is Server's public key (well part of; remember that Server's public key was calculated in Section 1 as consisting of two numbers: n=33 and k=7).<br><br>
+
+After plugging in the values:<br>
+3.2) 20 ^ 3 = P ( mod 33 )<br>
+3.3) 8000 / 33 = ? with the remainder of P.  So to calculate this remainder, we do:<br>
+3.4) 8000 / 33 = 242.424242...<br>
+3.5) 242 * 33 = 7986<br>
+3.6) P = 8000 - 7986 = 14, which is exactly the Plain text message that the Browser started with!<br><br>
+
+Well that's about it. While we did not discuss the theory behind the formulae involved I hope that you got at least a basic idea of how the public key cryptography using the RSA algorithm works.<br><br>
+
+Two diagrams below represent the process/algorithm:<br><br>
+
+				<img  class="responsive-img" alt="RSA Algorithm" title="RSA Algorithm" src="images/c/rsa1.jpg"><br><br>
+
+				Example:<br>
+				<img  class="responsive-img" alt="RSA Encryption/Decryption Example" title="RSA Encryption/Decryption Example" src="images/c/rsa2.jpg"><br><br><br>
+				
+<strong>Section 4. "Cracking the Code"</strong><br>
+The essential requirement of the Public Key Cryptography is that the public and secret keys are mathematically related, but this relationship must be made very hard to determine by an outsider.  As you saw in the preceding text, everything starts with  p and q, from which we calculated n. The public key consists of two numbers: n and k, where k is calculated from z and z is calculated from p and q. The secret key j, was calculated from k and z and,  as we just stated,  k and z are calculated from p and q. It follows then, that j is also calculated from p and q,which proves that the public and private keys are mathematically related.  So, if an outsider wanted to find the secret key j, by only knowing n, he must break down n into the two prime numbers that were used to produce it (remember that n = p * q). Now, here is the real crux of the bisquit: Decomposing a very large n into p and q is <em>really difficult</em> to do. It is easy with the small numbers that we have used in our demonstration, but try, for example decomposing p into p and q when p has several hundred digits. Really, really difficult.<br><br>
+
+If Prime numbers, as big as 1024 bits in binary are used (will be called RSA-2048 in that case), then it will take even the modern 4GHz quad core processors more than the lifetime of the universe, to crack/decompose the primes back! (as of 2016)<br><br>
+
+			</p>
+		</div>
+	</div>
+
+
+	<!-- Short description -->
+	<div class="row">
+		<div class="col s2"><br><strong>Notes</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				<em>Note 1:</em> Using the 'Tool' for generating large-bit prime numbers can freeze the web browser for some time.<br><br>
+
+				<em>Note 2:</em> In the 'Tool', only available options for 'Public Exponents' are 3, 5, 17, 257, 65537. Reason?<br>
+				These primes are not random, they are Fermat primes; the primes of the form: 2^n + 1. The good thing about this is that they all in binary, would be simply something like 100.....001 (such binary number means faster calculation in computer). Eg, (binaries): 3 = 11, 5 = 101, 17 = 10001, 257 = 100000001, and 65537 = 10000000000000001.<br>
+				That was the reason.<br><br>
+
+				<em>Note 3:</em> In the 'Tool', the conversion from String to number is done by using the encoding scheme called Base95. The 95 characters include almost all of the 'printable' characters (that can be typed from the keyboard), and are given
+				 in below.<br>
+			</p>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col s2"><br><strong>Base95 Number to Character Table</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				<!-- to generate the below using "bigInt.js" 
+				
+<p id="base95">
+
+</p>
+
+<script type="text/javascript">
+  var output = "<pre>";
+  for(var i=0; i<=95; i++){
+    output += i;
+    output += "&nbsp;&nbsp; ";
+    output += bigInt2str(str2bigInt(i.toString(), 10, 0), 95);
+    //console.log(bigInt2str(str2bigInt(i.toString(), 10, 0), 95));
+    output += "<br>";
+  }output += "</pre>";
+  $("#base95").html(output);
+
+</script>
+
+			-->
+				<pre>
+
+	0    0
+	1    1
+	2    2
+	3    3
+	4    4
+	5    5
+	6    6
+	7    7
+	8    8
+	9    9
+	10    A
+	11    B
+	12    C
+	13    D
+	14    E
+	15    F
+	16    G
+	17    H
+	18    I
+	19    J
+	20    K
+	21    L
+	22    M
+	23    N
+	24    O
+	25    P
+	26    Q
+	27    R
+	28    S
+	29    T
+	30    U
+	31    V
+	32    W
+	33    X
+	34    Y
+	35    Z
+	36    a
+	37    b
+	38    c
+	39    d
+	40    e
+	41    f
+	42    g
+	43    h
+	44    i
+	45    j
+	46    k
+	47    l
+	48    m
+	49    n
+	50    o
+	51    p
+	52    q
+	53    r
+	54    s
+	55    t
+	56    u
+	57    v
+	58    w
+	59    x
+	60    y
+	61    z
+	62    _
+	63    =
+	64    !
+	65    @
+	66    #
+	67    $
+	68    %
+	69    ^
+	70    &amp;
+	71    *
+	72    (
+	73    )
+	74    [
+	75    ]
+	76    {
+	77    }
+	78    |
+	79    ;
+	80    :
+	81    ,
+	82    .
+	83    &lt;
+	84    >
+	85    /
+	86    ?
+	87    `
+	88    ~
+	89     
+	90    \
+	91    '
+	92    "
+	93    +
+	94    -
+	95    10
+
+
+				</pre>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>A Government Secret Story</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				The RSA is named and credited to the three students : Rivest, Shamir and Adleman of MIT, who first publicly described the algorithm in 1977; but a British Mathematician and Cryptographer <em>Clifford Cocks</em> had already developed it independently in 1973, while working at the GCHQ (United Kingdom Government Communications Headquarters). GCHQ was not able to find any immediate use of his algorithm, and treated it as classified information, for next 24 years!<br>
+				In 1987, the GCHQ had plans to release his work, but <em>Peter Wright's Spycatcher MI5 memoir</em> caused them to delay the revelation of this research further for 10 years. 24 years after its discovery, on 18 December 1997, Cocks revealed of the GCHQ History of public-key research in a public talk.<br><br>
+				
+				"Secrets live and die.<br>
+				We always think we know a lot, but mystery is always High.<br>
+				No matter how hard we try, Secrets live and die!"<br><br>
+
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				So, this was Public Key Cryptography algorithm called RSA. And this is where we end our discussions on encryption-decryption techniques.<br><br>
+
+				Next we will lastly see the concept of a one-way function called Hash.<br>
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-21 Ended.
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" class="col s12 center-align">
+			<div class="card">
+  <div class="row">
+    <div class="col offset-s2 s8">
+      <br>
+      <h5>Keys Generation</h5>
+      <br>
+      <span style="color:#9e9e9e"><em>note: Longer bit size of primes will take longer time.</em></span>
+      <br><br><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s2 offset-s2">
+          <input placeholder="5 to 1024" id="bits_for_prime" type="number" class="validate">
+          <label for="bits_for_prime">Bit size (of primes)</label>
+    </div>
+    <div class="col s4">
+
+      <!-- Compute button -->
+      <a id="generate-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Generate"><i class="material-icons">done</i></a>
+
+    </div>
+    <div class="input-field col s2">
+         <select id="block-cipher-mode">
+          <option value="65537" selected>65537</option>
+          <option value="257">257</option>
+          <option value="17">17</option>
+          <option value="5">5</option>
+          <option value="3">3</option>
+        </select>
+        <label>Public exponent, e</label>    
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col offset-s2 s4">
+          <textarea id="p_bin" class="materialize-textarea" readonly="readonly" style="color:#9e9e9e" placeholder="Will Be Computed."></textarea>
+          <label for="p_bin" style="color:#9e9e9e">Prime 1, p (in binary)</label>
+    </div>
+    <div class="input-field col s4">
+      <textarea id="q_bin" class="materialize-textarea" readonly="readonly" style="color:#9e9e9e" placeholder="Will Be Computed."></textarea>
+      <label for="q_bin" style="color:#9e9e9e">Prime 2, q (in binary)</label>
+    </div>
+    <div class="input-field col offset-s2 s4">
+          <textarea id="p" class="materialize-textarea" readonly="readonly" style="color:#9e9e9e" placeholder="Will Be Computed."></textarea>
+          <label for="p" style="color:#9e9e9e">Prime 1, p</label>
+    </div>
+    <div class="input-field col s4">
+      <textarea id="q" class="materialize-textarea" readonly="readonly" style="color:#9e9e9e" placeholder="Will Be Computed."></textarea>
+      <label for="q" style="color:#9e9e9e">Prime 2, q</label>
+    </div>
+    <div class="input-field col s8 offset-s2">
+      <textarea id="pq" class="materialize-textarea" readonly="readonly" style="color:black" placeholder="Will Be Computed."></textarea>
+      <label for="pq" style="color:#9e9e9e">Product of Primes, n = p*q</label>
+    </div>
+    <div class="input-field col s8 offset-s2">
+      <textarea id="phi" class="materialize-textarea" readonly="readonly" style="color:#9e9e9e" placeholder="Will Be Computed."></textarea>
+      <label for="phi" style="color:#9e9e9e">Phi function = (p-1)*(q-1)</label>
+    </div>
+    <div class="input-field col offset-s2 s4">
+          <textarea id="e" class="materialize-textarea" readonly="readonly" style="color:black"   placeholder="Will Be Computed."></textarea>
+          <label for="e" style="color:#9e9e9e">Public exponent, e </ltextareaabel>
+    </div>
+    <div class="input-field col s4">
+      <textarea id="d" class="materialize-textarea" readonly="readonly" style="color:black" placeholder="Will Be Computed."></textarea>
+      <label for="d" style="color:#9e9e9e">Private exponent, d  = e<sup>-1</sup> mod phi </label>
+    </div>
+    <div class="col s8 offset-s2" style="color: #9e9e9e">
+      <em>note: multiplying e and d (in modulo phi) will give 1.<br> e*d mod phi = 1</em>
+    </div>
+  </div>
+  <div class="row">
+    <div id="keys" class="col s8 offset-s2" style="color: #9e9e9e">
+      <span style='color:#009688' class='teal lighten-4'>Public Key = 'e' and 'n'</span> [ Public Exponent and Modulus ] <br> <span style='color:#00838f' class='indigo lighten-4'>Private Key = 'd' and 'n'</span>  [ Private Exponent and Modulus ]
+      <br><br><br>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class="card">
+  <div class="row">
+    <div class="col offset-s2 s8">
+      <br>
+      <h5>Encryption / Decryption</h5>
+      <br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <textarea id="iString" class="materialize-textarea" style="color:black" placeholder="All Keys except TAB and ENTER"></textarea>
+      <label for="iString" style="color:#9e9e9e">Enter Input String (in base95)</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <textarea id="iString_num" class="materialize-textarea" readonly="readonly" style="color:black" placeholder="Will Be Computed."></textarea>
+      <label for="iString_num" style="color:#9e9e9e">Input String in Number, M </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <textarea id="exponent" class="materialize-textarea" style="color:black"></textarea>
+      <label for="exponent" style="color:#9e9e9e">Enter Exponent, e </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <textarea id="modulus" class="materialize-textarea" style="color:black"></textarea>
+      <label for="modulus" style="color:#9e9e9e">Enter Modulus, n </label>
+    </div>
+  </div>
+  <div class="col s8 offset-s2">
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Compute"><i class="material-icons">done</i></a>
+
+  </div>
+  <div class="row">
+    <div class="input-field col s8 offset-s2">
+      <textarea id="oString_num" readonly="readonly" class="materialize-textarea" style="color:black" placeholder="Will Be Computed."></textarea>
+      <label for="oString_num" style="color:#9e9e9e">Output String in Number, M<sup>e</sup> mod n</label>
+    </div>
+    <div class="input-field col s8 offset-s2">
+      <textarea id="oString" readonly="readonly" class="materialize-textarea" style="color:black" placeholder="Will Be Computed."></textarea>
+      <label for="oString" style="color:#9e9e9e">Output String</label>
+      <br><br>
+    </div>
+  </div>
+</div>
+
+<script>
+
+//To Compute the given input to output.
+$(document).ready(function(){
+  
+  //to render 'select' of materialize.
+  $('select').material_select();
+  $("#e").val($("select option:selected").val());
+
+
+  //also bind the paste button. (auto calculation of input string to rsa)
+  $("#iString").bind('paste', function(e) {
+          var ctl = $(this);
+          setTimeout(function() {
+              //Do whatever you want to $(ctl) here....
+              $(ctl).trigger('autoresize');
+              
+              /* 
+                and convert to binary.
+              */
+              var iString = $.trim($("#iString").val());
+              //convert this binary to bigInt
+              //bigInt2str(str2bigInt(document.nnna.nnnp.value,  currBase,0),newBase)
+              var iString_num = bigInt2str(str2bigInt(iString, 95, 0), 10);
+              $("#iString_num").text(iString_num);
+               $('#iString_num').trigger('autoresize');
+
+          }, 100);
+
+        
+  });
+});
+
+
+//on Changing the 'select', also change the 'public Exponent textarea'
+$("select").change(function(){
+  $("#e").val($("select option:selected").val());
+});
+
+
+//whenever GENERATE button is clicked.
+$("#generate-btn").click(function(){
+  var bits_for_prime = $.trim($("#bits_for_prime").val());
+
+  if(bits_for_prime.match('[^0-9]')){ //meaning, not a valid 'binary'
+      oString = "Please Enter Number Correctly.";
+      Materialize.toast(oString, 4000);
+      return;
+  }else if(bits_for_prime < 5 || bits_for_prime > 1024){
+      oString = "Bit size must be between 5 to 1024.";
+      Materialize.toast(oString, 4000);
+      return;
+  }else{ //number entered is good (i.e. a valid 'number')
+      
+      
+    /*
+      Generating all the values from e and bits_for_prime
+    */
+      var e = $("#e").val();
+      var e = str2bigInt(e, 10, 0);
+      var bits_for_prime = parseInt(bits_for_prime);
+
+      /* 
+        Step-1: Generating Primes p and q
+      */
+      var r1, r2;
+      //first, generating r1
+      while(1){
+        r1 = randTruePrime(bits_for_prime);
+        if(!equalsInt(mod(r1, e), 1))   //prime must not be congruent to 1 modulo e
+          break;
+      }
+      var p_bin = bigInt2str(r1, 2); $("#p_bin").val(p_bin);
+      var p = bigInt2str(r1, 10); $("#p").val(p);
+
+      //secondly, generating r2
+      while(1){
+        r2 = randTruePrime(bits_for_prime);
+        if(!equalsInt(mod(r2, e), 1) && !equals(r1, r2))   //prime must be distinct and not congruent to 1 modulo e
+          break;
+      }
+      var q_bin = bigInt2str(r2, 2); $("#q_bin").val(q_bin);
+      var q = bigInt2str(r2, 10); $("#q").val(q);
+
+
+      /* 
+        Step-2: Generating n (=pq) and phi (= (p-1)(q-1))
+      */
+      var t, pq;
+      t = mult(r1, r2);
+      pq = bigInt2str(t, 10);
+      $("#pq").val(pq);
+
+      t = mult(addInt(r1, -1), addInt(r2, -1));  //t is our temp variable
+      phi = bigInt2str(t, 10);
+      $("#phi").val(phi);
+
+
+      /*
+        Step-3: Generating d (which is inverse modulo of e)
+      */
+      //note that 't' at this moment =  bigInt value of 'phi',
+      //and 'e' = bigInt value of 'e'; so we can use them.
+      var d, s;
+      s = inverseMod(e, t);
+      if(s) //if GCD!=1 then no inverse exists
+        d = bigInt2str(s, 10);
+      else{
+        Materialize.toast("e isn't invertible. Try a different prime e", 8000);
+        return;   //won't need this line, as our 'e' can only be from {3,5,7,17,257,65537}
+      }
+      $("#d").val(d);
+
+    //finally resize all the 'boxes'
+    $('textarea, input').trigger('autoresize');
+  }
+});
+
+
+//when user types Message, convert it to number.
+$("#iString").keyup(function(){
+    var iString = $.trim($("#iString").val());
+
+    //convert this binary to bigInt
+    //bigInt2str(str2bigInt(document.nnna.nnnp.value,  currBase,0),newBase)
+    var iString_num = bigInt2str(str2bigInt(iString, 95, 0), 10);
+    $("#iString_num").text(iString_num);
+
+});
+
+
+//whenever COMPUTE button is clicked.
+$("#compute-btn").click(function(){
+  var iString_num = $.trim($("#iString_num").val());
+  var exponent = $.trim($("#exponent").val());
+  var modulus = $.trim($("#modulus").val());
+
+  var oString = "";
+  $("#outputString").text(oString); //clear the oString box first.
+
+  //step - 1: validations
+  if(iString_num == ""){
+    oString = "Please enter all the Input Fields first.";
+    Materialize.toast(oString, 4000);
+    return;
+  }else{
+
+
+    //validate the input exponent and modulus
+    if(exponent == "" || modulus == ""){
+      oString = "Please enter all the Input Fields first.";
+      Materialize.toast(oString, 4000);
+      return;      
+    }
+    if(exponent.match('[^0-9 ]') || modulus.match('[^0-9 ]')){   //are exponent and modulus valid numbers
+      oString = "Please enter numbers correctly.";
+      Materialize.toast(oString, 4000);
+      return;
+    }
+
+    //remove spaces from numbers, if any
+    exponent = exponent.replace(/[ ]/g, "");
+    modulus = modulus.replace(/[ ]/g, "");
+    $("#exponent").val(exponent);
+    $("#modulus").val(modulus);
+
+    //check if M is greater than n (then not possible!)
+    if(greater(str2bigInt(iString_num, 10, 0), str2bigInt(modulus, 10, 0))){
+      oString = "Exponent (n) must be greater than Numeric Input String (M).";
+      Materialize.toast(oString, 8000);
+      return;
+    }
+
+    //Now from these three, raise iString to exponent in modulus
+    var M = str2bigInt(iString_num, 10, 0);
+    var e = str2bigInt(exponent, 10, 0);
+    var n = str2bigInt(modulus, 10, 0);
+    var t;
+
+    t = powMod(M, e, n);
+
+    oString = bigInt2str(t, 10);
+
+
+    $("#oString_num").text(oString);
+
+    //oString back from decimal to binary; and then from binary to Ascii
+    oString = bigInt2str(str2bigInt(oString, 10, 0), 95);
+
+    //Display the output String.
+    if(oString.length > 100){
+      $("#oString").text(oString);
+      
+    }else{  //'with-style!'
+      $("#oString").shuffleLetters({
+          "text": oString
+        });
+    }
+    //finally resize all the 'boxes'
+    $('textarea, input').trigger('autoresize');
+  } 
+});
+</script>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- 
+	Code Ends 
+-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$("textarea").bind('paste', function(e) {
+	        var ctl = $(this);
+	        setTimeout(function() {
+	            //Do whatever you want to $(ctl) here....
+				$(ctl).trigger('autoresize');
+	        }, 100);
+	});
+});
+</script>
+
+	
+
+
+</body>
+</html>

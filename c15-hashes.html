@@ -1,0 +1,210 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Hashes </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Hash SHA MD5 Cryptography tools Cryptolab Cryptogame">
+	<meta name="description" content="Hash is a one-way function which takes data as input and gives a fixed length output which can also be used as a 'fingerprint' of that data. MD5 and SHA are some popular hash algorithms.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/hashes.js"></script><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>Hashes</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-Why</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				<span id="greet"></span> Welcome back.<br><br>
+
+				This time we will discuss about cryptographic Hashes.<br><br>
+
+				These are the functions which can take as input any data - like, a string, a message, a file - and give as the output a fixed length string of random-looking characters.<br>
+				This acts as 'fingerprint' of the message or a file.<br><br>
+
+				It is a one-way function, meaning, that the 'hash' cannot be used to derive back the original data (whic was 'hashed').<br><br>
+
+				One more thing: Any small change in the input data, the hash algorithm gives a completely different hash.<br><br>
+
+
+				<strong>Uses:</strong><br>
+				1- File verification or Checking integrity of Messages: Since a hash of a specific file or message will always be same, and any small change or corruption in file or the message changes the resulting hash completely; this fact can be used to verify a file/message for integrity.<br><br>
+
+				2- Password Storage: Whenever you enter your password (in plaintext) in any website or applicatino, it is firstly converted into a hash, and then stored in the database. The original plaintext is never stored in the database, ensuring more safety.<br>
+
+				Other uses include 'hash tables' for faster searching in database, etc.<br><br>
+
+
+
+				<strong>Popular Hash Functions:</strong><br>
+				1- MD5 or Message Digest 5: It produces hashes that are 128 bits (or 32-hex characters) in length.<br>
+				2- SHA or Secure Hash Algorithm: It comes in many flavors: 160 bit, 256 bit, etc.<br>
+
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Problem of Collisions</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				Since there are finite numbers of characters in the generated hash; and the hash function tries to 'digest' or 'hash' all the different files/messages differently; as a result, hash-collisions may occur. Meaning, two different data may have same hashes!! If such problem occurs, the hash function is deemed as unworthy for real applications.<br>
+				Naturally, the longer the length of hash, the less chances of collisions. For instance, SHA-256 will have fewer hash collisions than SHA-160 or the 128-bit MD5.<br><br>
+
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				This was the concept of one-way functions known as Cryptographic Hash functions, which can produce specific-length 'fingerprints' for data messages or files.<br><br>
+				
+				In the next and the last post of this series, we will look at some methods to 'crack' passwords (which are stored as hashes); and we will also get the implemented tool for 'Cracking MD5 Hashes using Wordlist'.<br>				
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-22 Ended.
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- input & key Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="inputString" class="materialize-textarea"></textarea>
+        <label for="inputString">Input String</label>
+      </div> 
+    </div>
+
+
+	<!-- output Area -->
+	<div class="row">
+
+      <div class="input-field col s8 offset-s2">
+        <input id="md5" type="text" placeholder="Hash Will Be Displayed Here..." readonly="readonly" style="color:black"></input>
+        <label for="md5" style="color:#9e9e9e">MD5 (128-bit or 32-hex-characters)</label>
+      </div>
+
+      <div class="input-field col s8 offset-s2">
+        <input id="sha1" type="text" placeholder="Hash Will Be Displayed Here..." readonly="readonly" style="color:black"></input>
+        <label for="sha1" style="color:#9e9e9e">SHA1 (160-bit or 40-hex-characters)</label>
+      </div>
+
+      <div class="input-field col s8 offset-s2">
+        <input id="sha256" type="text" placeholder="Hash Will Be Displayed Here..." readonly="readonly" style="color:black"></input>
+        <label for="sha256" style="color:#9e9e9e">SHA256 (256-bit or 64-hex-characters)</label>
+      </div>
+
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+	//empty!
+});
+
+
+//whenever input in string is clicked.
+$("#inputString").keyup(function(){
+	var iString = $.trim($("#inputString").val());
+	if(iString == ""){
+		$("#md5, #sha1, #sha256").val("");
+	}else{
+		$("#md5").val(new Hashes.MD5().hex(iString));
+		$("#sha1").val(new Hashes.SHA1().hex(iString));
+		$("#sha256").val(new Hashes.SHA256().hex(iString));		
+	}
+});
+
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

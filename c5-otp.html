@@ -1,0 +1,405 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> One Time Pad </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Cryptography One Time Pad tools Cryptolab Cryptogame">
+	<meta name="description" content="Highly acclaimed to be 'unbreakable' if implemented properly, this techinque uses a long sequence of random numbers/letters/shifts, same in length as the plaintext message, to encrypt a message.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/jquery.shuffleLetters.js"></script><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>One Time Pad</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				<span id="greet"></span> What's up!<br><br>
+			
+				It is time for discussing:<br>
+				a technique which is claimed to be 'Unbreakable', if implemented properly,<br>
+				a technique very famous among the military of World War II, and spies of Cold War,<br>
+				a technique called - One Time Pad.<br><br>
+
+				Why is it called 'pad'? We'll come to that in few minutes; but before that, let's see how 'simple' it is. (yet claimed to be Unbreakable!)<br><br>
+
+				First, please, recall the Caesar cipher.<br>
+				Done! OK. So, in caesar cipher, each letter in the message is 'shifted' by some number between 1 to 25, right! But can there be a very obvious improvement to it. Think. Think.<br><br>
+
+				What if, instead of shifting each letter by the 'same' number (as we do in caesar cipher); each letter of the message is shifted by a 'Random' number! (from 0 to 25, where 'A' shifted by 0 = 'A'; and 'A' shifted by 25 = 'Z')<br><br>
+
+				In the above lines, you have just read The Core Principle behind One Time Pad, i.e. to use a random shift number for each letter in message.<br><br>
+
+				Let's take an example.<br>
+				Suppose your message is "ATTACK". (Oh, that feels like War!)<br>
+				Now, we need to shift each letter of this message by some random number. So, let's shift 'A' by 2, 'T' by 3, second 'T' by 17, and so on (remember: shift numbers are completely random).<br>
+				Rewriting this 'random' sequence, it looks something like this: 2, 3, 17, 10, 22, 24.<br>
+				OK. Now, how many numbers are in this sequence? Since, we want to shift 'each' letter in our message, we want numbers as many as letters. In other words, the length of this random-number-sequence needs to be same as the length of the message! That's an Important Point.<br><br>
+
+				Back to shifting letters.<br>
+				"ATTACK" shifted using the number sequence: "2,3,17,10,22,24" will become:- "CWKKYI".
+				(Remember that 'Z' shifted to 1 becomes 'A', i.e. we 'wrap-around' when the shifting goes beyond 'Z'.)<br>
+				Here, "ATTACK" is the plaintext message, "2,3,17,10,22,24" i.e. our random number sequence is the Key, and the "CWKKYI" is our ciphertext.
+				<br><br>
+
+				So, this was One Time Pad! Really, this was it.<br><br>
+
+				Note: Don't get confused, if you see, Keys like - 0203 1710 2224, or 02 03 17 10 22 24, or in some other formatting; because the technique is still the same.<br><br>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Random?</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+
+				One very important point is to determine- "how to get random number?"<br>
+				Will you just go by your intuition?	No, you shouldn't. (Actually, Yes, you can, if it's not much serious. But, if you want to make absolutely sure that noone can 'crack' your ciphertext, then, you shouldn't.)<br>
+				Research shows that whenever we, humans come up with a sequence that we think to be 'random'; the statistical analysis proves us wrong, by revealing some pattern in that sequence. Meaning, we are NOT good at producing 'truly' random number sequence!!<br>
+				So...what to do? Well, mostly, nowadays, many mathematical techniques are used to 'generate' 'almost'-random sequences. And, that's a separate field of study; so, we'll leave it there. Just remember, that use of 'truly' random sequence is also one of the major concern regarding the 'strength' of this technique.<br><br>
+
+			</p>
+		</div>
+	</div>
+
+
+
+	<div class="row">
+		<div class="col s2"><br><strong>Other Versions</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				In above example, we saw that our Key was a sequence of numbers. (2,3,17,10,22,24)
+				And, each of the shift-number is a random number between 0 to 25.<br>
+				Does above statement rang a bell in your mind!<br>
+				If not, it should. Because, the fact that each number is just between 0 to 25, means the number-sequence can also be written as a character-sequence or String.<br>
+				So, let's do that.<br>
+				If, '0' means 'A',<br>
+				'1' means 'B',<br>
+				'2' means 'C', and so on...<br>
+				Then our sequence- 2,3,17,10,22,24 becomes: "CDRKWY"<br><br>
+
+				That's it. In this way, our Key is now a 'string' (i.e. a sequence of characters), instead of a sequence of numbers; and that can also be used for One Time Pad. 
+
+				Note that, in the above example, we used "0 for A, 1 for B, ...upto..., 25 for Z", but we can also use "1 for A, 2 for B, 3 for C, ..., 26 for Z". That's all upto us. But, whichever letter-to-number scheme we use, we must be consistent while using that.<br><br>
+
+				So, that was a 'string' version of One-time-pad.<br>
+				Other version exist as well (eg. instead of shifting our message's letters by some number; we can first convert our message to bits i.e. 1s and 0s, and then, use a random sequence of 'bits' as the Key, to 'XOR' with our message-bits to get the cipher-bits; and to decrypt, again 'XOR' the key-bits with the cipher-bits to get back the message-bits.... that's going too binary! Oh! Is that a new topic! We'll see that in detail, later.); So, yes, other versions exist as well, but the basic principle is same in all. 
+
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Unbreakable!</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				OK, so our principle is clear now; that, in this technique, we need to use a Key which can be either a random string or a random number-sequence, and which needs to be as long as the message itself. But is such a simple technique unbreakable?<br><br>
+
+				Yes, it is. But, only, under some conditions:<br>
+				1- Key is as long as the message. (Yes, already discussed)<br>
+				2- Key is 'truly' random. (OK, strong mathematical function can be used)<br>
+				3- Each Key is used ONLY ONCE, and both sender and receiver must destroy their key after one use. (Oh, that makes sense. Is that why it's called "one-time" pad!)<br>
+				4- There should be only two copies of the key: one for the sender side, and another for the reciever side. In other words, the keys must be 'top-secret'. (How is it possible? We will discuss in just few minutes.)<br><br>
+			
+				Note that One Time Pads are not to be confused with One Time Passwords (which are very different things; and also, while One Time Pads are principally unbreakable, One Time Passwords are not!)<br> 
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Why-such-name?</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				Now, knowing the conditions required for this technique to be really-unbreakable, it's time to explore the reason behind the name.<br><br>
+
+				There is "Pad" in the name, because, the military, spies and others who used this technique, used to maintain, literally, paper-'pads' for printing, using and sending the Keys. Below are two examples of the pages from those pads. One image shows random String keys, while other shows random number-sequences as keys.<br>
+
+
+				<div style="text-align:center">
+					<img alt="string-keys-otp" title="Random String Keys" src="images/c/otp-string-keys.jpg"><br>
+					<img alt="number-keys-otp" title="Random Number Keys" src="images/c/otp-num-keys.png"><br>
+				</div><br>
+
+				<br>
+				These 'Pads' used to be so important and confidential, that many physical methods were used, to make them highly secure and secret. In some cases, special inks that were invisible in natural light were used; in other cases, the pads were made with inflammable substance, so that they can be easily destroyed in times of danger (before the enemy can get their hands on it).<br>
+				Sometimes, the pads were made to be very small; so small that it would require special magnifying lenses to read them. This was done in order to make these pads very portable by soldiers, spies and agents. An image of the small-sized Pad is shown below.<br><br>
+
+
+				<div style="text-align:center">
+					<img alt="small-pad" height="500px" width="" title="Small One Time Pad" src="images/c/otp-small.jpg">
+				</div><br>
+
+				So, that was for the name "Pad". And it's called "One-time" because the pad with keys in it, was for one-time use only; and was destroyed after one use. The entries were erased/cut; and after complete use of the whole pad, the pad was burnt. (or in the worse case, swallowed by the soldiers!)<br>
+				Really - "One Time" "Pad".
+				That were the reasons behind this name.<br><br>
+
+				Indeed, the strength of this technique is what made it the prime method of secret communication during World War II and Cold War; and that strength lies in the 'randomness' and 'same-as-message length' of the Keys used in this technique.
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				In this technique, we were using a key (i.e. a number-sequence or a string) whose length was as long as the message itself, but what if, the key is shorter!<br>
+				Of course, in that case, the 'unbreakability' will be gone, but yet, 'something' can be done. That 'something' is what we will see in the next post.<br>
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-6 Ended.
+
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- input & key Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="inputString" class="materialize-textarea"></textarea>
+        <label for="inputString">Input String</label>
+      </div> 
+      <div class="input-field col s8 offset-s2">
+        <textarea id="keyString" class="materialize-textarea"></textarea>
+        <label for="keyString">Key String (alphabets only)</label>
+      </div>
+    </div>
+
+
+	<!-- Switch -->
+	  <div class="switch">
+	    <label>
+	      Encrypt
+	      <input id="mode" type="checkbox">
+	      <span class="lever"></span>
+	      Decrypt
+	    </label>
+	  </div>
+
+	  <br><br>
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Compute"><i class="material-icons">done</i></a>
+
+	<!-- output Area -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="outputString" class="materialize-textarea" placeholder="Output Will Be Displayed Here..." readonly="readonly" style="color:black"></textarea>
+        <label for="outputString" style="color:#9e9e9e">Output String</label>
+      </div>
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+	//empty!
+});
+
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#inputString").val());
+	var keyString = $.trim($("#keyString").val());
+
+	keyString = keyString.replace(/[^a-zA-Z]/g, "");	//remove non-alphabets from key
+	$("#keyString").val(keyString);	
+
+	var oString = "";
+	$("#outputString").text(oString);	//clear the oString box first.
+
+	//step - 1: is input string or key string empty?
+	if(iString == "" || keyString == ""){
+		oString = "Please enter all the Input Fields first.";
+		Materialize.toast(oString, 4000);
+	}else{
+		keyString = keyPrep(iString, keyString);
+		$("#keyString").val(keyString);
+		var mode = $("#mode").prop("checked"); 	//mode: true => decrypt; false => encrypt
+		
+		oString = onetimepad(iString, keyString, mode);
+		
+		//Display the output String.
+		if(oString.length > 100){
+			$("#outputString").text(oString);
+			
+		}else{	//'with-style!'
+			$("#outputString").shuffleLetters({
+					"text": oString
+				});
+		}
+		$('#outputString').trigger('autoresize');
+	}	
+});
+
+
+//Our main JS function for this Cipher technique
+//Parameters:- iString: string , key: string with only alphabets; mode: false[encrypt]/true[decrypt]
+function keyPrep(iString, keyString){
+	var iString = iString.toUpperCase();
+	var letterArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";	
+	var keyStringFormatted = "";
+	for(var i=0, j=0; i<iString.length; i++){
+		var character = iString.charAt(i);
+		if(letterArray.indexOf(character)>-1){	//if an alphabet
+			keyStringFormatted += keyString.charAt(j);
+			j++;
+		}else{
+			keyStringFormatted += " ";
+		}	
+	}
+	return keyStringFormatted;
+}
+
+function onetimepad(iString, keyString, mode){
+	var oString = "";
+
+	//the computation goes here.
+	//oString = iString;
+	
+	var iString = iString.toUpperCase();
+	var keyString = keyString.toUpperCase();
+
+	var letterArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";		//it's actually string as an array!
+    
+    //for each character in string:
+    for(var i=0; i<iString.length; i++){
+    	var character = iString.charAt(i);
+    	var digit = 0;
+
+    	var key = 0;
+
+    	if(letterArray.indexOf(keyString.charAt(i)) > -1){	//it's a LETTER (and not a space).
+    		key = letterArray.indexOf(keyString.charAt(i));
+    	}
+
+    	//check if it's a letter
+    	if(letterArray.indexOf(character)>-1){	//meaning, it IS a letter, in the "letterArray".
+    		digit = letterArray.indexOf(character);
+    		
+    		//now we have 'index' of that character; eg: A=0, B=1, ... Z=25.
+    		
+    		if(mode==false){	//ENCRYPTION checked
+    			//code for encryption
+    			//Step 1: add the key
+    			digit += eval(key);
+    			
+    			//Step 2: Check
+    			if(digit>25){	//for: overflow more than 25!
+    				digit = digit % 26;
+    				oString += letterArray.charAt(digit);
+    			}else{	//meaning, no overflow. normal.
+    				oString += letterArray.charAt(digit);
+    			}
+    			
+    		}else{	//DECRYPTION checked
+    			//code for decryption
+    			//Step 1: shift back / subtract the key
+    			digit -= eval(key);
+    			//Step 2: Check
+    			if(digit<0){	//for: underflow less than 0, eg: -1, -2, etc.
+    				digit = digit + 26;
+    				oString += letterArray.charAt(digit);
+    			}else{	//meaning, no underflow. normal.
+    				oString += letterArray.charAt(digit);
+    			}
+    		}
+    		
+    	}else{ //not in "letterArray" => it must be 'space' (as other special_chars have been trimmed already.)
+    		oString += character;
+    	}
+    		
+    }
+	return oString;
+}
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

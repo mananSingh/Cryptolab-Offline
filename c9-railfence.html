@@ -1,0 +1,278 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Rail Fence Cipher </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Cryptography Railfence cipher tools Cryptolab Cryptogame">
+	<meta name="description" content="Rail fence cipher or the zig zag cipher is a form of transposition cipher, in which the letters of the plaintext are written diagonally and then read off row by row.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/jquery.shuffleLetters.js"></script><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>Rail Fence Cipher</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				Welcome again.<br><br>
+
+				Rail fence cipher (also called zigzag cipher) is a form of 'transposition cipher' in which the letters of the original message are scrambled resulting into a permutation. The scheme works like follows:<br><br>
+
+				Suppose you want to encrypt a message: "WE ARE DISCOVERED. FLEE AT ONCE" or "WEAREDISCOVEREDFLEEATONCE", and the 'key' (or the 'rail') is 3, then, it will be written diagonally as follows:<br>
+				<pre>
+W . . . E . . . C . . . R . . . L . . . T . . . E
+. E . R . D . S . O . E . E . F . E . A . O . C .
+. . A . . . I . . . V . . . D . . . E . . . N . .
+				</pre><br>
+				...and, then will be read row by row, resulting in the final ciphertext: "WECRL TEERD SOEEF EAOCA IVDEN" or "WECRLTEERDSOEEFEAOCAIVDEN".<br><br>
+
+				The ciphertext can be decrypted by following a reverse process, of filling up the letters at corresponding places row by row and then reading off diagnoally.<br><br>
+
+				'Railfence' is the simplest of 'transposition' ciphers. Other versions also include 'columnar ciphers' i.e. writing the message's letters in columns and reading as rows; or writing as columns and reading as rows. Different rounds of 'scrambling' or 'permutation' can also be done to further strengthen the cipher.<br><br>
+
+			</p>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				Up yet, we have discussed various classical techniques, which all worked upon english 'letters' of the original message to give us the cipher message. But now in the modern world, the 'real' and 'industrial' encryption is done actually on 'bits' (1s and 0s) rather than the letters. The reason of this being that, in modern reality, our world is full of computers and digital stuff - the files, documents, images, videos - everything is digital, everything is binary. That's a very important accomplishment and a revolution in human history, and that's what we will discuss next in "World of Bits".<br>
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-10 Ended.
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- input Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="inputString" class="materialize-textarea"></textarea>
+        <label for="inputString">Input String</label>
+      </div>
+    </div>
+
+    <!-- Settings Area -->
+    <div class="row"> 
+    	<div class="col s1 offset-s2">      	
+	    	<strong>Settings:</strong> 
+	    </div><br>
+	    <div class="col s4 offset-s2">     	  	
+		      <p class="range-field">
+		      	<input id="key" type="range" min="1" max="10" />
+		      	<label for="key">Key = <span id="key-show">1</span></label>
+		      </p>
+		</div>
+		<div class="col s3 offset-s1">			
+          <!-- Switch -->
+		  <div class="switch">
+		    <label>
+		      Encrypt
+		      <input id="mode" type="checkbox">
+		      <span class="lever"></span>
+		      Decrypt
+		    </label>
+		  </div>
+		</div>
+    </div>
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Compute"><i class="material-icons">done</i></a>
+
+	<!-- output Area -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="outputString" class="materialize-textarea" placeholder="Output Will Be Displayed Here..." readonly="readonly" style="color:black"></textarea>
+        <label for="outputString" style="color:#9e9e9e">Output String</label>
+      </div>
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+
+	//set key to 1
+	$("#key").val(1);
+	//display dynamically the key = "some_value" based on the range slider's position.
+	$("#key-show").text($("#key").val());
+
+});
+
+//whenever mouse is slided over the range slider.
+$("#key").mousemove(function(){
+	$("#key-show").text($("#key").val());
+});
+
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#inputString").val());
+	var oString = "";
+	$("#outputString").text(oString);	//clear the oString box first.
+
+	//step - 1: is input string empty?
+	if(iString == ""){
+		oString = "Please enter some Input String first.";
+		Materialize.toast(oString, 4000);
+	}else{
+		var key = $("#key").val();
+		var mode = $("#mode").prop("checked"); 	//mode: true => decrypt; false => encrypt
+		
+		oString = railfence(iString, key, mode);
+		
+		//Display the output String.
+		if(oString.length > 100){
+			$("#outputString").text(oString);
+			
+		}else{	//'with-style!'
+			$("#outputString").shuffleLetters({
+					"text": oString
+				});
+		}
+		$('#outputString').trigger('autoresize');
+	}
+});
+
+
+//Our main JS function for this Cipher technique
+//Parameters:- iString: string, key: num that'll be the rail-depth; mode: false[encrypt]/true[decrypt]
+
+function railfence(iString, key, mode){
+	var oString = "	";
+	if(mode==false){ //encryption.
+		var plaintext = iString;
+		var ciphertext = "";
+		if(key > Math.floor(2*(plaintext.length-1))){ Materialize.toast("Key is too large for the plaintext length.", 4000); return; }
+  
+    		if(key==1) ciphertext = plaintext;
+	    	else{
+	      		ciphertext = "";
+	      		for(line=0; line<key-1; line++){
+	    	  		skip=2*(key-line-1);	  j=0;
+				for(i=line; i<plaintext.length;){
+		    			ciphertext += plaintext.charAt(i);
+	       	    			if((line==0) || (j%2 == 0)) i+=skip;
+			  		else i+=2*(key-1) - skip;  
+			  		j++;          
+				}
+			      }
+	      		for(i=line; i<plaintext.length; i+=2*(key-1)) ciphertext += plaintext.charAt(i);
+		}
+	}else{	//decryption.
+		var ciphertext = iString;
+		var plaintext = "";
+		if(key > Math.floor(2*(ciphertext.length-1))){ Materialize.toast("Key is too large for the ciphertext length.",4000); return; }
+		else{
+		      pt = new Array(ciphertext.length);   k=0;
+		      for(line=0; line<key-1; line++){
+		    	  	skip=2*(key-line-1);	 j=0;
+				for(i=line; i<ciphertext.length;){
+			    		pt[i] = ciphertext.charAt(k++);
+		       	    		if((line==0) || (j%2 == 0)) i+=skip;
+				  	else i+=2*(key-1) - skip;  
+				  	j++;        
+				}
+      			}
+      			for(i=line; i<ciphertext.length; i+=2*(key-1)) pt[i] = ciphertext.charAt(k++);
+			ciphertext = pt.join("");
+		}
+	}
+	oString = ciphertext;
+	return oString;
+
+}
+
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

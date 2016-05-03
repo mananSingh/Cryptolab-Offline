@@ -1,0 +1,256 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Book Cipher </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Cryptography Book Cipher tools Cryptolab Cryptogame">
+	<meta name="description" content="A cipher in which book or some aspect of book (like page number, word number, etc) is used as the key to encrypt a plaintext message.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/jquery.shuffleLetters.js"></script><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>Book Cipher</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Demo</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				<span id="greet"></span>, and welcome again.<br><br>
+
+				This time we will discuss a story and a cipher. Firstly, the cipher.<br><br>
+
+				This cipher is called Book Cipher, because the 'key' in this case is a book. (Actually, some aspect of book)<br><br>
+
+
+				Few ways in which the encryption is done using a book cipher are as follows:<br><br>
+
+				each word in plaintext, replaced by a word-number from the book.<br>
+				each letter in plaintext, replaced by a letter/word-number.<br>
+				each word in plaintext, replaced by a page number!<br><br>
+
+				Famous keys are usually the famous or widely available publications like: bible! dictionary! american constitution! etc.<br><br>
+
+				EXAMPLE:<br>
+				The ciphertext: 1,2,3,6 will correspond to the plaintext: WITH; if the key is a document/book beginning with the text given below:<br>
+				"<strong>W</strong>hen <strong>i</strong>n <strong>t</strong>he course of <strong>h</strong>uman events, ..."<br>
+				Actually, the numbers 1,2,3,6 correspond to different words in the text; and on picking the first letters of those words, one gets the plaintext back. For reference: 
+				<pre>When(1) in(2) the(3) course(4) of(5) human(6) events(7) ... </pre> 
+
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>The Treasure Hunt of Century - Beale Ciphers</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p> 
+				Book ciphers are very popular in the general media, and can be seen in many novels, short stories and movies - from Sherlock Holmes' <em>Valley of Fears</em> to films like <em>National Treasure</em>. But the real cases, real stories associated with book ciphers have fascinated people more.<br><br>
+
+				While even today, the book ciphers are easily found deployed in the mystery challenge of <em>Cicada 3301</em>, an anonymous Internet Cryptography contest held every year; a more famous story is of the "Beale Cipher".<br><br>
+
+				The story originate from a pamphlet published in 1885 called "The Beale Papers". It contained three ciphertexts, one of which, when decrypted, stated the location of a buried treasure of gold, silver and jewels worth over 50 million US$. According to the story associated, these ciphers were handed to an innkeeper by a person known as "Thomas Cipher", who had hidden in it the details and location of the treasure in these ciphers. The innkeeper himself was unable to decrypt any of the three ciphers, and on his deathbed, handed them to his reliable friend, who himself, took years to decrypt only the second of the cipher (using "Declaration of Independence" as the 'key' document - see the 'demo'). The rest of the two ciphers remain unbroken till date!<br><br>
+
+				Since their publishing the ciphers have attracted huge attention - some tried to break them but failed, some even claimed it a hoax - nonetheless, the concept of book cipher indeed became immortal in the memories of time.<br><br>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				Next we will discuss how a message can be 'concealed' within another message, also called, 'Steganography'.<br>
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-8 Ended.
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- cipher & key area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+
+      <div class="input-field col s8 offset-s2">
+        <a href="#cipher-modal" class="modal-trigger"><textarea id="cipherString" class="materialize-textarea" readonly="readonly" style="color:black;padding-top:40px"></textarea></a>
+        <label for="cipherString" style="color:#9e9e9e;">Ciphertext</label>
+      </div>
+
+      <div class="input-field col s8 offset-s2">
+        <a href="#key-modal" class="modal-trigger"><textarea id="keyString" class="materialize-textarea" readonly="readonly" style="color:black;padding-top:40px"></textarea></a>
+        <label for="keyString" style="color:#9e9e9e">Key Document</label>
+      </div> 
+
+    </div>
+
+
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Decrypt"><i class="material-icons">done</i></a>
+
+    <br><br>
+	<!-- plaintext/output Area -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2 left-align">
+        <h5>Original Message</h5>
+        <p id="outputString">Click above to decrypt the given cipher.</p>
+      </div>
+    </div>
+
+
+<!-- Modals -->
+<div id="cipher-modal" class="modal center-align">
+  	
+    <div class="modal-content" >
+    
+      <br><!-- just for upper space -->
+      
+      <!-- form's entire row -->
+      <div id="cipherString" class="row">
+	    
+	  </div>
+	</div>
+</div>
+
+<div id="key-modal" class="modal center-align">
+  	
+    <div class="modal-content" >
+    
+      <br><!-- just for upper space -->
+      
+      <!-- form's entire row -->
+      <div id="keyString" class="row">
+	    
+	  </div>
+	</div>
+</div>
+
+
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+
+
+var cipherString = "115, 73, 24, 807, 37, 52, 49, 17, 31, 62, 647, 22, 7, 15, 140, 47, 29, 107, 79, 84, 56, 239, 10, 26, 811, 5, 196, 308, 85, 52, 160, 136, 59, 211, 36, 9, 46, 316, 554, 122, 106, 95, 53, 58, 2, 42, 7, 35, 122, 53, 31, 82, 77, 250, 196, 56, 96, 118, 71, 140, 287, 28, 353, 37, 1005, 65, 147, 807, 24, 3, 8, 12, 47, 43, 59, 807, 45, 316, 101, 41, 78, 154, 1005, 122, 138, 191, 16, 77, 49, 102, 57, 72, 34, 73, 85, 35, 371, 59, 196, 81, 92, 191, 106, 273, 60, 394, 620, 270, 220, 106, 388, 287, 63, 3, 6, 191, 122, 43, 234, 400, 106, 290, 314, 47, 48, 81, 96, 26, 115, 92, 158, 191, 110, 77, 85, 197, 46, 10, 113, 140, 353, 48, 120, 106, 2, 607, 61, 420, 811, 29, 125, 14, 20, 37, 105, 28, 248, 16, 159, 7, 35, 19, 301, 125, 110, 486, 287, 98, 117, 511, 62, 51, 220, 37, 113, 140, 807, 138, 540, 8, 44, 287, 388, 117, 18, 79, 344, 34, 20, 59, 511, 548, 107, 603, 220, 7, 66, 154, 41, 20, 50, 6, 575, 122, 154, 248, 110, 61, 52, 33, 30, 5, 38, 8, 14, 84, 57, 540, 217, 115, 71, 29, 84, 63, 43, 131, 29, 138, 47, 73, 239, 540, 52, 53, 79, 118, 51, 44, 63, 196, 12, 239, 112, 3, 49, 79, 353, 105, 56, 371, 557, 211, 505, 125, 360, 133, 143, 101, 15, 284, 540, 252, 14, 205, 140, 344, 26, 811, 138, 115, 48, 73, 34, 205, 316, 607, 63, 220, 7, 52, 150, 44, 52, 16, 40, 37, 158, 807, 37, 121, 12, 95, 10, 15, 35, 12, 131, 62, 115, 102, 807, 49, 53, 135, 138, 30, 31, 62, 67, 41, 85, 63, 10, 106, 807, 138, 8, 113, 20, 32, 33, 37, 353, 287, 140, 47, 85, 50, 37, 49, 47, 64, 6, 7, 71, 33, 4, 43, 47, 63, 1, 27, 600, 208, 230, 15, 191, 246, 85, 94, 511, 2, 270, 20, 39, 7, 33, 44, 22, 40, 7, 10, 3, 811, 106, 44, 486, 230, 353, 211, 200, 31, 10, 38, 140, 297, 61, 603, 320, 302, 666, 287, 2, 44, 33, 32, 511, 548, 10, 6, 250, 557, 246, 53, 37, 52, 83, 47, 320, 38, 33, 807, 7, 44, 30, 31, 250, 10, 15, 35, 106, 160, 113, 31, 102, 406, 230, 540, 320, 29, 66, 33, 101, 807, 138, 301, 316, 353, 320, 220, 37, 52, 28, 540, 320, 33, 8, 48, 107, 50, 811, 7, 2, 113, 73, 16, 125, 11, 110, 67, 102, 807, 33, 59, 81, 158, 38, 43, 581, 138, 19, 85, 400, 38, 43, 77, 14, 27, 8, 47, 138, 63, 140, 44, 35, 22, 177, 106, 250, 314, 217, 2, 10, 7, 1005, 4, 20, 25, 44, 48, 7, 26, 46, 110, 230, 807, 191, 34, 112, 147, 44, 110, 121, 125, 96, 41, 51, 50, 140, 56, 47, 152, 540, 63, 807, 28, 42, 250, 138, 582, 98, 643, 32, 107, 140, 112, 26, 85, 138, 540, 53, 20, 125, 371, 38, 36, 10, 52, 118, 136, 102, 420, 150, 112, 71, 14, 20, 7, 24, 18, 12, 807, 37, 67, 110, 62, 33, 21, 95, 220, 511, 102, 811, 30, 83, 84, 305, 620, 15, 2, 10, 8, 220, 106, 353, 105, 106, 60, 275, 72, 8, 50, 205, 185, 112, 125, 540, 65, 106, 807, 138, 96, 110, 16, 73, 33, 807, 150, 409, 400, 50, 154, 285, 96, 106, 316, 270, 205, 101, 811, 400, 8, 44, 37, 52, 40, 241, 34, 205, 38, 16, 46, 47, 85, 24, 44, 15, 64, 73, 138, 807, 85, 78, 110, 33, 420, 505, 53, 37, 38, 22, 31, 10, 110, 106, 101, 140, 15, 38, 3, 5, 44, 7, 98, 287, 135, 150, 96, 33, 84, 125, 807, 191, 96, 511, 118, 40, 370, 643, 466, 106, 41, 107, 603, 220, 275, 30, 150, 105, 49, 53, 287, 250, 208, 134, 7, 53, 12, 47, 85, 63, 138, 110, 21, 112, 140, 485, 486, 505, 14, 73, 84, 575, 1005, 150, 200, 16, 42, 5, 4, 25, 42, 8, 16, 811, 125, 160, 32, 205, 603, 807, 81, 96, 405, 41, 600, 136, 14, 20, 28, 26, 353, 302, 246, 8, 131, 160, 140, 84, 440, 42, 16, 811, 40, 67, 101, 102, 194, 138, 205, 51, 63, 241, 540, 122, 8, 10, 63, 140, 47, 48, 140, 288";
+
+var keyString = "DECLARATION OF INDEPENDENCE        <br><br>When(1) in(2) the(3) course(4) of(5) human(6) events(7) it(8) becomes(9) necessary(10) for(11) one(12) people(13) to(14) dissolve(15) the(16) political(17) bands(18) which(19) have(20) connected(21) them(22) with(23) another(24) and(25) to(26) assume(27) among(28) the(29) powers(30) of(31) the(32) earth(33), the(34) separate(35) and(36) equal(37) station(38) to(39) which(40) the(41) laws(42) of(43) nature(44) and(45) of(46) Nature's(47) god(48) entitle(49) them(50), a(51) decent(52) respect(53) to(54) the(55) opinions(56) of(57) mankind(58) requires(59) that(60) they(61) should(62) declare(63) the(64) causes(65) which(66) impel(67) them(68) to(69) the(70) separation(71).                           <br><br> We(72) hold(73) these(74) truths(75) to(76) be(77) self(78) evident(79), that(80) all(81) men(82) are(83) created(84) equal(85), that(86) they(87) are(88) endowed(89) by(90) their(91) Creator(92) with(93) certain(94) unalienable(95) Rights(96), that(97) among(98) these(99) are(100) Life(101), Liberty(102) and(103) the(104) pursuit(105) of(106) Happiness(107). - That(108) to(109) secure(110) these(111) rights(112), Governments(113) are(114) instituted(115) among(116) Men(117), deriving(118) their(119) just(120) powers(121) from(122) the(123) consent(124) of(125) the(126) governed(127), -That(128) whenever(129) any(130) form(131) of(132) government(133) becomes(134) destructive(135) of(136) these(137) ends(138), it(139) is(140) the(141) Right(142) of(143) the(144) People(145) to(146) alter(147) or(148) to(149) abolish(150) it(151), and(152) to(153) institute(154) new(155) Government(156), laying(157) its(158) foundation(159) on(160) such(161) principles(162) and(163) organizing(164) its(165) powers(166) in(167) such(168) form(169), as(170) to(171) them(172) shall(173) seem(174) most(175) likely(176) to(177) effect(178) their(179) Safety(180) and(181) Happiness(182). Prudence(183), indeed(184), will(185) dictate(186) that(187) Governments(188) long(189) established(190) should(191) not(192) be(193) changed(194) for(195) light(196) and(197) transient(198) causes(199); and(200) accordingly(201) all(202) experience(203) hath(204) shown(205) that(206) mankind(207) are(208) more(209) disposed(210) to(211) suffer(212), while(213) evils(214) are(215) sufferable(216) than(217) to(218) right(219) themselves(220) by(221) abolishing(222) the(223) forms(224) to(225) which(226) they(227) are(228) accustomed(229). But(230) when(231) a(232) long(233) train(234) of(235) abuses(236) and(237) usurpations(238), pursuing(239) invariably(240) the(241) same(242) Object(243) evinces(244) a(245) design(246) to(247) reduce(248) them(249) under(250) absolute(251) Despotism(252), it(253) is(254) their(255) right(256), it(257) is(258) their(259) duty(260), to(261) throw(262) off(263) such(264) Government(265), and(266) to(267) provide(268) new(269) guards(270) for(271) their(272) future(273) security(274). - Such(275) has(276) been(277) the(278) patient(279) sufferance(280) of(281) these(282) Colonies(283); and(284) such(285) is(286) now(287) the(288) necessity(289) which(290) constrains(291) them(292) to(293) alter(294) their(295) former(296) Systems(297) of(298) Government(299). The(300) history(301) of(302) the(303) present(304) King(305) of(306) Great(307) Britain(308) is(309) a(310) history(311) of(312) repeated(313) injuries(314) and(315) usurpations(316), all(317) having(318) in(319) direct(320) object(321) the(322) establishment(323) of(324) an(325) absolute(326) Tyranny(327) over(328) these(329) States(330). To(331) prove(332) this(333), let(334) Facts(335) be(336) submitted(337) to(338) a(339) candid(340) world(341).                                                    											<br><br> He(342) has(343) refused(344) his(345) Assent(346) to(347) Laws(348), the(349) most(350) wholesome(351) and(352) necessary(353) for(354) the(355) public(356) good(357). He(358) has(359) forbidden(360) his(361) Governors(362) to(363) pass(364) Laws(365) of(366) immediate(367) and(368) pressing(369) importance(370), unless(371) suspended(372) in(373) their(374) operation(375) till(376) his(377) Assent(378) should(379) be(380) obtained(381); and(382) when(383) so(384) suspended(385), he(386) has(387) utterly(388) neglected(389) to(390) attend(391) to(392) them(393).																	<br><br> He(394) has(395) refused(396) to(397) pass(398) other(399) laws(400) for(401) the(402) accommodation(403) of(404) large(405) districts(406) of(407) people(408) unless(409) those(410) people(411) would(412) relinquish(413) the(414) right(415) of(416) representation(417) in(418) the(419) legislature(420) a(421) right(422) inestimable(423) to(424) them(425) and(426) formidable(427) to(428) tyrants(429) only(430).											<br><br> He(431) has(432) called(433) together(434) legislative(435) bodies(436) at(437) places(438) unusual(439) uncomfortable(440) and(441) distant(442) from(443) the(444) depository(445) of(446) their(447) public(448) records(449) for(450) the(451) sole(452) purpose(453) of(454) fatiguing(455) them(456) into(457) compliance(458) with(459) his(460) measures(461).																								<br><br> He(462) has(463) dissolved(464) representative(465) houses(466) repeatedly(467) for(468) opposing(469) with(470) manly(471) firmness(472) his(473) invasions(474) on(475) the(476) rights(477) of(478) the(479) people(480).                 								<br><br> He(481) has(482) refused(483) for(484) a(485) long(486) time(487) after(488) such(489) dissolutions(490) to(491) cause(492) others(493) to(494) be(495) elected(496) whereby(497) the(498) legislative(499) powers(500) incapable(501) of(502) annihilation(503) have(504) returned(505) to(506) the(507) people(508) at(509) large(510) for(511) their(512) exercise(513) the(514) state(515) remaining(516) in(517) the(518) meantime(519) exposed(520) to(521) all(522) the(523) dangers(524) of(525) invasion(526) from(527) without(528) and(529) convulsions(530) within(531).																				<br><br> He(532) has(533) endeavored(534) to(535) prevent(536) the(537) population(538) of(539) these(540) states(541) for(542) that(543) purpose(544) obstructing(545) the(546) laws(547) for(548) naturalization(549) of(550) foreigners(551) refusing(552) to(553) pass(554) others(555) to(556) encourage(557) their(558) migration(559) hither(560) and(561) raising(562) the(563) conditions(564) of(565) new(566) appropriations(567) of(568) lands(569).<br><br>																							He(570) has(571) obstructed(572) the(573) administration(574) of(575) justice(576) by(577) refusing(578) his(579) assent(580) to(581) laws(582) for(583) establishing(584) judiciary(585) powers(586).<br><br>																	He(587) has(588) made(589) judges(590) dependent(591) on(592) his(593) will(594) alone(595) for(596) the(597) tenure(598) of(599) their(600) offices(601) and(602) the(603) amount(604) and(605) payment(606) of(607) their(608) salaries(609).<br><br>									He(610) has(611) erected(612) a(613) multitude(614) of(615) new(616) offices(617) and(618) sent(619) hither(620) swarms(621) of(622) officers(623) to(624) harass(625) our(626) people(627) and(628) eat(629) out(630) their(631) substance(632).<br><br>							He(633) has(634) kept(635) among(636) us(637) in(638) times(639) of(640) peace(641) standing(642) armies(643) without(644) the(645) consent(646) of(647) our(648) legislatures(649).																							<br><br>He(650) has(651) offered(652) to(653) render(654) the(655) military(656) independent(657) of(658) and(659) superior(660) to(661) the(662) civil(663) power(664).<br><br>																							He(665) has(666) combined(667) with(668) others(669) to(670) subject(671) us(672) to(673) a(674) jurisdiction(675) foreign(676) to(677) our(678) constitution(679) and(680) unacknowledged(681) by(682) our(683) laws(684) giving(685) his(686) assent(687) to(688) their(689) acts(690) of(691) pretended(692) legislation(693). <br><br>											For(694) quartering(695) large(696) bodies(697) of(698) armed(699) troops(700) among(701) us(702);<br><br> 																					For(703) protecting(704) them(705) by(706) a(707) mock(708) trial(709) from(710) punishment(711) for(712) any(713) murders(714) which(715) they(716) should(717) commit(718) on(719) the(720) inhabitants(721) of(722) these(723) states(724);<br><br>							For(725) cutting(726) off(727) our(728) trade(729) with(730) all(731) parts(732) of(733) the(734) world(735);<br><br>																	For(736) imposing(737) taxes(738) on(739) us(740) without(741) our(742) consent(743);<br><br>																							For(744) depriving(745) us(746) in(747) many(748) cases(749) of(750) the(751) benefits(752) of(753) trial(754) by(755) jury(756);<br><br> 												For(757) transporting(758) us(759) beyond(760) seas(761) to(762) be(763) tried(764) for(765) pretended(766) offenses(767);<br><br>														For(768) abolishing(769) the(770) free(771) system(772) of(773) English(774) laws(775) in(776) a(777) neighboring(778) province(779) establishing(780) therein(781) an(782) arbitrary(783) government(784) and(785) enlarging(786) its(787) boundaries(788) so(789) as(790) to(791) render(792) it(793) at(794) once(795) an(796) example(797) and(798) fit(799) instrument(800) for(801) introducing(802) the(803) same(804) absolute(805) rule(806) into(807) these(808) colonies(809);<br><br> 																				For(810) taking(811) away(812) our(813) charters(814) abolishing(815) our(816) most(817) valuable(818) laws(819) and(820) altering(821) fundamentally(822) the(823) forms(824) of(825) our(826) governments(827);<br><br>															For(828) suspending(829) our(830) own(831) legislature(832) and(833) declaring(834) themselves(835) invested(836) with(837) power(838) to(839) legislate(840) for(841) us(842) in(843) all(844) cases(845) whatsoever(846);<br><br> 												He(847) has(848) abdicated(849) government(850) here(851) by(852) declaring(853) us(854) out(855) of(856) his(857) protection(858) and(859) waging(860) war(861) against(862) us(863); <br><br> 																				He(864) has(865) plundered(866) our(867) seas(868) ravaged(869) our(870) coasts(871) burnt(872) our(873) towns(874) and(875) destroyed(876) the(877) lives(878) of(879) our(880) people(881)<br><br>																					He(882) is(883) at(884) this(885) time(886) transporting(887) large(888) armies(889) of(890) foreign(891) mercenaries(892) to(893) complete(894) the(895) works(896) of(897) death(898) desolation(899) and(900) tyranny(901) already(902) begun(903) with(904) circumstances(905) of(906) cruelty(907) and(&)(908) perfidy(909) scarcely(910) paralleled(911) in(912) the(913) most(914) barbarous(915) ages(916) and(917) totally(918) unworthy(919) the(920) head(921) of(922) a(923) civilized(924) nation(925);<br><br>												He(926) has(927) constrained(928) our(929) fellow(930) citizens(931) taken(932) captive(933) on(934) the(935) high(936) seas(937) to(938) bear(939) arms(940) against(941) their(942) country(943) to(944) become(945) the(946) executioners(947) of(948) their(949) friends(950) and(951) brethren(952) or(953) to(954) fall(955) themselves(956) by(957) their(958) hands(959);<br><br>																						He(960) has(961) excited(962) domestic(963) insurrections(964) amongst(965) us(966) and(967) has(968) endeavored(969) to(970) bring(971) on(972) the(973) inhabitants(974) of(975) our(976) frontiers(977) the(978) merciless(979) Indian(980) savages(981) whose(982) known(983) rule(984) of(985) warfare(986) is(987) an(988) undistinguished(989) destruction(990) of(991) all(992) ages(993) sexes(994) and(995) conditions(996).<br><br> 							In(997) every(998) stage(999) of(1000) these(1001) oppressions(1002) we(1003) have(1004) petitioned(1005) for(1006) redress(1007) in(1008) the(1009) most(1010) humble(1011) terms(1012) our(1013) repeated(1014) petitions(1015) have(1016) been(1017) answered(1018) only(1019) by(1020) repeated(1021) injury(1022) a(1023) prince(1024) whole(1025) character(1026) is(1027) thus(1028) marked(1029) by(1030) every(1031) act(1032) which(1033) may(1034) define(1035) a(1036) tyrant(1037) is(1038) unfit(1039) to(1040) be(1041) the(1042) ruler(1043) of(1044) a(1045) free(1046) people(1047).<br><br>													Nor(1048) have(1049) we(1050) been(1051) wanting(1052) in(1053) attention(1054) to(1055) our(1056) British(1057) brethren(1058) we(1059) have(1060) warned(1061) them(1062) from(1063) time(1064) to(1065) time(1066) of(1067) attempts(1068) by(1069) their(1070) legislature(1071) to(1072) extend(1073) an(1074) unwarrantable(1075) jurisdiction(1076) over(1077) us(1078) we(1079) have(1080) reminded(1081) them(1082) of(1083) the(1084) circumstances(1085) of(1086) our(1087) emigration(1088) and(1089) settlement(1090) here(1091) we(1092) have(1093) appealed(1094) to(1095) their(1096) native(1097) justice(1098) and(1099) magnanimity(1100) and(1101) we(1102) have(1103) conjured(1104) them(1105) by(1106) the(1107) ties(1108) of(1109) our(1110) common(1111) kindred(1112) to(1113) disavow(1114) these(1115) usurpations(1116) which(1117) would(1118) inevitably(1119) interrupt(1120) our(1121) connections(1122) and(1123) correspondence(1124) they(1125) too(1126) have(1127) been(1128) deaf(1129) to(1130) the(1131) voice(1132) of(1133) justice(1134) and(1135) of(1136) consanguinity(1137).<br><br>						We(1138) must(1139) therefore(1140) acquiesce(1141) in(1142) the(1143) necessity(1144) which(1145) denounces(1146) our(1147) separation(1148) and(1149) hold(1150) them(1151) as(1152) we(1153) hold(1154) the(1155) rest(1156) of(1157) mankind(1158) enemies(1159) in(1160) war(1161) in(1162) peace(1163) friends(1164).<br><br> 											We(1165), therefore(1166), the(1167) representatives(1168) of(1169) the(1170) united(1171) states(1172) of(1173) America(1174), in(1175) general(1176) congress(1177) assembled(1178), appealing(1179) to(1180) the(1181) supreme(1182) judge(1183) of(1184) the(1185) world(1186) for(1187) the(1188) rectitude(1189) of(1190) our(1191) intentions(1192) do(1193) in(1194) the(1195) name(1196) and(1197) by(1198) authority(1199) of(1200) the(1201) good(1202) people(1203) of(1204) these(1205) colonies(1206) solemnly(1207) publish(1208) and(1209) declare(1210) that(1211) these(1212) united(1213) colonies(1214) are(1215) and(1216) of(1217) right(1218) ought(1219) to(1220) be(1221) free(1222) and(1223) independent(1224) states(1225) that(1226) they(1227) are(1228) absolved(1229) from(1230) all(1231) allegiance(1232) to(1233) the(1234) British(1235) crown(1236) and(1237) that(1238) all(1239) political(1240) connection(1241) between(1242) them(1243) and(1244) the(1245) state(1246) of(1247) great(1248) Britain(1249) is(1250) and(1251) ought(1252) to(1253) be(1254) totally(1255) dissolved(1256) and(1257) that(1258) as(1259) free(1260) and(1261) independent(1262) states(1263) they(1264) have(1265) full(1266) power(1267) to(1268) levy(1269) war(1270) conclude(1271) peace(1272) contract(1273) alliances(1274) establish(1275) commerce(1276) and(1277) to(1278) do(1279) all(1280) other(1281) acts(1282) and(1283) things(1284) which(1285) independent(1286) states(1287) may(1288) of(1289) right(1290) do(1291). And(1292) for(1293) the(1294) support(1295) of(1296) this(1297) declaration(1298), with(1299) a(1300) firm(1301) reliance(1302) on(1303) the(1304) protection(1305) of(1306) divine(1307) providence(1308), we(1309) mutually(1310) pledge(1311) to(1312) each(1313) other(1314) our(1315) lives(1316), our(1317) fortunes(1318), and(1319) our(1320) sacred(1321) honor(1322).";
+
+
+var keyString_show = "When, in the course of human events it becomes necessary for one people to dissolve the political bands which have connected them with another. and to assume among the powers of the earth, the separate and equal station to which the laws of nature and of nature's God entitle them, a decent respect to the opinions of mankind requires that they should declare the causes which impel them to the separation.";
+
+var plainString = "I have deposited in the county of Bedford, about four miles from Buford's, in an excavation or vault, six feet below the surface of the ground, the following articles, belonging jointly to the parties whose names are given in number '3,' herewith: The first deposit consisted of one thousand and fourteen pounds of gold, and three thousand eight hundred and twelve pounds of silver, deposited November, 1819. The second was made December, 1821, and consisted of nineteen hundred and seven pounds of gold, and twelve hundred and eighty-eight pounds of silver; also jewels, obtained in St. Louis in exchange for silver to save transportation, and valued at $13,000. The above is securely packed in iron pots, with iron covers. The vault is roughly lined with stone, and the vessels rest on solid stone, and are covered with others. Paper number '1' describes the exact locality of the vault so that no difficulty will be had in finding it.";
+
+$(document).ready(function(){
+	//ready the modal.
+	$('.modal-trigger').leanModal();
+	//	$(".modal").width("30vw");
+
+	$(".input-field #cipherString").text(cipherString.substr(0,150)+" ...[Click for full view]");
+	$(".modal #cipherString").html(cipherString);
+
+	$(".input-field #keyString").text(keyString_show.substr(0,150)+" ...[Click for full view]");
+	$(".modal #keyString").html(keyString);
+});
+
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+
+	//$("#outputString").html(plainString);
+	//$("#outputString").shuffleLetters(); 
+	$("#outputString").shuffleLetters({
+				"text": plainString
+			});
+});
+
+
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

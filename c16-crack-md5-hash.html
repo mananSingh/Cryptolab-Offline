@@ -1,0 +1,221 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Crack MD5 Hash </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Hashes MD5 Password Cracking Wordlist tools Cryptolab Cryptogame">
+	<meta name="description" content="A password is mostly stored as a hash. This tool allows to 'crack' an MD5 password hash using a wordlist which contains possible words for password separated by semicolon.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/hashes.js"></script><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4 style="display:inline">Crack MD5 Hash</h4><h5>Using Wordlist</h5>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				Welcome to this final post.<br><br>
+
+				Here we will discuss some ways to crack the password hashes.<br><br>
+
+				Suppose, you have got a hash string (a random looking string) which corresponds to some password. Now what can be the ways to 'crack' the original plaintext from this hash? Think yourself.<br><br>
+
+				Intuitively, there seem three possible ways:<br>
+				1- To try to match the given hash, with the hash of each and every possible character or string in the world. Firstly, we will try hashes of all the characters, then of all the possible strings of length 2, then all possible strings of length 3, and so on... (doesn't that sound practically impossible!! But even that works manytimes; especially due to the advances in the processing power of today's computers.) This is called 'Brute-force' method. <br><br>
+
+				2- To select few words (eg. in a wordlist) (like, the most probable passwords collection), and just check the hash of each of them with the given hash.<br><br>
+
+				3- Using rainbow tables, which are precomputed hashes to word mappings of millions of words. The collection often sizes upto few terabytes. This can also be searched for a hash-match.<br><br>
+
+				This is how password hashes are tried to be cracked.<br><br>
+
+				The 'Tool' in the other tab can be used to crack an MD5 Hash using a Wordlist (a collection of words separated by semicolon). All it does is try to match the hashes of all of the given words in the wordlist with the given hash (hash which is to be cracked).<br><br>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>In the End</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				This last post marks the end of this series of short articles on Cryptography.<br><br>
+				Hopefully, this was a nice journey for you, learning various cryptographic techniques - from classical easy ones to the wonderful and inspirational methods of the new age. Definitely, you would have gained greater insight into the world of Cryptography, which will help you not only become a better cryptography-aware citizen, but also pursue the field further if you want.<br>
+				The career prospects as well as the new horizons in this discipline offer great future promises, which you can surely benefit.<br><br>
+
+				In the end, it's a matter of huge proud that you have developed a new way of thinking, a new way of imagining. You have privileged yourself with the art and science of Message Concealment that was once considered a secret practice of Black art! Indeed, the effect that cyprotgraphy produces is no less magical than a miracle, and you, yourself, are no less wondrous than a wizard. <br><br>
+
+				All the Best for your future ventures.<br>
+				Bye :-)<br>
+				Post-23 Ended.<br><br>
+
+				<div class="center-align">-- The End --</div>
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- input & key Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="hash" class="materialize-textarea" placeholder="In Hex format only."></textarea>
+        <label for="hash">Input Hash</label>
+      </div> 
+      <div class="input-field col s8 offset-s2">
+        <textarea id="wordlist" class="materialize-textarea" placeholder="Separate Words with Semicolon. Example: Apple; Ball; Cat; Zebra"></textarea>
+        <label for="wordlist">Enter Word List</label>
+      </div> 
+    </div>
+
+
+	  <br>
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Crack"><i class="material-icons">done</i></a>
+
+    <br>
+
+	<!-- output Area -->
+	<div class="row">
+
+      <div class="input-field col s8 offset-s2">
+        <textarea id="Result" class="materialize-textarea" placeholder="Result Will Be Displayed Here..." readonly="readonly" style="color:black"></textarea>
+        <label for="Result" style="color:#9e9e9e">Result</label>
+      </div>
+
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+	//empty!
+});
+
+
+//whenever input in string is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#hash").val());
+	var wordlist = $.trim($("#wordlist").val());
+
+	var oString = "";
+
+	if(iString == "" || wordlist == ""){
+		oString = "Please enter all the fields.";
+		Materialize.toast(oString, 8000);
+		return;
+	}else if (iString.match('[^0-9A-Fa-f ]')){	//meaning, not a 'valid' hex
+		oString = "Make sure you are Decoding a Valid Hex Hash!";
+		Materialize.toast(oString, 4000);
+		return "";
+
+	}else{
+		var wordsArray = wordlist.split(";");	//something like: wordlist.explode(';');
+		var totalWords = wordsArray.length;
+		var matchFound = false;
+		var wordHash;
+		for(var i=0; i < totalWords; i++){
+			wordHash = new Hashes.MD5().hex($.trim(wordsArray[i]));
+			oString = "Matching Hash for " + wordsArray[i] + " ( " + (i+1) + " / " + totalWords + " )";
+			
+			$("#Result").text(oString);
+			if(wordHash == iString){
+				matchFound = true;
+				break;
+			}
+		}		
+		if(matchFound == true){
+			oString = "Match Found at " + (i+1) + "/" + totalWords + " : " + wordsArray[i];
+		}else{
+			oString = (i) + " / " + totalWords + " words parsed. No Match Found!";
+		}
+		$("#Result").text(oString);
+	}
+});
+
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

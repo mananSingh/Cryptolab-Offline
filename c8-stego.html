@@ -1,0 +1,206 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Steganography </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Crpytography Steganography tools Cryptolab Cryptogame">
+	<meta name="description" content="Steganography is the practice of concealing a message within another message - data within the other data - hidden in the plainsight.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>Steganography</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Puzzle</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				'Steganography' is not specifically a technique, but a general practice of concealing a message within other message. The hidden message appears not gibberish (as it does in cryptography), but appears to be something else.<br><br>
+
+				Some classical techniques to hide a message in the plainsight were:<br>
+				Use of invisible ink, Creating a puzzle, Clever arrangement of words of the original message into another text message (see the 'demo'), etc.<br><br>
+
+				In modern world, digital steganography techniques is used to hide files, messages, images, documents or videos into another files, messages, images, documents or videos. Most of such techniques work by hiding the 'bits' of original message/file into the 'bits'-representation of the 'cover'-message/file. Some examples can be concealing messages within the lowest bits of 'noisy' images or sound files; Pictures embedded in the video material; Making text as the same color as the background in a document/blog; etc.<br><br>
+
+				Indeed there are numerous ways to use steganography to hide a message or a file, and much depends on exploring new possibilities of creativity.<br><br>
+
+				<em>note: </em> Don't forget to check out the text steganography puzzle in other tab. This is a popular puzzle (for Inspector Morse in the story) from the crime novel <em>The Silent World of Nicholas Quinn</em>, by <em>Colin Dexter</em>.
+
+				<br><br>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				Till now we discussed either creative hiding of message (as in steganography) or encrypting of text by substituting letters. In the next post, we will discuss the a cipher which literally 'scrambles' (i.e. change the positions of) all the letters of the original message, based on some method.<br>
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-9 Ended.
+
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- cipher & key area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+
+      <div class="col s8 offset-s2">
+		<h5>Hidden in this Letter?</h5>
+		<p >
+			3rd March<br><br>
+			Dear George,<br><br>
+
+			Greetings to all at Oxford. Many thanks for <span class="hidden">your</span><br>
+			letter and for the Summer examination  <span class="hidden">package</span>.<br>
+			All Entry Forms and Fee Forms should be  <span class="hidden">ready</span><br>
+			for final despatch to the Syndicate by <span class="hidden"> Friday</span><br>
+			20th or at the very latest, I'm told, by the  <span class="hidden">21st</span>.<br>
+			Admin has improved here, though there's  <span class="hidden">room</span><br>
+			for improvement still; just give us all two or  <span class="hidden">three</span><br>
+			more years and we'll really show you!  <span class="hidden">Please</span><br>
+			don't let these wretched 16+ proposals  <span class="hidden">destroy</span><br>
+			your basic O and A pattern. Certainly  <span class="hidden">this</span><br>
+			sort of change, if implemented  <span class="hidden">immediately</span>,<br>
+			would bring choas.<br><br>
+
+			<span class="center-align">Sincerely Yours.</span>
+
+		</p>        
+      </div>
+
+    </div>
+
+
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Highlight hidden message."><i class="material-icons">done</i></a>
+
+    <br><br>
+
+
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+
+
+$(document).ready(function(){
+	//empty;
+});
+
+var count = 0;
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+		if(count==0){
+			Materialize.toast("Are you sure to see the hidden message!", 4000);
+		}
+		else if(count==1){
+			Materialize.toast("But, you should try yourself first.", 4000);
+		}
+		else if(count==2){
+			Materialize.toast("Last Chance! Don't you want to try yourself!", 4000);
+		}
+		else if(count==3){
+			Materialize.toast("OK. Click again, and mystery will be unraveled.", 5000);
+		}
+	
+		if(count >= 4){
+			//$(".hidden").css("color","#008080");		//color:teal
+			$(".hidden").addClass("cyan lighten-4");
+		}
+		count+=1;
+});
+
+
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

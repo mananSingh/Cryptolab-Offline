@@ -1,0 +1,307 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Morse Code </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Cryptography Morse Code tools Cryptolab Cryptogame">
+	<meta name="description" content="Morse code - using dots and dashes to encode alphabets of a message. the encoded code can be transmitted using long and short light or sound signals">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>Morse Code</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>When-why</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				Hello! It's nice to see you again. <br><br>
+
+				Prepare yourself, we are going to discuss today...<br><br>
+			
+				--- .... --..-- --. .-. . .- - .-.-.- ..-. .. -. .- .-.. .-.. -.-- .-.-.- ... --- -- . --- -. . --..-- .-- .... --- --..-- -.-. .- .-. . ... --..-- ..-. --- .-. --..-- -- --- .-. ... . .-.-.-<br><br>
+
+				...hey, wait!<br>
+				Do you think the above dots and dashes are useless?<br>
+				No. They are not useless. But They Are...<br><br>
+
+				...yeah, you guessed it right, the MORSE CODE !!!<br><br>
+
+				"Morse code" is named after one of its co-developer Samuel F. B. Morse, who was actually a very good painter/artist.<br>
+				Get ready, it's story time.<br><br>
+
+				Morse was very good at portrait painting. Once, in 1800s, he was gone for an official painting project, somewhere few hundred miles away from his home.<br>
+				While painting, one day, he got a letter of his father (via a horse messenger) about recovery of his ill wife. But the next day, he got another letter of his father (again via another horse messenger) detailing his wife's sudden death!<br>
+				He left immediately for his home, leaving his project unfinished. But by the time he arrived home, his wife had already been buried. How tragic! Heartbroken by this incident, that he was not able to know his wife's conditions due to the 'distance-problem' (since horse messengers took days to transport letters), he decided to explore some means of faster long-distance communication.<br><br>
+
+				Ah! That's history of humans! Tragic necessities breed invention!<br>
+				After few years, inspired by electromagnetic experiments of one of his friend, he invented the concept of a single-wire 'telegraph' ('telegraphy' is about transmitting text or symbols across long distances, without any physical exchange); and submitted it's patent application.<br><br>
+
+				There were also parallel developments at that time, but Morse fought hard to be called the 'sole' inventor of this technique, as can be felt in one of his letter during those days. He wrote:<br><br>
+
+				"I have been so constantly under the necessity of watching the movements of the most unprincipled set of pirates I have ever known, that all my time has been occupied in defense, in putting evidence into something like legal shape that I am the inventor of the Electro-Magnetic Telegraph! Would you have believed it ten years ago that a question could be raised on that subject?"  - S. Morse<br><br>
+
+				That was a story from history. Indeed, over passage of time, the morse code underwent many standardizations and today, stands as a global standard for telegraphic transmission of data.<br><br>
+
+			</p>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col s2"><br><strong>How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				But how does Morse Code work?<br><br>
+
+				Well, we will only discuss the 'coding' technique here, although, its main popularity and strength lies in its property to be easy-to-transmit, just by using on-off tones, flashes of light, or clicks, etc.; and to be easy-to-recieve by any skilled person who knows the 'coding-scheme'. In fact, it's the 'coding-scheme' that we will see now, and that's all how it works.<br>
+
+				<div style="text-align:center"><img alt="morse-code-chart" src="images/c/Morse-Code.png"></div><br>
+
+				Exactly as it looks in the image above, each letter or character corresponds to some pattern of dots and dashes; and so, each character in the message is encoded correspondingly.<br>
+				And when you need to decode a morse code message, that's just the reverse of encoding process. A set of dots and dashes correspond to some specific character; and so, the all the grouped dots-and-dashes are converted back to their respective character. For an example:<br><br>
+
+				SOS becomes ...---...<br>
+				("SOS" is also considered as the standard emergency/distress signal!)<br><br>
+
+				That's it. That's morse code.<br><br>
+
+				Note that in the digital implementation of morse code (that you can use in 'Tool' tab), some small changes have been done; like, 'space' between words is represented by '/', and one dash does not equal three dots in length, etc... But the rest of the encoding scheme is same, and works fine if used properly (Improper use, like, encoding an already-encoded morse-code-text will be of no use! So, just be careful of those kind of errors! Otherwise, it's all fine.)
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				So, this was about the most popular encoding and decoding scheme in the world of telegraphy. Now, next, we will come back to our discussion of hiding 'secret' messages that only our trusted friends can read.<br><br>
+
+				In caesar cipher, the Key was a number between 1 to 25; but in other techniques, its 'type' can differ highly. In the next post, we will discuss a technique in which the Key will be a 'string' (i.e. a long sequence of characters), and the ciphertext resulting from that technique is claimed to be 'very strong' and even, 'Unbreakable'!<br>
+				Sounds Interesting? Very much. So see you there.<br>
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-5 Ended.
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- input Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="inputString" class="materialize-textarea"></textarea>
+        <label for="inputString">Input String</label>
+      </div>
+    </div>
+
+
+	  <!-- Switch -->
+	  <div class="switch">
+	    <label>
+	      Encode
+	      <input id="mode" type="checkbox">
+	      <span class="lever"></span>
+	      Decode
+	    </label>
+	  </div>
+
+	  <br><br>
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Convert"><i class="material-icons">done</i></a>
+
+	<!-- output Area -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="outputString" class="materialize-textarea" placeholder="Output Will Be Displayed Here..." readonly="readonly" style="color:black"></textarea>
+        <label for="outputString" style="color:#9e9e9e">Output String</label>
+      </div>
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+	//empty!
+});
+
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#inputString").val());
+	var oString = "";
+	$("#outputString").text(oString);	//clear the oString box first.
+
+	//step - 1: is input string empty?
+	if(iString == ""){
+		oString = "Please enter some Input String first.";
+		Materialize.toast(oString, 4000);
+	}else{
+		var key = $("#key").val();
+		var mode = $("#mode").prop("checked"); 	//mode: true => decode; false => encode
+		
+		oString = morse(iString, mode);
+		$("#outputString").text(oString);
+		$('#outputString').trigger('autoresize');
+	}
+});
+
+
+//Our main JS function for this Cipher technique
+//Parameters:- iString: string, mode: false[encode]/true[decode]
+function morse(iString, mode){
+	var oString = "";
+
+	//the computation goes here.
+	//oString = iString;
+	
+	var iString = iString.toUpperCase();
+
+	//Preparing array for char2morse.
+    var char2morse = {
+    'A': '.-',    'B': '-...',  'C': '-.-.', 'D': '-..',
+    'E': '.',     'F': '..-.',  'G': '--.',  'H': '....',
+    'I': '..',    'J': '.---',  'K': '-.-',  'L': '.-..',
+    'M': '--',    'N': '-.',    'O': '---',  'P': '.--.',
+    'Q': '--.-',  'R': '.-.',   'S': '...',  'T': '-',
+    'U': '..-',   'V': '...-',  'W': '.--',  'X': '-..-',
+    'Y': '-.--',  'Z': '--..',   '.': '.-.-.-', ',': '--..--',
+    '?': '..--..', '/': '-..-.', '@': '.--.-.', ' ': '/',
+    '1': '.----', '2': '..---', '3': '...--', '4': '....-', 
+    '5': '.....', '6': '-....', '7': '--...', '8': '---..', 
+    '9': '----.', '0': '-----'
+	};
+
+
+	//Preparing array for morse2char: required array_flip function.
+	function array_flip(trans){
+		var key, temp_ar = {};
+		for(key in trans){
+			if(trans.hasOwnProperty(key)){
+				temp_ar[trans[key]] = key;
+			}
+		}
+		return temp_ar;
+	}
+	//Preparing array for morse2char: using the above array_flip function.
+	var morse2char = array_flip(char2morse);
+
+	if(mode == false){			//meaning, 'encode' mode selected.
+
+		oString = iString
+		    .split('')            // Transform the string into an array: ['T', 'h', 'i', 's'...
+		    .map(function(e){     // Replace each character with a morse "letter"
+		        return char2morse[e] || ''; //ignore unknown characters.
+		    })
+		    .join(' ')            // Convert the array back to a string.
+		    .replace(/ +/g, ' '); // Replace double spaces that may occur when unknown characters were in the source string.	
+
+	}else{						//meaning, 'decode' mode selected.
+
+		//first: is user entering valid morse-code text!
+		if(iString.match('[^-. /]')){ //meaning, not a valid morse-code text
+			oString = "Make sure you are Decoding a Valid Morse-Code text!";
+			Materialize.toast(oString, 4000);
+			return "";
+		}
+		else{	//meaning, the iString IS a valid morse-code text.
+
+			oString = iString
+				.split(' ')		
+				.map(function(e){
+					return morse2char[$.trim(e)] || ''; 
+				})
+				.join('');
+		}
+	}
+
+	return oString;
+}
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

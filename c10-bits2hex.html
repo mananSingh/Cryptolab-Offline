@@ -1,0 +1,331 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Bits to Hex </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Text to hexadecimal tools Cryptolab Cryptogame">
+	<meta name="description" content="hexadecimal is a base-16 number system, and can be used to represent binary data and make it more human-readable.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>Bits to Hex</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-Why-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				Hexadecimal refers to a base-16 number system, which consists of 16 unique symbols, in contrast to the decimal number system (of 10 distinct symbols) or the binary number system (of 2 distinct symbols).<br><br>
+
+These symbols (and their corresponding binary and decimal numbers) are as follows:<br>
+<pre>
+	Binary  Hex.
+0	0000	0
+1	0001	1
+2	0010	2
+3	0011	3
+4	0100	4
+5	0101	5
+6	0110	6
+7	0111	7
+8	1000	8
+9	1001	9
+10	1010	A
+11	1011	B
+12	1100	C
+13	1101	D
+14	1110	E
+15	1111	F
+</pre>
+
+The hexadecimal system is commonly used by programmers to describe locations in memory. Like the memory address 10011011 can be converted to hexadecimal as: 1001 1011 => 9B. Of course, it is much easier for humans to read.<br><br>
+
+Also, the conversion between hexadecimal and binary numbers is also easy after a little practice. For example, to convert a byte value from hexadecimal to binary, all that is necessary is to translate each individual hexadecimal digit into its four-bit binary equivalent.<br><br>
+
+Hexadecimal numbers are indicated by the addition of either an 0x prefix or an h suffix. For example, the hexadecimal number 0x2F5B translates to the binary number 0010 1111 0101 1011.<br><br>
+
+A common use of hexadecimal numbers is also to describe colors on web pages. Each of the three primary colors (i.e., red, green and blue) is represented by two hexadecimal digits to create 255 possible values, thus resulting in more than 16 million possible colors. For example, the HTML (hypertext markup language) code telling a browser to render the background color of a web page as red is   &lt;body bgcolor="#FF0000"&gt; and that telling it to render the page as white is &lt;bgcolor="#FFFFFF"&gt;.<br><br>
+
+			</p>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				This was Hexadecimal, and next, we will see 'base64' - a text-to-binary encoding scheme that converts binary data to an ASCII-like string, using 64 characters.
+				<br>				
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-13 Ended.
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- input Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="inputString" class="materialize-textarea"></textarea>
+        <label for="inputString">Input String</label>
+      </div>
+    </div>
+
+
+	  <!-- Switch -->
+	  <div class="switch">
+	    <label>
+	      Encode (Binary-to-Hex)
+	      <input id="mode" type="checkbox">
+	      <span class="lever"></span>
+	      Decode (Hex-to-Binary)
+	    </label>
+	  </div>
+
+	  <br><br>
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Convert"><i class="material-icons">done</i></a>
+
+	<!-- output Area -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="outputString" class="materialize-textarea" placeholder="Output Will Be Displayed Here..." readonly="readonly" style="color:black"></textarea>
+        <label for="outputString" style="color:#9e9e9e">Output String</label>
+      </div>
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+	//empty !
+});
+
+
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#inputString").val());
+	var oString = "";
+	$("#outputString").text(oString);	//clear the oString box first.
+
+	//step - 1: is input string empty?
+	if(iString == ""){
+		oString = "Please enter some Input String first.";
+		Materialize.toast(oString, 4000);
+	}else{
+
+		var mode = $("#mode").prop("checked"); 	//mode: true => decode; false => encode
+		
+
+		oString = hexbin(iString, mode);
+		$("#outputString").text(oString);
+		$('#outputString').trigger('autoresize');
+	}
+});
+
+
+//Our main JS function for this Cipher technique
+//Parameters:- iString: string, mode: false[encode]/true[decode]
+function hexbin(iString, mode){
+	var oString = "";
+
+	if(mode == false){			//meaning, 'encode' mode selected. (binary-to-hex)
+
+		//check if anything other than binary inputted!
+		if(iString.match('[^10 ]')){ //meaning, not a valid 'binary'
+			oString = "Make sure you are Encoding a Valid Binary!";
+			Materialize.toast(oString, 4000);
+			return "";
+		}
+		else{	//binary input is valid.
+			
+
+			iString = iString.replace(/[ ]/g, "");
+
+			if(iString.length % 4 != 0){
+				//then, make so.
+				for(var i=0; iString.length % 4 != 0 ;i++){
+					iString = "0" + iString;
+				}
+			}
+
+
+			function binaryToHex(s) {
+			    var i, k, part, accum, ret = '';
+			    for (i = s.length-1; i >= 3; i -= 4) {
+			        // extract out in substrings of 4 and convert to hex
+			        part = s.substr(i+1-4, 4);
+			        accum = 0;
+			        for (k = 0; k < 4; k += 1) {
+			            // compute the length 4 substring
+			            accum = accum * 2 + parseInt(part[k], 10);
+			        }
+			        if (accum >= 10) {
+			            // 'A' to 'F'
+			            ret = String.fromCharCode(accum - 10 + 'A'.charCodeAt(0)) + ret;
+			        } else {
+			            // '0' to '9'
+			            ret = String(accum) + ret;
+			        }
+			    }
+			    // remaining characters, i = 0, 1, or 2
+			    if (i >= 0) {
+			        accum = 0;
+			        // convert from front
+			        for (k = 0; k <= i; k += 1) {
+
+			            accum = accum * 2 + parseInt(s[k], 10);
+			        }
+			        // 3 bits, value cannot exceed 2^3 - 1 = 7, just convert
+			        ret = String(accum) + ret;
+			    }
+			    return ret;
+			}
+		
+			oString = binaryToHex(iString);
+			//oString = parseInt(iString,2).toString(16);
+
+			iString = iString.replace(/(.{4})/g,"$1 ");
+			$("#inputString").val(iString);
+
+			oString = oString.replace(/(.{2})/g,"$1 ");
+
+
+			//...otherwise, continue as normal.
+			return oString;
+		}
+
+	}else{						//meaning, 'decode' mode selected. (hex-to-binary)
+
+		//check if anything other than hex inputted.
+		if(iString.match('[^0-9A-Fa-f ]')){	//meaning, not a 'valid' hex
+			oString = "Make sure you are Decoding a Valid Hex!";
+			Materialize.toast(oString, 4000);
+			return "";
+		}
+
+		//if above good, then: first, remove all the spaces from hex
+		iString = iString.replace(/[ ]/g, "");
+
+		iString.toUpperCase();
+		function hexToBinary(s) {
+		    var i, k, part, ret = '';
+		    // lookup table for easier conversion. '0' characters are padded for '1' to '7'
+		    var lookupTable = {
+		        '0': '0000', '1': '0001', '2': '0010', '3': '0011', '4': '0100',
+		        '5': '0101', '6': '0110', '7': '0111', '8': '1000', '9': '1001',
+		        'a': '1010', 'b': '1011', 'c': '1100', 'd': '1101',
+		        'e': '1110', 'f': '1111',
+		        'A': '1010', 'B': '1011', 'C': '1100', 'D': '1101',
+		        'E': '1110', 'F': '1111'
+		    };
+		    for (i = 0; i < s.length; i += 1) {
+		            ret += lookupTable[s[i]];
+			};
+			return ret;	    
+	    }
+
+	    oString = hexToBinary(iString);
+
+		if(oString.length % 4 != 0){
+			//then, make so.
+			for(var i=0; iString.length % 4 != 0 ;i++){
+				oString = "0" + oString;
+			}
+		}
+		oString = oString.replace(/(.{4})/g,"$1 ");
+		return oString;
+	}
+
+}
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

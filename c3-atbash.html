@@ -1,0 +1,232 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Atbash Cipher </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Cryptography Atbash cipher tools Cryptolab Cryptogame">
+	<meta name="description" content="Atbash cipher - the simple substitution cipher, originally for hebrew alphabets, in which all the letters/alphabets are reversed. like a becomes z, b becomes y, and so on.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/jquery.shuffleLetters.js"></script><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>Atbash Cipher</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				<span id="greet"></span> How is life?<br><br>
+
+				Well, I am fine. Thank you. <br><br>
+
+				Oh, did you read "Atbash" in the title? OK, so let's talk about "Atbash".<br><br>
+
+				This time, we will talk about a very simple encoding technique called "Atbash Cipher".<br>
+				The name "Atbash" derives from the first, second, last and second last Hebrew alphabets: <u>A</u>leph, <u>T</u>av, <u>B</u>eth, <u>Sh</u>in. This technique was originally seen in use by Jeremiah (a major prophet of Hebrew Bible) at several places in his texts, and the technique itself was originally for the Hebrew alphabets; although it's possible with any alphabet set. We will see the english version.<br><br>
+
+				It's very simple (and also obviously weak for encryption), as the only rule is that each alphabet in the message is substituted by the 'exactly-opposite' alphabet in the alphabet-set. Example:<br><br>
+
+				'A' becomes 'Z', 'B' becomes 'Y', 'C' becomes 'X', and so on...<br><br>
+
+				Just as another example: the word "ABCDEF" becomes "ZYXWVU" after applying atbash; and "ZYXWVU" becomes "ABCDEF" back again, if atbash is applied again.<br><br>
+
+				That's it. That's Atbash.<br>
+			</p>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				This post was very small, thanks to Atbash.<br>
+				But next, we will see a very interesting, very popular and still-in-use method of encoding messages to dots and dashes. (Hint: Morse Code!)<br>
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-4 Ended.
+
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- input Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="inputString" class="materialize-textarea"></textarea>
+        <label for="inputString">Input String</label>
+      </div>
+    </div>
+
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Compute"><i class="material-icons">done</i></a>
+
+	<!-- output Area -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="outputString" class="materialize-textarea" placeholder="Output Will Be Displayed Here..." readonly="readonly" style="color:black"></textarea>
+        <label for="outputString" style="color:#9e9e9e">Output String</label>
+      </div>
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+	//empty !
+});
+
+
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#inputString").val());
+	var oString = "";
+	$("#outputString").text(oString);	//clear the oString box first.
+
+	//step - 1: is input string empty?
+	if(iString == ""){
+		oString = "Please enter some Input String first.";
+		Materialize.toast(oString, 4000);
+	}else{
+
+		oString = atbash(iString);
+		
+		
+		if(oString.length > 100){
+			$("#outputString").text(oString);
+			
+		}else{	//'with-style!'
+			$("#outputString").shuffleLetters({
+					"text": oString
+				});
+		}
+		$('#outputString').trigger('autoresize');
+	}
+});
+
+
+//Our main JS function for this Cipher technique
+//Parameters:- iString: string.
+function atbash(iString){
+	var oString = "";
+
+	//the computation goes here.
+	//oString = iString;
+	
+	var iString = iString.toUpperCase();
+	
+	//var letterArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    var letterArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";		//it's actually string as an array!
+    
+    //for each character in string:
+    for(var i=0; i<iString.length; i++){
+    	var character = iString.charAt(i);
+    	var digit = 0;
+    	
+    	//check if it's a letter
+    	if(letterArray.indexOf(character)>-1){	//meaning, it IS a letter, in the "letterArray".
+    		digit = letterArray.indexOf(character);
+
+    		//now we have 'index' of that character; eg: A=0, B=1, ... Z=25.
+    		digit = Math.abs(25 - eval(digit));
+
+			oString += letterArray.charAt(digit);
+    		
+    		
+    	}else{	//it's not in "letterArray"
+    		oString += character;
+    	}
+    		
+    }
+	return oString;
+}
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

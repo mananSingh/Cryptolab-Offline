@@ -1,0 +1,329 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Brute Force Caesar </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Cryptography brute force caesar cipher tools Cryptolab Cryptogame">
+	<meta name="description" content="the simple substitution cipher called caesar cipher's weakness can be easily exploited using a brute force attack">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4 style="display:inline">Brute Force Attack </h4><h5>Caesar Cipher</h5>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				Hello. <span id="greet"></span> And Welcome back.<br><br>
+			
+				The last time we met (in the last post), we were talking about Caesar Cipher, a classical technique in which all the letters of the message are shifted by some number between 1 to 25, and the resultant text becomes unreadable at first glance, and the message gets hidden in that ciphertext.<br><br>
+
+				But!<br>
+				That's not much secure. Not especially when we have a fast calculating machine like 'Computer'.<br><br>
+				
+				In the Brute force attack, you take the ciphertext (with cunning intention of cracking it), and then, <br>
+				you try to enlist all the possible combinations of plaintext that it could've been possibly derived from.<br>
+				In other words, you try to decrypt the message repeatedly, using all the keys from 1 to 25 (because you don't know which is the 'acutal' key!), until you get 'something' that makes sense. For example:<br><br>
+
+				Suppose you got a message "VORD GRGVIJ CVRBVU RK RYR.TFD",<br>
+				and you suspect it to be encrypted using Caesar Cipher.<br>
+				So! What do you do!<br>
+				You repeatedly try deciphering it using each key from 1 to 25, which in the end, gives you something like this:<br><br>
+
+				1 &nbsp;&nbsp;&nbsp; UNQC FQFUHI BUQAUT QJ QXQ.SEC<br>
+				2 &nbsp;&nbsp;&nbsp; TMPB EPETGH ATPZTS PI PWP.RDB<br>
+				3 &nbsp;&nbsp;&nbsp; SLOA DODSFG ZSOYSR OH OVO.QCA<br>				
+				4 &nbsp;&nbsp;&nbsp; RKNZ CNCREF YRNXRQ NG NUN.PBZ<br>
+				5 &nbsp;&nbsp;&nbsp; QJMY BMBQDE XQMWQP MF MTM.OAY<br>
+				6 &nbsp;&nbsp;&nbsp; PILX ALAPCD WPLVPO LE LSL.NZX<br>
+				7 &nbsp;&nbsp;&nbsp; OHKW ZKZOBC VOKUON KD KRK.MYW<br>
+				8 &nbsp;&nbsp;&nbsp; NGJV YJYNAB UNJTNM JC JQJ.LXV<br>
+				9 &nbsp;&nbsp;&nbsp; MFIU XIXMZA TMISML IB IPI.KWU<br>
+				10 &nbsp;&nbsp;&nbsp; LEHT WHWLYZ SLHRLK HA HOH.JVT<br>
+				11 &nbsp;&nbsp;&nbsp; KDGS VGVKXY RKGQKJ GZ GNG.IUS<br>
+				12 &nbsp;&nbsp;&nbsp; JCFR UFUJWX QJFPJI FY FMF.HTR<br>
+				13 &nbsp;&nbsp;&nbsp; IBEQ TETIVW PIEOIH EX ELE.GSQ<br>
+				14 &nbsp;&nbsp;&nbsp; HADP SDSHUV OHDNHG DW DKD.FRP<br>
+				15 &nbsp;&nbsp;&nbsp; GZCO RCRGTU NGCMGF CV CJC.EQO<br>
+				16 &nbsp;&nbsp;&nbsp; FYBN QBQFST MFBLFE BU BIB.DPN<br>
+				17 &nbsp;&nbsp;&nbsp; EXAM PAPERS LEAKED AT AHA.COM<br>
+				18 &nbsp;&nbsp;&nbsp; DWZL OZODQR KDZJDC ZS ZGZ.BNL<br>
+				19 &nbsp;&nbsp;&nbsp; CVYK NYNCPQ JCYICB YR YFY.AMK<br>
+				20 &nbsp;&nbsp;&nbsp; BUXJ MXMBOP IBXHBA XQ XEX.ZLJ<br>
+				21 &nbsp;&nbsp;&nbsp; ATWI LWLANO HAWGAZ WP WDW.YKI<br>
+				22 &nbsp;&nbsp;&nbsp; ZSVH KVKZMN GZVFZY VO VCV.XJH<br>
+				23 &nbsp;&nbsp;&nbsp; YRUG JUJYLM FYUEYX UN UBU.WIG<br>
+				24 &nbsp;&nbsp;&nbsp; XQTF ITIXKL EXTDXW TM TAT.VHF<br>
+				25 &nbsp;&nbsp;&nbsp; WPSE HSHWJK DWSCWV SL SZS.UGE<br><br>
+				And, with close inspection, you find that the row at Key=17 makes some sense in English. (some blasting sense indeed!)<br>
+				That's it. Using 'Brute Force Attack', you have successfully done the discovery of plaintext from some originally gibberish ciphertext.<br><br>
+
+				This indeed proves, how 'fragile' caesar cipher is.<br>
+				Although, if it's coupled with some other technique or some advanced manipulation is done to the technique, a large message (like 100000 characters) can be somewhat difficult to crack for a human alone. But for the fast computers (and clever algorithms), it's still a very weak method.<br><br>
+
+				Wait...wait... one more thing!<br>
+				Most of the times, when we brute force a ciphertext encrypted using caesar cipher, we get only 1 'text-that-makes-sense' out of 25 possibilities; and we believe that one to be the original plaintext.<br>
+				But, what if, after brute force, you find 2 or more 'texts-that-make-sense'. Which will you decide to be the original plaintext? Will you try to analyze the context? or will you try to go by your intuition? or, is such a case even possible?<br>
+				Worth thinking, isn't it!
+			</p>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+
+				It's not that Caesar cipher is the only popular classical technique. In fact, there are many classical techniques which are more powerful and stronger. We'll discuss some of them.<br><br>
+
+				But before that, we will look into two encoding/decoding techniques, which take some plaintext and turn them into some unreadable gibberish.<br>
+				Hint: One of these techniques is very-very popular and still in use, where dots and dashes are used to encode a message....<br>
+				... and even, transmit it using flashes of light, or beeps of sound!<br>
+				... anyone getting that?<br>
+				... yes! :-) Cool!<br>
+				... what! no! :-(<br><br>
+
+				OK. Never mind. We are going to discuss that later anyway. (after the post after this post.)<br>
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-3 Ended.
+
+
+			</p>
+		</div>
+	</div>
+
+<!-- sample
+	<div class="row">
+		<div class="col s2"><br><strong>What-Why</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				Hi there, how are you?<br><br>
+			</p>
+		</div>
+	</div> -->
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- input Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="inputString" class="materialize-textarea"></textarea>
+        <label for="inputString">Input String</label>
+      </div>
+    </div>
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Run Attack"><i class="material-icons">done</i></a>
+
+    <br><br>
+	<!-- Console Area -->
+	<div class="row left-align">
+      <div class="input-field col s8 offset-s2">
+      	<h5>Brute Force Results:</h5>
+		<p id="no-results">No results to be shown.</p>
+      	<table class="highlight">
+      		<thead>
+      			<tr >
+      				<th>Shift</th>
+      				<th>Candidate Plaintext</th>
+      			</tr>
+      		</thead>
+      		<tbody id="outputArea">
+
+      		</tbody>
+      	</table>
+
+      </div>
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+$(document).ready(function(){
+
+	//hide the <table>
+	$("#outputArea").parent().hide();
+
+});
+
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#inputString").val());
+	var output = "";
+
+	$("#outputArea").parent().hide();	//hide the <table> at this stage.
+	$("#no-results").show();	//show 'no-results' paragraph at this stage.
+
+	//step - 1: is input string empty?
+	if(iString == ""){
+		output = "Please enter some Input String first.";
+		Materialize.toast(output, 4000);
+	}else{
+
+		//brute force iteration
+		for(var i=1; i<=25; i++){
+			output += "<tr>";
+			output += "<td>"+i+"</td>";
+			output += "<td>"+caesar(iString, i, true)+"</td>";
+			output += "</tr>";			
+		}
+
+		
+		//hide the 'no-results' paragraph...
+		$("#no-results").hide();
+
+		//... and show the <table> tag, (that you hid by default)
+		$("#outputArea").parent().show();
+
+		//... and show the resultant table
+		$("#outputArea").html(output);
+		
+	}
+});
+
+
+//Our main JS function for this Cipher technique
+//Parameters:- iString: string, key: num between 1-25; mode: false[encrypt]/true[decrypt]
+function caesar(iString, key, mode){
+	var oString = "";
+
+	//the computation goes here.
+	//oString = iString;
+	
+	var iString = iString.toUpperCase();
+	
+	//var letterArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    var letterArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";		//it's actually string as an array!
+    
+    //for each character in string:
+    for(var i=0; i<iString.length; i++){
+    	var character = iString.charAt(i);
+    	var digit = 0;
+    	
+    	//check if it's a letter
+    	if(letterArray.indexOf(character)>-1){	//meaning, it IS a letter, in the "letterArray".
+    		digit = letterArray.indexOf(character);
+    		
+    		//now we have 'index' of that character; eg: A=0, B=1, ... Z=25.
+    		
+    		if(mode==false){	//ENCRYPTION checked
+    			//code for encryption
+    			//Step 1: add the key
+    			digit += eval(key);
+    			
+    			//Step 2: Check
+    			if(digit>25){	//for: overflow more than 25!
+    				digit = digit % 26;
+    				oString += letterArray.charAt(digit);
+    			}else{	//meaning, no overflow. normal.
+    				oString += letterArray.charAt(digit);
+    			}
+    			
+    		}else{	//DECRYPTION checked
+    			//code for decryption
+    			//Step 1: shift back / subtract the key
+    			digit -= eval(key);
+    			//Step 2: Check
+    			if(digit<0){	//for: underflow less than 0, eg: -1, -2, etc.
+    				digit = digit + 26;
+    				oString += letterArray.charAt(digit);
+    			}else{	//meaning, no underflow. normal.
+    				oString += letterArray.charAt(digit);
+    			}
+    		}
+    		
+    	}else{	//it's not in "letterArray"
+    		oString += character;
+    	}
+    		
+    }
+	return oString;
+}
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

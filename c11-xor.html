@@ -1,0 +1,366 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> XOR Cipher </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Cryptography xor cipher vernam tools Cryptolab Cryptogame">
+	<meta name="description" content="XOR cipher or vernam cipher uses xor as the basic operation to encrypt or decrypt bits from plain-bits to cipher-bits, using key-bits.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/my/main.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+	</div>
+
+	<!-- Horizontal Tab -->
+	<div class="row">
+		<div class="col s4">
+			<h4>XOR Cipher</h4>
+		</div>
+		 <div class="col s6 offset-s2 card">
+	      <ul class="tabs">
+	        <li class="tab col s3"><a href="#tool">Tool</a></li>
+	        <li class="tab col s3"><a href="#descp" class="active">About</a></li>
+	      </ul>
+	    </div>
+	</div>
+
+
+	<!-- Items Detailed -->
+	<div class="row">
+		<div id="descp" class="col s12">
+			
+	<!-- Short description about caesar cipher -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-How</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				Welcome back.<br><br>
+
+				This time we will discuss about 'how' can we encrypt a bit-text. Remember, our focus during encryption/decryption is to go from an original plaintext to a ciphertext using a key, and whatever we 'do-upon' (the operation) the original plaintext must also be 'reversible' or 'decrypt-able' using the key.<br><br>
+
+				We can do mainly 4 operations on bits: AND, OR, NOT and XOR. Examples of these operations are given below:<br>
+			<pre>
+O OR O = O |	O OR 1 = 1 |	1 OR 0 = 1 |	1 OR 1 = 1
+O AND O = O |	O AND 1 = 0 |	1 AND 0 = 0 |	1 AND 1 = 1
+O XOR O = O |	O XOR 1 = 1 |	1 XOR 0 = 1 |	1 XOR 1 = 0
+NOT O = 1 | NOT 1 = 0				
+			</pre>
+				On close inspection, you will find that only XOR operation is 'reversible', and since, that is an important requirement for encryption/decryption, we use XOR as a cipher operation.<br><br>
+
+				Let's see an example.<br>
+				Suppose your plaintext is 01000001 (binary for 'A'), and the 'key' you want to use is 01011000 (binary for 'X'). Then the XOR operation will result in the cipher-bits (00011001 in binary; or GQ== in base64) as follows:<br>
+				<pre>
+Plaintext: 	0 1 0 0 0 0 0 1
+Key:		0 1 0 1 1 0 0 0
+Cipher(XOR)	0 0 0 1 1 0 0 1				</pre>
+
+				You might have noted that in the XOR cipher discussed here, the length of the plain-bits is equal to the key-bits, something like One Time Pad.<br>
+				XOR Cipher is sometimes also known as Vernam Cipher because such use of XOR operations to the individual bits was specified in 1919 by <em>Gilbert Sandford Vernam</em>. 
+
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>The Advances</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				This is the really just the basic, the primitive operation. The real usage is actually quite advanced.<br><br>
+
+				Modern bit ciphers are mainly divided into two categories:<br>
+				One way is the bit by bit XORing of the whole stream of plain-bits (after computing an as-random-as-possible bit-key-stream in an algorithmically clever way eg: RC4)<br><br>
+
+				The second way is to divide the plaintext-bits into blocks (eg. 64-64 bits of blocks) and then 'working' upon those blocks-of-bits in different ways to encrypt the data. <br><br>
+
+				Now, remember that our aim is to make it difficult for the attacker to 'break' the 'cipher-bits' (i.e. to crack cipher-bits, without the knowledge of key-bits). How can we do that?<br>
+				We should primarily do two things - <em>firstly</em>: 'substituting' every bit with some other bit (ie. disguising or confusing); each plaintext element or group of elements is uniquely replaced by a corresponding ciphertext element or group of elements.<br>
+				And secondly, re-arranging or scrambling or diffusing every plaintext-bit (like transpositioning or producing permutations) to arrive at a ciphertext.<br><br>
+
+				Indeed this is what is done in 'advanced' versions of modern-day techniques which work on (blocks of) bits. Many 'rounds' of substitution and permutation; or confusion and diffusion are done to make the ciphertext, more and more complicated; and less and less breakable. (like in block ciphers DES, AES, etc.)<br><br>
+
+				While operating on blocks, we also get to choose among different 'modes' of operations. For example, will you use the same 'key' to encrypt all the blocks of bits one-by-one, or will you try some chaining mechanism! There are many modes to consider.<br><br> 
+
+				Another consideration or the desired achievement is the "Avalanche effect" that means: small change in the plaintext or the keytext should result in a large change in ciphertext. This makes it difficult for the 'cracker' to find any 'pattern' in the ciphertext, and hence, also difficult to 'break' or 'crack' it.<br><br>
+
+				So these are the advanced parts of the modern cryptography.
+				To be more specific, 'symmetric' cryptography, where 'one' key (which must remain private to all the 'friend'-parties) can be used to both - encrypt and decrypt the plainbits.  <br><br>
+
+			</p>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col s2"><br><strong>More Next</strong></div>
+		<div class="col s8 paper-bg" >
+
+			<p>
+				In the next few posts, we will discuss-in-detail the above-mentioned modern symmetric ciphers - the RC4 stream cipher, and the DES block cipher. We will also see different modes of operations for the block cipher. Mini-versions of those techniques will also be implemented separately; and could be used to practically see the 'intermediate' steps involved in the processes.<br>
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-15 Ended.
+
+			</p>
+		</div>
+	</div>
+
+
+			</div>
+		<div id="tool" id="descp-div" class="col s12 card center-align">
+			
+	<!-- <p>Conversion tool to go here - a form element with input String, settings &amp; output strings.</p> -->
+
+	<!-- input & key Area -->
+	<br>	<!-- just empty space -->
+	<div class="row">
+      <div class="input-field col s8 offset-s2">
+        <textarea id="inputString" class="materialize-textarea"></textarea>
+        <label for="inputString">Input String</label>
+      </div>
+      <div class="input-field col s8 offset-s2">
+        <textarea id="keyString" class="materialize-textarea"></textarea>
+        <label for="keyString">Key String</label>
+      </div>      
+    </div>
+
+
+ <!-- Switch -->
+	  <div class="switch">
+	    <label>
+	      Encrypt
+	      <input id="mode" type="checkbox">
+	      <span class="lever"></span>
+	      Decrypt
+	    </label>
+	  </div>
+
+	<br><br>
+
+    <!-- Compute button -->
+    <a id="compute-btn" class="btn-floating btn-large waves-effect waves-light cyan darken-3 tooltipped" data-position="right" data-delay="50" data-tooltip="Compute XOR"><i class="material-icons">done</i></a>
+
+    <br><br>
+
+    <div class="row">
+
+      <div class="input-field col s8 offset-s2">
+        <input placeholder="Binary of Input String will be displayed here" id="bin-inputString" type="text"  style="color:black"  readonly="readonly">
+        <label for="bin-inputString" style="color:#9e9e9e">Binary (Input String)</label>
+      </div>
+
+      <div class="input-field col s8 offset-s2">
+        <input placeholder="Binary of Key String will be displayed here" id="bin-keyString" type="text"  style="color:black"  readonly="readonly">
+        <label for="bin-keyString" style="color:#9e9e9e">Binary (Key String)</label>
+      </div> 
+
+    </div>
+
+
+	<!-- output Area -->
+	<div class="row">
+
+      <div class="input-field col s8 offset-s2">
+        <input placeholder="Binary of Output String will be displayed here" id="bin-outputString" type="text" style="color:black" readonly="readonly">
+        <label for="bin-outputString" style="color:#9e9e9e">Binary (Output String)</label>
+      </div> 
+      <div class="input-field col s8 offset-s2">
+        <textarea id="outputString" class="materialize-textarea" placeholder="Text Output Will Be displayed here..." disabled style="color:black"></textarea>
+        <label for="outputString" style="color:#9e9e9e">Output String</label>
+      </div>
+    </div>
+
+			</div>
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+//To Compute the given input to output.
+
+
+$(document).ready(function(){
+	//empty!
+});
+
+
+//text-to-binary & binary-to-text function
+function toBinary(str, spaceSeparatedOctets) {
+		    return str.replace(/[\s\S]/g, function(str) {
+		      str = zeroPad(str.charCodeAt().toString(2));
+		      return !1 == spaceSeparatedOctets ? str : str + " "
+		    });
+		}
+		function zeroPad(num) {
+		    return "00000000".slice(String(num).length) + num;
+		}
+function toAscii(bin){
+			    return bin.replace(/\s*[01]{8}\s*/g, function(bin) {
+			      return String.fromCharCode(parseInt(bin, 2));
+		    	});
+			}
+
+//whenever switch clicked! changed
+$("#mode").click(function(){
+	var mode = $("#mode").prop("checked"); 	//mode: true => decrypt; false => encrypt
+	if(mode==true){	//decryption. => input will be in base64.
+		$("#inputString").next().text("Input String (in base64)");
+	}
+	else{ //encryption.
+		$("#inputString").next().text("Input String");
+	}
+});
+
+
+//whenever compute button is clicked.
+$("#compute-btn").click(function(){
+	var iString = $.trim($("#inputString").val());
+	var keyString = $.trim($("#keyString").val());
+
+	var oString = "";
+	$("#outputString").text(oString);	//clear the oString box first.
+
+	//step - 1: is input string or key string empty?
+	if(iString == "" || keyString == ""){
+		oString = "Please enter all the Input Fields first.";
+		Materialize.toast(oString, 4000);
+	}else{
+
+
+		var mode = $("#mode").prop("checked"); 	//mode: true => decrypt; false => encrypt
+		
+		oString = xor(iString, keyString, mode);
+		$("#outputString").text(oString);		
+		$('#outputString').trigger('autoresize');
+	}	
+});
+
+
+//Our main JS function for this Cipher technique
+//Parameters:- iString and keyString : binary strings.
+function xor(iString, keyString,  mode){
+	var oString = "";
+
+	//the computation goes here.
+	//oString = iString;
+
+		//remove spaces from binary strings.
+		//iString = iString.replace(/[ ]/g, "");	
+		//keyString = keyString.replace(/[]/g, "");
+
+
+	if(mode == true){	//meaning, decryption. i.e. inputString is base64.
+		iString = atob(iString);	//base64 input to plaintext.
+
+		//plaintext to binary
+		iString = toBinary(iString, 0);		//0 means no space within binary.
+		$("#bin-inputString").val(iString);
+
+		//keystring to binary
+		keyString = toBinary(keyString, 0);
+		$("#bin-keyString").val(keyString);
+
+		for(var i=0;i<iString.length;i++){
+			oString += iString[i] ^ keyString[i];
+		}
+
+		//now, oString is in binary at this point.
+		$("#bin-outputString").val(oString);
+
+		//that binary to original plaintext
+		oString = toAscii(oString);
+
+		/* 
+			also change the label to "Output String (in Ascii)"
+		*/
+		$("#outputString").next().text("Output String");
+
+		return oString;
+
+	}else{		//meaning, encryption. i.e. inputString is plaintext.
+
+		//plaintext to binary
+		iString = toBinary(iString, 0);		//0 means no space within binary.
+		$("#bin-inputString").val(iString);
+
+		//keystring to binary
+		keyString = toBinary(keyString, 0);
+		$("#bin-keyString").val(keyString);
+
+		for(var i=0;i<iString.length;i++){
+			oString += iString[i] ^ keyString[i];
+		}
+
+		//now, oString is in binary at this point.
+		$("#bin-outputString").val(oString);
+
+		//that binary to original plaintext
+		oString = toAscii(oString);
+
+		//that plaintext to base64 for being readable.
+		oString = btoa(oString);
+
+
+		/* 
+			also change the label to "Output String (in Base64)"
+		*/
+		$("#outputString").next().text("Output String (in Base64)");
+
+		return oString;
+	}
+}
+</script>
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

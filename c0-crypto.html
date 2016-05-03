@@ -1,0 +1,147 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Crypto 101 </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Cryptography 101 basics cipher tools Cryptolab Cryptogame">
+	<meta name="description" content="What is cryptography? why do we need this? and what is the basic concept? Begin the journey into the art and science of writing or solving codes.">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css"><script src="lib/jquery.shuffleLetters.js"></script>
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+		<h4>Crypto 101</h4>
+	</div>
+
+	<!-- Short description about cryptography -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-Why</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				Hi there, How are you?<br><br>
+
+				Fine! Ok. So, let's talk about Cryptography.<br><br>
+
+				Suppose, You have a message, a secret message. And, you want to send it to your friend(s), in such a way that noone else, other than you and your friend(s) can read that message. In other words, you want your message to be hidden in the plain sight!<br><br>
+
+				So what do you do? You turn to Cryptography.<br><br>
+
+				Cryptography deals with techniques that can help you keep the information secret and safe. That's it.<br><br>
+
+				And, wait..., here 'friends' could be anyone.<br><br>
+
+				During a war, allies in an army are 'friends', and want to communicate important messages and notices secretly. They use Cryptography.<br><br>
+
+				When you do online shopping and online bank transactions, you and the Bank are also 'friends', and you want to communicate your secret PIN or password. There is also Cryptography in use.<br><br>
+
+				In fact, in the modern world of Information Technology, Cryptography is used extensively to make the online communication safe. Just imagine, on the Internet, there are millions of users from around the globe just like you, everyone connected over the same network; and when people try to communicate over such highly public medium, won't they want to make sure that their messages are secure, safe and concealed. Obviously, now more than ever.<br><br>
+
+				So, Cryptography is very, very important today. But how is it? What does it looks like?<br><br>
+
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s2"><br><strong>How</strong></div>
+		<div class="col s8 paper-bg">
+			<p>
+				Well, It's simple (but sometimes not easy).<br><br>
+
+				Basically<br>
+				i) you have your message in plaintext<br>
+				(let's say, "MEET BEHIND HOME TWO PM"),<br> 
+				ii) which you convert into some 'gibberish-looking' 'not-making-sense' text called 'ciphertext',<br>
+				(ex: "ZRRG ORUVAQ UBZR GJB CZ")<br>
+				iii) using some technique.<br><br>
+
+				And then you send it to your friend who converts that ciphertext back to plaintext again with the help of the same technique, revealing your hidden message to him/her.<br><br>
+
+				But wait! there is a mistake in the above approach.<br><br>
+
+				If your friend can convert-back the ciphertext to plaintext, by just knowing the technique that you used; then so can anyone else!<br>
+				In other words, anyone who knows the technique used by you, can easily decipher your secret message, even if you do not want. Well, this is like just 'encoding-decoding'. But, we want something else, something more.<br>
+				We want to share the secret message ONLY with our few trusted friends. So, what else can we do?<br><br>
+
+				Here is one approach.<br>
+				What if, instead of using: Plaintext + Technique = Ciphertext;<br>
+				we use: Plaintext + some key + Technique = Ciphertext.<br>
+				Now, what is 'some_key'? Depends on the technique. That can be a word, a book, a number, etc. It will become more clear when we will discuss the techniques in next posts. But before that, let's see how wonderfully this approach works!<br><br>
+
+				Now, you use not-only some technique, but also a secret 'key' to convert your plaintext to gibberish-looking-text/ciphertext. Now even if the techinque used by you is known publicly to everyone; only those people who know the secret 'key' will be able to decipher/'decrypt' the ciphertext successfully.<br>
+				Now, you only need to share the secret 'key' to your friends, and then whenever you send them some ciphertext (which will be unreadable for everyone else), they will be able to easily decipher it with their copy of your secret 'key'.<br>
+				Great! Mission Accomplished! That's what we want. To share secret message with selected friends!<br><br>
+
+				There also exist few more approaches, more advanced and more clever, where you don't even need to tell your friends your secret key!<br>
+				But that's for some other time.<br><br>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg">
+			</p>
+				Anyway, in the next post, we will try to see one of the most popular classical techniques, that try to hide the original message by 'substituting' each letter in the message with some other letter, using some 'key'!<br><br>
+			
+				So, see you in that post. (Hint: Caesar cipher)<br>
+				Bye till then.<br>
+				:-)<br><br>
+				
+				Post-1 Ended.
+			</p>
+		</div>
+	</div>
+
+</div>
+
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>

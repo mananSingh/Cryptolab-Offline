@@ -1,0 +1,119 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> Bits </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="bits bytes ones zeros tools Cryptolab Cryptogame">
+	<meta name="description" content="The modern world is a world full of computers and computers run on binary i.e. ones and zeros">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css">
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+
+<div class="container">
+	<div class="row center-align">
+		<a href="cryptolab.html" style="color:#00838f">&larr; Back</a>
+		<h4>World of Bits</h4>
+	</div>
+
+	<!-- Short description about cryptography -->
+	<div class="row">
+		<div class="col s2"><br><strong>What-Why</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				01010100 01101000 01100101 01110010 01100101 00100000 01100001 01110010 01100101 00100000 00110001 00110000 00100000 01110100 01111001 01110000 01100101 01110011 00100000 01101111 01100110 00100000 01110000 01100101 01101111 01110000 01101100 01100101 00100000 01101001 01101110 00100000 01110100 01101000 01100101 00100000 01110111 01101111 01110010 01101100 01100100 00101100 00100000 01110100 01101000 01101111 01110011 01100101 00100000 01110111 01101000 01101111 00100000 01110101 01101110 01100100 01100101 01110010 01110011 01110100 01100001 01101110 01100100 00100000 01100010 01101001 01101110 01100001 01110010 01111001 00100000 01100001 01101110 01100100 00100000 01110100 01101000 01101111 01110011 01100101 00100000 01110111 01101000 01101111 00100000 01100100 01101111 01101110 00100111 01110100 00101110 <br><br>
+
+				That is a language that Computers understand; and since, today, in the 21st Century, Computers are everywhere; that means 'binary' is also almost everywhere. 
+				The following online article "Data in the Computer" by <em>cs.uri.edu</em> goes on explaining this in detail.  
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>"Data in the Computer" -cs.uri.edu</strong></div>
+		<div class="col s8 paper-bg" >
+			<p>
+				<strong>Representing Data</strong><br>
+				We have all seen computers do seemingly miraculous things with all kinds of sounds, pictures, graphics, numbers, and text. It seems that we can build a replica of parts of our world inside the computer. You might think that this amazing machine is also amazingly complicated - it really is not. In fact, all of the wonderful multi-media that we see on modern computers is all constructed from simple ON/OFF switches - millions of them - but really nothing much more complicated than a switch. The trick is to take all of the real-world sound, picture, number etc data that we want in the computer and convert it into the kind of data that can be represented in switches, as shown in Figure 1. ...<br><br>
+
+				<a href="ARTICLES/Data In The Computer.html" target="_blank" alt="Data in the Computer" style="color:#00838f">Read the full article.</a>
+ 
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s2"><br><strong>Next</strong></div>
+		<div class="col s8 paper-bg">
+			</p>
+				So, Reading the above article would have surely given you a nice glimpse into the "World of bits"; And, that was a prologue-attempt to tell you the immense wonder that the 'bits' are. Also, the extensive use of bits in the digital data representation suggests that every 'message' (anything from english alphabets, documents to music, image and video - i.e. anything digital) of the modern world is, actually, a 'stream'/sequence of 1s and 0s i.e. sequence of bits.<br><br>
+
+				Since, we are exploring Cryptography i.e. the art-and-science of hiding information, concealing our secret messages;<br>
+				and as we just saw, messages/information can be expressed as 'binary';<br>
+				That, means; that now, in the pursuit of Cryptography, we must work-upon 'bits', instead of letters or characters, as we were doing till now; and, we must come up with ingenious techniques to 'encrypt' our original bit-sequence (i.e. plain-bits) to 'cihper-bits'.<br><br>
+
+				But, how can we do that?<br>
+				To answer that question, we first need to see some of the 'operations' that can be performed over bits; and then, choose a 'suitable' operation (or a mechanism that involves that 'suitable' operation) for our task of encryption and decryption.<br><br>
+
+				So, that's what we'll see 'AFTER' next! (Hint: XOR)<br>
+				But, in the exact-next post, we will first see that HOW does the simple-plain-text (like: "Apple") gets converted to Binary (like: "01100001 01110000 01110000 01101100 01100101").<br>				
+				Bye till then.<br>
+				:-)<br><br>
+
+				Post-11 Ended.
+
+			</p>
+		</div>
+	</div>
+
+</div>
+
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>
