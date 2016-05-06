@@ -1,3 +1,5 @@
+This site is live at [ http://manansingh.github.io/Cryptolab-Offline/ ] (http://manansingh.github.io/Cryptolab-Offline/)
+
 Cryptolab offers articles and tools(encryption-decryption-intermediate steps) on:
 
 1. Crypto 101
