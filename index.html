@@ -1,0 +1,101 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title> CryptoLab </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="Crytography tools Cryptolab Cryptogame">
+	<meta name="description" content="Cryptolab is a set of cryptography-related tools with which teachers can demonstrate and students can practice various cryptography techniques from classical caesar cipher to modern rc4, des and rsa. ">
+	<meta name="author" content="dev">
+
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- 
+		SETUP COMMON CSS & JS FILES 
+	-->
+	<script type="text/javascript" src="lib/jquery-1.12.1.min.js"></script>
+
+	<!-- setup materialize.-->
+	<!-- 1. import google icon font -->
+		<!-- for offline case -->
+	<link rel="stylesheet" href="lib/materialize/iconfont/material-icons.css">
+		<!-- or, if online 
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		-->
+	<!-- 2. import materialize.css -->
+	<link rel="stylesheet" href="lib/materialize/css/materialize.min.css" media="screen,projection">
+	<!-- 3. import materilize.js (make sure jquery has already been included) -->
+	<script type="text/javascript" src="lib/materialize/js/materialize.min.js"></script>
+
+	<script type="text/javascript" src="lib/validate.min.js"></script>
+
+
+	<!-- my js: some greet functions; text resize on copy paste, etc.-->
+	<script type="text/javascript" src="lib/my/main.js"></script>
+	<link rel="stylesheet" href="lib/my/main.css">
+</head>
+<body>
+<!-- 
+	Code Begins 
+-->
+
+<div class="container">
+	<div class="row center-align">
+	<!--	<a href="home.php" style="color:#00838f">&larr; Back</a>    -->
+		<h3>CryptoLab</h3>
+		<p class="flow-text">Read the posts. Interact with tools.<br> Discover the techniques. and Enjoy.</p>
+	</div>
+
+	<!-- Listing/index/cloud of tools -->
+	<div class="row center-align">
+		<div class="col s12">
+			<a href="c0-crypto.html" class="chip cyan darken-2 btn waves-effect waves-light" style="margin:10px; color:#fff">  
+			Crypto 101</a>&nbsp;&nbsp;
+			<a href="c1-caesar.html" class="chip cyan darken-3 btn waves-effect waves-light" style="margin:10px; color:#fff">
+            Caesar Cipher</a>&nbsp;&nbsp;
+			<a href="c2-brute-caesar.html" class="chip cyan darken-3 btn waves-effect waves-light" style="margin:10px; color:#fff">Brute Force Caesar</a>&nbsp;&nbsp;
+			<a href="c3-atbash.html" class="chip cyan darken-4 btn waves-effect waves-light" style="margin:10px; color:#fff">Atbash Cipher</a>&nbsp;&nbsp;
+			<a href="c4-morse.html" class="chip cyan darken-4 btn waves-effect waves-light" style="margin:10px; color:#fff">Morse Code</a>&nbsp;&nbsp;
+			<a href="c5-otp.html" class="chip cyan darken-3 btn waves-effect waves-light" style="margin:10px; color:#fff"> One Time Pad</a>&nbsp;&nbsp;
+			<a href="c6-vigenere.html" class="chip cyan darken-3 btn waves-effect waves-light" style="margin:10px; color:#fff">Vigenere Cipher</a>&nbsp;&nbsp;
+			<a href="c7-book-cipher.html" class="chip cyan darken-2 btn waves-effect waves-light" style="margin:10px; color:#fff"> Book Cipher</a>&nbsp;&nbsp;
+			<a href="c8-stego.html" class="chip cyan darken-2 btn waves-effect waves-light" style="margin:10px; color:#fff">Steganography</a>&nbsp;&nbsp;
+			<a href="c9-railfence.html" class="chip cyan darken-3 btn waves-effect waves-light" style="margin:10px; color:#fff">Rail Fence Cipher</a>&nbsp;&nbsp;
+			<a href="c10-bits.html" class="chip light-blue darken-1 btn waves-effect waves-light" style="margin:10px; color:#fff">World of Bits</a>&nbsp;&nbsp;
+			<a href="c10-text2bits.html" class="chip light-blue darken-2 btn waves-effect waves-light" style="margin:10px; color:#fff">Text to Bits</a>&nbsp;&nbsp;
+			<a href="c10-bits2hex.html" class="chip light-blue darken-2 btn waves-effect waves-light" style="margin:10px; color:#fff">Bits to Hex</a>&nbsp;&nbsp;
+			<a href="c10-bits2base64.html" class="chip light-blue darken-2 btn waves-effect waves-light" style="margin:10px; color:#fff">Bits to Base64</a>&nbsp;&nbsp;
+			<a href="c11-xor.html" class="chip light-blue darken-2 btn waves-effect waves-light" style="margin:10px; color:#fff">XOR Cipher</a>&nbsp;&nbsp;
+			<a href="c12-rc4-mini.html" class="chip light-blue darken-3 btn waves-effect waves-light" style="margin:10px; color:#fff">Rivest Cipher 4 (Mini)</a>&nbsp;&nbsp;
+			<a href="c12-rc4.html" class="chip light-blue darken-3 btn waves-effect waves-light" style="margin:10px; color:#fff">Rivest Cipher 4</a>&nbsp;&nbsp;
+			<a href="c12-random.html" class="chip light-blue darken-2 btn waves-effect waves-light" style="margin:10px; color:#fff">Random Generator</a>&nbsp;&nbsp;
+			<a href="c13-des-modes.html" class="chip light-blue darken-3 btn waves-effect waves-light" style="margin:10px; color:#fff">DES (Modes Of Operation)</a>&nbsp;&nbsp;
+			<a href="c13-des-block.html" class="chip light-blue darken-2 btn waves-effect waves-light" style="margin:10px; color:#fff">DES (How Works?)</a>&nbsp;&nbsp;
+			<a href="c14-rsa.html" class="chip indigo btn waves-effect waves-light" style="margin:10px; color:#fff">RSA (Public Key Cryptography)</a>&nbsp;&nbsp;
+			<a href="c15-hashes.html" class="chip purple btn waves-effect waves-light" style="margin:10px; color:#fff">Hashes</a>&nbsp;&nbsp;
+			<a href="c16-crack-md5-hash.html" class="chip purple darken-2 btn waves-effect waves-light" style="margin:10px; color:#fff">Crack MD5 Hash</a>&nbsp;&nbsp;		
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<!-- 
+	Code Ends 
+-->
+
+	
+
+
+</body>
+</html>
